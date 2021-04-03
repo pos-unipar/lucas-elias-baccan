@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5, CSS3, JS</title>
+
+    <style>
+        header {
+            text-align: center;
+            font-weight: 800;
+            font-size: larger;
+            padding-bottom: 20px;
+        }
+
+        .input {
+            width: 100%;
+        }
+
+        .titulo {
+            text-align: right;
+        }
+
+        .enviar {
+            text-align: center;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        HTML5, CSS3, JS - Formulário
+    </header>
+    <form>
+        <table>
+            <!-- Título -->
+            <tr>
+                <td class="titulo">
+                    <label>Título</label>
+                </td>
+                <td>
+                    <input class="input" type="text">
+                </td>
+            </tr>
+
+            <!-- Cor do titulo -->
+            <tr>
+                <td class="titulo">
+                    <label>Cor do título</label>
+                </td>
+                <td>
+                    <input class="input" type="color">
+                </td>
+            </tr>
+
+            <!-- Data -->
+            <tr>
+                <td class="titulo">
+                    <label>Data</label>
+                </td>
+                <td>
+                    <input class="input" type="date">
+                </td>
+            </tr>
+
+            <!-- E-mail -->
+            <tr>
+                <td class="titulo">
+                    <label>E-mail</label>
+                </td>
+                <td>
+                    <input class="input" type="email">
+                </td>
+            </tr>
+
+            <!-- Imagem -->
+            <tr>
+                <td class="titulo">
+                    <label>Imagem</label>
+                </td>
+                <td>
+                    <input class="input" type="file">
+                </td>
+            </tr>
+
+            <!-- Introdução -->
+            <tr>
+                <td class="titulo">
+                    <label>Introdução</label>
+                </td>
+                <td>
+                    <textarea class="input" rows="8"></textarea>
+                </td>
+            </tr>
+
+            <!-- Endereço de origem (URL) -->
+            <tr>
+                <td class="titulo">
+                    <label>Endereço de origem (URL)</label>
+                </td>
+                <td>
+                    <input class="input" type="url">
+                </td>
+            </tr>
+
+            <!-- Botão Enviar -->
+            <tr class="enviar">
+                <td colspan="2">
+                    <input class="enviar" type="submit">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+</body>
+
+</html>
