@@ -19,3 +19,17 @@
         Arquivo com varias tags, e com borda em alguns elementos para ver seu comportamento
     - [Aula-01/formulario.html](./Aula-01/exemplo-aula/formulario.html)  
         Exemplo de um formulário, arquivo feito durante a aula para atender como se comporta os elementos de um formulário.
+
+## Outras configurações
+
+- Foi adicionado o fork do projeto do professor com o comando abaixo.  
+git submodule add https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade.git 01-HTML-CSS-JS-Jemerson/Aula-02/exemplo-aula/jfnandopr-pos-unipar-html-css-js-atividade
+
+- Sincronizar fork  
+    ```
+    git remote add upstream https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade.git
+    git fetch upstream
+    git merge upstream/main
+    git push origin main
+    ```
+
