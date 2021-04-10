@@ -18,4 +18,4 @@
     - [Aula-01/exemplo.html](./Aula-01/exemplo-aula/exemplo.html)  
         Arquivo com varias tags, e com borda em alguns elementos para ver seu comportamento
     - [Aula-01/formulario.html](./Aula-01/exemplo-aula/formulario.html)  
-        Exemplo de um formulario, arquivo feito durante a aula para atender como se comporta os elementos de um formulario.
+        Exemplo de um formulário, arquivo feito durante a aula para atender como se comporta os elementos de um formulário.

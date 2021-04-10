@@ -1,12 +1,12 @@
 # Pós Web & Dispositivos Móveis - Unipar 2021
 
-Este repositorio vai conter todos os materiais apresentados durante a pós graduação.
+Este repositório vai conter todos os materiais apresentados durante a pós graduação.
 
-Está estruturado por materia, e dentro de cada materia tem os conteudos relacionadosa a ela.
+Está estruturado por matéria, e dentro de cada matéria tem os conteúdos relacionados a ela.
 
 ## Lucas Elias Baccan
 
-Esté projeto é feito e mantido pelo academico Lucas Elias Baccan
+Esté projeto é feito e mantido pelo acadêmico Lucas Elias Baccan
 
 ---
 
