@@ -26,7 +26,7 @@
 
     - [Aula-02/bootstrap](./Aula-02/exemplo-aula/bootstrap/)  
         Implementação do bootstrap 4.6 nos arquivos da aula anterior.
-    - [Aula-02/jfnandopr-pos-unipar-html-css-js-atividade](https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade/tree/ac9291675b85a4a733aef4c415b0f33f0533304e)  
+    - [Aula-02/jfnandopr-pos-unipar-html-css-js-atividade](https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade/)  
         Projeto do professor com exemplos feitos durante a aula.
 
 
@@ -45,7 +45,7 @@
     git merge upstream/main
     git push origin main
     ```
-- Baixar arquivos do submódulo
+- Baixar arquivos do submódulo(fork)
     ```
     git submodule update --init
     git submodule update --recursive
