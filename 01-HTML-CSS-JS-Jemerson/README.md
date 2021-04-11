@@ -39,9 +39,16 @@
 
 - Sincronizar fork  
     ```
+    cd 01-HTML-CSS-JS-Jemerson/Aula-02/exemplo-aula/jfnandopr-pos-unipar-html-css-js-atividade
     git remote add upstream https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade.git
     git fetch upstream
     git merge upstream/main
     git push origin main
     ```
-
+- Baixar arquivos do submódulo
+    ```
+    git submodule update --init
+    git submodule update --recursive
+    git submodule update --remote
+    git submodule update --init --recursive
+    ```
