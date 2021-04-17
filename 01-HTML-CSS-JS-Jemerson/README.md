@@ -21,6 +21,16 @@
         Exemplo de um formulário, arquivo feito durante a aula para atender como se comporta os elementos de um formulário.
 
 ### Aula 02
+
+- [**atividades**](./Aula-02/atividades/)
+Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
+
+    - [Aula-02/atividade3/](./Aula-02/atividades/atividade3)  
+        Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-3)
+
+    - [Aula-02/atividade4/](./Aula-02/atividades/atividade4)  
+    Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-4)
+
 - [**exemplo-aula**](./Aula-02/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 

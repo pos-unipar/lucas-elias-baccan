@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5, CSS3, JS</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        HTML5, CSS3, JS
+    </header>
+
+    <input type="button" value="Adicionar linha" onclick=adicionarLinha() />
+
+    <table id="tabela">
+        <tr>
+            <td><strong>Hash</strong></td>
+            <td><strong>Ação</strong></td>
+        </tr>
+    </table>
+
+    <script>
+        function randomNumber() {
+            return Math.random().toString(36).substring(7);
+        }
+
+        function adicionarLinha() {
+
+            var tableRef = document.getElementById("tabela");
+
+            var rowRef = tableRef.insertRow();
+
+            var cell1 = rowRef.insertCell(0);
+            var cell2 = rowRef.insertCell(1);
+
+            cell1.innerHTML = randomNumber();
+            cell2.innerHTML = '<input type="button" value="Remover linha" onclick=deletarLinha(this) />';
+
+        }
+
+        function deletarLinha(elemento) {
+            var linha = elemento.parentNode.parentNode;
+            linha.parentNode.removeChild(linha);
+        }
+
+    </script>
+
+</body>
+
+</html>

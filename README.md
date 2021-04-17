@@ -8,6 +8,13 @@ Está estruturado por matéria, e dentro de cada matéria tem os conteúdos rela
 
 Esté projeto é feito e mantido pelo acadêmico Lucas Elias Baccan
 
+## Como clonar
+
+Este projeto contem subprojetos, para clonar utilize
+```
+git clone --recursive https://github.com/pos-unipar/lucas-elias-baccan.git
+```
+
 ---
 
 # Máterias
