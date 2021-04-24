@@ -1,0 +1,28 @@
+header {
+  text-align: center;
+  font-weight: 800;
+  font-size: larger;
+  padding-bottom: 20px;
+}
+
+table input,
+table textarea {
+  width: 100%;
+}
+table .enviar {
+  text-align: center;
+  margin-top: 35px;
+}
+table tr td:nth-child(1) {
+  text-align: right;
+}
+
+body {
+  padding-top: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+body form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}/*# sourceMappingURL=style.css.map */

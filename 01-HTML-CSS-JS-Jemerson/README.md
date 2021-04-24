@@ -39,15 +39,36 @@ Atividades que foram solicitadas para serem feitas e entregues, geralmente valem
     - [Aula-02/jfnandopr-pos-unipar-html-css-js-atividade](https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade/)  
         Projeto do professor com exemplos feitos durante a aula.
 
+### Aula 03
+
+- [**atividades**](./Aula-03/atividades/)
+Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
+
+    - [Aula-03/atividade5/](./Aula-03/atividades/atividade5)  
+        Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-5)
+    - [Aula-03/trabalho/](./Aula-03/atividades/trabalho)  
+        Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#trabalho-final)
+
+- [**exemplo-aula**](./Aula-02/exemplo-aula/)
+    Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
+
+    - [Aula-02/jquery](./Aula-03/exemplo-aula/jquery/)  
+        Implementação do Jquery no formulário feito na atividade [Aula-02/atividade3/](./Aula-02/atividades/atividade3)  .
+
+    - [Aula-02/jfnandopr-pos-unipar-html-css-js-atividade](https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade/)  
+        Projeto do professor com exemplos feitos durante a aula.
 
 ## Outras configurações
 
 - Foi adicionado o fork do projeto do professor com o comando abaixo.  
     ```
     git submodule add https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade.git 01-HTML-CSS-JS-Jemerson/Aula-02/exemplo-aula/jfnandopr-pos-unipar-html-css-js-atividade
+    git submodule add https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade.git 01-HTML-CSS-JS-Jemerson/Aula-03/exemplo-aula/jfnandopr-pos-unipar-html-css-js-atividade
     ```
 
-- Sincronizar fork  
+- Sincronizar fork
+
+    Após atualizar o fork, para atualizar o submódulo, utilizar os comandos abaixo.
     ```
     cd 01-HTML-CSS-JS-Jemerson/Aula-02/exemplo-aula/jfnandopr-pos-unipar-html-css-js-atividade
     git remote add upstream https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade.git
@@ -57,8 +78,6 @@ Atividades que foram solicitadas para serem feitas e entregues, geralmente valem
     ```
 - Baixar arquivos do submódulo(fork)
     ```
-    git submodule update --init
-    git submodule update --recursive
     git submodule update --remote
     git submodule update --init --recursive
     ```
