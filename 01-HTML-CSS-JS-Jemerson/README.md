@@ -46,16 +46,19 @@ Atividades que foram solicitadas para serem feitas e entregues, geralmente valem
 
     - [Aula-03/atividade5/](./Aula-03/atividades/atividade5)  
         Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-5)
+    - [Aula-03/atividade6/](./Aula-03/atividades/atividade6)  
+        Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-6)
+
     - [Aula-03/trabalho/](./Aula-03/atividades/trabalho)  
         Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#trabalho-final)
 
-- [**exemplo-aula**](./Aula-02/exemplo-aula/)
+- [**exemplo-aula**](./Aula-03/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [Aula-02/jquery](./Aula-03/exemplo-aula/jquery/)  
-        Implementação do Jquery no formulário feito na atividade [Aula-02/atividade3/](./Aula-02/atividades/atividade3)  .
+    - [Aula-03/jquery](./Aula-03/exemplo-aula/jquery/)  
+        Implementação do Jquery no formulário feito na atividade [Aula-02/atividade3/](./Aula-02/atividades/atividade3).
 
-    - [Aula-02/jfnandopr-pos-unipar-html-css-js-atividade](https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade/)  
+    - [Aula-03/jfnandopr-pos-unipar-html-css-js-atividade](https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade/)  
         Projeto do professor com exemplos feitos durante a aula.
 
 ## Outras configurações

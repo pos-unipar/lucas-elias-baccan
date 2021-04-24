@@ -2,11 +2,43 @@ console.log("Abrindo arquivo app.js")
 
 $(document).ready(function () {
 
+    const STORAGE_NOTICIAS = "noticias"
+
+    const saveData = (record) => {
+
+        let data = loadData();
+        data.push(record)
+
+        let json = JSON.stringify(data)
+        localStorage.setItem(STORAGE_NOTICIAS, json);
+    }
+
+    const loadData = () => {
+        let data = localStorage.getItem(STORAGE_NOTICIAS);
+
+        if (!data)
+            data = []
+        else
+            data = JSON.parse(data);
+
+        return data;
+    }
+
+    const loadTable = () => {
+        let data = loadData();
+        for (json of data) {
+            addDataTable(json)
+        }
+    }
+
+    loadTable()
+
     var formNoticias = $("#form-noticias");
 
     formNoticias.on("submit", function () {
         try {
             var json = recordFromForm(formNoticias);
+            saveData(json);
             addDataTable(json);
 
             console.log(json)
@@ -68,6 +100,10 @@ $(document).ready(function () {
     }
 
     function deletarLinha(elemento) {
+        let data = loadData()
+        data.splice($(elemento).index(), 1);
+        let json = JSON.stringify(data)
+        localStorage.setItem(STORAGE_NOTICIAS, json);
         $(elemento).remove();
         refreshCount();
     }
