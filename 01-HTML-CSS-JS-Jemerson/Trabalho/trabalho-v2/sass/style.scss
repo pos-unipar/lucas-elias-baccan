@@ -1,0 +1,136 @@
+// https://coolors.co/052f5f-005377-06a77d-d5c67a-f1a208
+
+body {
+    background-color: #e9c46a;
+}
+
+#header {
+    margin: 20px;
+    background-color: #f5d176;
+    border-radius: 50px;
+
+    .btn-small {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+#main {
+    #produtos {
+        background-color: #f4a261;
+
+        padding: 10px;
+
+        p {
+            font-weight: 700;
+        }
+
+        :nth-child(1) {
+            margin: auto;
+        }
+    }
+
+    #carrinho {
+        background-color: #2a9d8f;
+
+        padding: 10px;
+
+        p {
+            font-weight: 700;
+        }
+
+        :nth-child(1) {
+            margin: auto;
+        }
+    }
+
+    .produto {
+        background-color: #f0852d;
+
+        box-sizing: border-box;
+        border-style: solid;
+        border-color: #bb5f13;
+        border-width: 3px;
+
+        padding: 10px;
+
+        margin: auto;
+        // margin-left: 8px;
+        // margin-right: 8px;
+
+        img {
+            max-height: 150px;
+            object-fit: contain;
+        }
+    }
+
+    .dragzone {
+        background-color: lightblue;
+
+        border-radius: 20px;
+        border-style: dashed;
+        border-width: 2px;
+
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        height: 45px;
+    }
+
+    padding-bottom: 75px;
+}
+
+#footer {
+    background-color: #f5d176;
+
+    width: 100%;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+// #carrinho {
+//     background-color: #2a9d8f;
+// }
+
+// #produtos {
+//     background-color: #264653;
+// }
+
+// .produto {
+//     border-style: solid;
+//     border-width: 3px;
+//     border-color: #0081b8;
+//     border-radius: 20px;
+
+//     padding: 8px;
+//     margin: 8px;
+
+//     background-color: #44c7ff;
+
+//     img {
+//         max-height: 150px;
+//         object-fit: contain;
+//     }
+
+//     p {
+//         height: 22px;
+//         font-style: italic;
+//     }
+
+//     .produto-quantidade,
+//     .produto-preco {
+//         height: 22px;
+//     }
+
+//     .produto-adiciona {
+//         margin-top: 18px;
+//         margin-left: 20px;
+//         margin-right: 20px;
+//     }
+// }

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lucas Elias Baccan - HTML, CSS e JS</title>
+
+    <!-- Bootstrap 4.6-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+
+    <!-- CSS do site -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="header" class="row">
+        <h1 class="col-sm text-center"> Uma loja muito top</h1>
+
+        <!-- Botão grande quande -->
+        <button type="button" class="btn btn-danger d-none d-md-block" data-toggle="modal"
+            data-target="#modal-informacoes">Informações</button>
+
+        <!-- Botão pequeno -->
+        <button type="button" class="btn btn-danger btn-small d-block d-md-none fas fa-info-circle" data-toggle="modal"
+            data-target="#modal-informacoes"></button>
+    </div>
+
+    <div id="main" class="container">
+        <div class="row">
+
+            <div id="produtos" class="col-md-6">
+                <div class="container-fluid row ">
+                    <p class="text-center col-12">Lista de produtos</p>
+
+                    <div class="col">
+                        <br>
+                    </div>
+
+                    <div class="col dragzone col-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <h2 class="text-center">Arraste aqui</h2>
+                    </div>
+
+                    <!-- <div id="0" class="produto row col-xs-12 col-sm-6 col-md-12" draggable="true"
+                        ondragstart="drag(event)">
+                        <img src="https://picsum.photos/id/103/400" class="img col-sm-12 col-md-6" alt="tenis"
+                            draggable="false">
+                        <div class="col-sm-12 col-md-6">
+                            <h5 class="col-sm-12">Tênis</h5>
+                            <input class="col-sm-12 " type="number" name="qtde" min="0" value="0">
+                            <input class="col-sm-12" type="number" min="0" step="any" name="valor" value="99.99"
+                                disabled>
+
+                            <button type="button" class="produto-btn btn btn-success col"
+                            onclick="adicionarRemoverProduto(this)">Adicionar</button>
+
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+            <div id="carrinho" class="col-md-6">
+                <div class="container-fluid row ">
+                    <p class="text-center col-12">Carrinho</p>
+
+                    <div class="col row">
+                        <b class="col-auto">Valor total: </b><span id="valor-total"></span>
+                        <p class="col"></p>
+                        <b class="col-auto">Qtd: </b><span id="total-itens"></span>
+                    </div>
+
+                    <div class="col dragzone col-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <h2 class="text-center">Arraste aqui</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="footer" class="text-center font-weight-light">
+        Lucas Elias Baccan - 2021
+    </div>
+
+
+
+
+    <!-- <div id="main" class="container">
+
+        <div class="row">
+            <div id="produtos" class="col">
+                <div class="col">
+                    <p>Lista de produtos</p>
+                </div>
+
+                <div class="produto row col">
+                    <img src="https://picsum.photos/id/103/400" class="img-fluid col-md-4 col-sm-12" alt="tenis">
+                    <div class="col-md">
+                        <h5 class="produto-nome">Tênis</h5>
+                        <div class="row">
+                            <p class="col-6">Quantidade: </p>
+                            <input class="produto-quantidade col-6" type="number" name="quantidade" min="0" value="0">
+                            <p class="col-6">Valor:</p>
+                            <input class="produto-preco col-6" type="number" min="0" step="any" name="preco"
+                                value="2.50" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="produto-descricao col-12">
+                            Um tênis muito comportável e bonitos, perfeito para passear no parque.
+                        </p>
+                        <a href="#" class="produto-adiciona btn btn-success col">Adicionar</a>
+                    </div>
+                </div>
+
+                <div class="produto row col">
+                    <img src="https://picsum.photos/id/103/400" class="img-fluid col-md-4 col-sm-12" alt="tenis">
+                    <div class="col-md">
+                        <h5 class="">Tênis</h5>
+                        <h5 class="">Preço</h5>
+                        <h5 class="">Quantidade</h5>
+                    </div>
+                    <p class="card-text">Um tênis muito comportável e bonitos, perfeito para passear no parque.</p>
+                    <a href="#" class="btn btn-success">Adicionar</a>
+                </div>
+
+            </div>
+
+            <div id="carrinho" class="col-md-5">
+                Carrinho
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-informacoes" tabindex="-1" aria-labelledby="modal-informacoes-label"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-informacoes-label">Informações</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="font-weight-bold">Recursos utilizados</p>
+                    <ul class="list-group">
+                        <li class="list-group-item">Javascript</li>
+                        <li class="list-group-item">CSS/SASS</li>
+                        <li class="list-group-item">Bootstrap 4.6</li>
+                        <li class="list-group-item">Jquery 3.5.1</li>
+                        <li class="list-group-item">HTML 5 Drap/Drop</li>
+                        <li class="list-group-item">HTML 5 Web Storage</li>
+                        <li class="list-group-item">Font-awsome <a href="https://fontawesome.com/">(link)</a>
+                        <li class="list-group-item">Imagens online <a href="https://picsum.photos/images">(link)</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <!-- JS do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+    <!-- JS do autor -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

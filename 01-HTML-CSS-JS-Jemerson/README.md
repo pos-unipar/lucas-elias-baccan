@@ -23,13 +23,12 @@
 ### Aula 02
 
 - [**atividades**](./Aula-02/atividades/)
-Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
+    Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
 
     - [Aula-02/atividade3/](./Aula-02/atividades/atividade3)  
         Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-3)
-
     - [Aula-02/atividade4/](./Aula-02/atividades/atividade4)  
-    Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-4)
+        Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-4)
 
 - [**exemplo-aula**](./Aula-02/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
@@ -49,17 +48,32 @@ Atividades que foram solicitadas para serem feitas e entregues, geralmente valem
     - [Aula-03/atividade6/](./Aula-03/atividades/atividade6)  
         Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#atividade-6)
 
-    - [Aula-03/trabalho/](./Aula-03/atividades/trabalho)  
-        Descrição pode ser vista em [aqui](https://pos-unipar.github.io/docs/html-css-js#trabalho-final)
-
 - [**exemplo-aula**](./Aula-03/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
     - [Aula-03/jquery](./Aula-03/exemplo-aula/jquery/)  
         Implementação do Jquery no formulário feito na atividade [Aula-02/atividade3/](./Aula-02/atividades/atividade3).
-
     - [Aula-03/jfnandopr-pos-unipar-html-css-js-atividade](https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade/)  
         Projeto do professor com exemplos feitos durante a aula.
+
+### Trabalho
+
+A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/docs/html-css-js/#trabalho-final).
+
+Eu fiz duas versões, na [**trabalho-v2**](./Trabalho/trabalho-v2/) tem tudo que foi solicitado e a utilização de mais recursos. Pode utilizar essa versão para avaliar o trabalho. 
+
+- [**trabalho-v1**](./Trabalho/trabalho-v1/)
+    Versão simplificada que contem todos os itens solicitados
+
+- [**trabalho-v2**](./Trabalho/trabalho-v2/)
+    Versão mais completa que contem todos os itens solicitados mais outros recursos vistos durante a pós.
+    - Layout feito do zero
+    - Bootstrap 4.6
+    - Jquery
+    - HTML, CSS e JS
+    - FontAwsome
+    - Local Storage
+    - Responsividade
 
 ## Outras configurações
 

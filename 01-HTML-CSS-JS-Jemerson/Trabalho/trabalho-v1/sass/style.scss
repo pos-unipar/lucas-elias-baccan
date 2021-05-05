@@ -1,0 +1,44 @@
+#produtos {
+    background-color: gray;
+    padding: 25px;
+    margin: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+}
+
+article {
+    background-color: lightgray;
+    padding: 15px;
+    margin: 15px;
+}
+
+#checkout {
+    background-color: cadetblue;
+    padding: 25px;
+    margin: 25px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    
+    #carrinho {
+        background-color: darkseagreen;
+        min-height: 45px;
+        border-style: dotted;
+        border-width: 1px;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px;
+    }
+
+    #total-itens, #valor-total {
+        padding-left: 15px;
+    }
+}
+
+footer {
+    font-size: 30px;
+    font-weight: 600;
+    margin: auto;
+    text-align: center;
+}
