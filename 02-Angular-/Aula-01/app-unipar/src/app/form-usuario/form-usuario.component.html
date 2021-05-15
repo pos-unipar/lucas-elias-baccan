@@ -1,0 +1,25 @@
+<div class="container m-3">
+  <form [formGroup]="formGroup" *ngIf="formGroup" class="row">
+    <div class="col-md-3 form-group">
+      <label class="form-control-label">Username</label>
+      <input type="text" class="form-control input-sm" formControlName="username" />
+      <span class="text-danger" *ngIf="(formGroup.get('username')?.dirty || formGroup.get('username')?.touched) && formGroup.get('username')?.invalid && formGroup.get('username')?.errors?.required">Erro</span>
+    </div>
+    <div class="col-md-3 form-group">
+      <label class="form-control-label">Password</label>
+      <input type="text" class="form-control input-sm" formControlName="password" />
+    </div>
+    <div class="col-md-3 form-group">
+      <label class="form-control-label">Nome</label>
+      <input type="text" class="form-control input-sm" formControlName="name" />
+    </div>
+    <div class="col-md-3 form-group">
+      <label class="form-control-label">Email</label>
+      <input type="text" class="form-control input-sm" formControlName="email" />
+    </div>
+    <button class="btn btn-success mt-3" (click)="salvar()">Salvar</button>
+  </form>
+</div>
+
+
+------
