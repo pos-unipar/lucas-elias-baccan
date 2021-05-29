@@ -4,3 +4,6 @@
 [submodule "01-HTML-CSS-JS-Jemerson/Aula-03/exemplo-aula/jfnandopr-pos-unipar-html-css-js-atividade"]
 	path = 01-HTML-CSS-JS-Jemerson/Aula-03/exemplo-aula/jfnandopr-pos-unipar-html-css-js-atividade
 	url = https://github.com/pos-unipar/jfnandopr-pos-unipar-html-css-js-atividade.git
+[submodule "02-Angular-Jean/Aula-01/exemplo-aula/app-unipar"]
+	path = 02-Angular-Jean/Aula-01/exemplo-aula/app-unipar
+	url = https://github.com/pos-unipar/app-unipar.git
