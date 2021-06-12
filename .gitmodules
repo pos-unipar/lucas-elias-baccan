@@ -7,3 +7,6 @@
 [submodule "02-Angular-Jean/Aula-01/exemplo-aula/app-unipar"]
 	path = 02-Angular-Jean/Aula-01/exemplo-aula/app-unipar
 	url = https://github.com/pos-unipar/app-unipar.git
+[submodule "02-Angular-Jean/Aula-03/exemplo-aula/app-unipar2"]
+	path = 02-Angular-Jean/Aula-03/exemplo-aula/app-unipar2
+	url = https://github.com/pos-unipar/app-unipar2.git
