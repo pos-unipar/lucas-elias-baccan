@@ -20,31 +20,19 @@
 
 ### Aula 02
 
-- [**atividades**](./Aula-02/atividades/)
-    Projeto feito durante a aula.
-
-    - [Aula-02/atividades/app-unipar/](./Aula-02/atividades/app-unipar/)  
-    Projeto feito durante a aula.
-
 - [**exemplo-aula**](./Aula-02/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [Aula-02/exemplo-aula/app-unipar](https://github.com/pos-unipar/app-unipar.git)  
+    - [Aula-02/exemplo-aula/app-unipar2](https://github.com/pos-unipar/app-unipar2.git)  
         Projeto do professor com exemplos feitos durante a aula.
 
 
 ### Aula 03
 
-- [**atividades**](./Aula-03/atividades/)
-    Projeto feito durante a aula.
-
-    - [Aula-03/atividades/app-unipar/](./Aula-03/atividades/app-unipar/)  
-    Projeto feito durante a aula.
-
 - [**exemplo-aula**](./Aula-03/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [Aula-03/exemplo-aula/app-unipar](https://github.com/pos-unipar/app-unipar.git)  
+    - [Aula-03/exemplo-aula/app-unipar2](https://github.com/pos-unipar/app-unipar2.git)  
         Projeto do professor com exemplos feitos durante a aula.
 
 ## Outras configurações
@@ -55,8 +43,6 @@
     git submodule add https://github.com/pos-unipar/app-unipar2.git 02-Angular-Jean/Aula-02/exemplo-aula/app-unipar2
     git submodule add https://github.com/pos-unipar/app-unipar2.git 02-Angular-Jean/Aula-03/exemplo-aula/app-unipar2
     ```
-    git submodule deinit 02-Angular-Jean/Aula-02/exemplo-aula/app-unipar2
-    git rm --cached 02-Angular-Jean/Aula-02/exemplo-aula/app-unipar2
 
 - Baixar arquivos do submódulo(fork)
     ```
