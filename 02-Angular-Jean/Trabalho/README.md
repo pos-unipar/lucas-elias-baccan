@@ -61,3 +61,23 @@ https://www.npmjs.com/package/@ng-select/ng-select
 JSON Server
 
 https://www.npmjs.com/package/json-server
+
+
+---
+
+## Comandos utilizados
+
+Pacote para gerar componentes
+`npm install @schematics/angular --save-dev`
+
+Grupo
+`ng g component layout/grupo --skip-tests=true`
+`ng g module layout/grupo/ --module app --route grupo`
+
+Produto
+`ng g component layout/produto --skip-tests=true`
+`ng g module layout/produto/ --module app --route produto`
+
+Cliente
+`ng g component layout/cliente --skip-tests=true`
+`ng g module layout/cliente/ --module app --route cliente`
