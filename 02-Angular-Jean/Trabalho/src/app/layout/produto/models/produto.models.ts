@@ -5,6 +5,8 @@ export interface Produto {
   groupId: number; // id do grupo
   preco: Preco;
   estoque: number; //min = 0 | max = 999999999
+  dateInsert: Date;
+  dateUpdate: Date;
 }
 
 export interface Preco {

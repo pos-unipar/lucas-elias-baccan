@@ -87,3 +87,8 @@ Cliente
 `ng g module layout/cliente/ --module app --route cliente`
 `ng g service layout/cliente/services/cliente --skipTests=true`
 `ng g interface layout/cliente/models/cliente --type models`
+
+
+## Notion
+
+[Notion.so](https://www.notion.so/Trabalho-Angular-e614d6a2a6f84cf6a017ab820065f2ed)
