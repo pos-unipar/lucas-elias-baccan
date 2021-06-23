@@ -19,15 +19,15 @@ export class ProdutoService extends BaseRestService {
     return this.getter<Produto>(`produtos/${id}`).pipe(take(1));
   }
 
-  public salvar(cliente: Produto): Observable<Produto> {
+  public salvar(produto: Produto): Observable<Produto> {
     this.countSaved++;
     // Verifica se o cliente já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
-    if (cliente.id) {
-      cliente.dateUpdate = new Date();
-      return this.put<Produto>(`produtos/${cliente.id}`, cliente);
+    if (produto.id) {
+      produto.dateUpdate = new Date();
+      return this.put<Produto>(`produtos/${produto.id}`, produto);
     } else {
-      cliente.dateInsert = new Date();
-      return this.post<Produto>('produtos', cliente);
+      produto.dateInsert = new Date();
+      return this.post<Produto>('produtos', produto);
     }
   }
 

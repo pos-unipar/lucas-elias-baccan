@@ -19,15 +19,15 @@ export class GrupoService extends BaseRestService {
     return this.getter<Grupo>(`grupos/${id}`).pipe(take(1));
   }
 
-  public salvar(cliente: Grupo): Observable<Grupo> {
+  public salvar(grupo: Grupo): Observable<Grupo> {
     this.countSaved++;
     // Verifica se o cliente já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
-    if (cliente.id) {
-      cliente.dateUpdate = new Date();
-      return this.put<Grupo>(`grupos/${cliente.id}`, cliente);
+    if (grupo.id) {
+      grupo.dateUpdate = new Date();
+      return this.put<Grupo>(`grupos/${grupo.id}`, grupo);
     } else {
-      cliente.dateInsert = new Date();
-      return this.post<Grupo>('grupos', cliente);
+      grupo.dateInsert = new Date();
+      return this.post<Grupo>('grupos', grupo);
     }
   }
 

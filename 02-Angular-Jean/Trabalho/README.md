@@ -88,6 +88,14 @@ Cliente
 `ng g service layout/cliente/services/cliente --skipTests=true`
 `ng g interface layout/cliente/models/cliente --type models`
 
+Grupo Modal
+`ng g component layout/grupo/componentes/grupoModal --skip-tests=true`
+
+Produto Modal
+`ng g component layout/produto/componentes/produtoModal --skip-tests=true`
+
+Cliente Modal
+`ng g component layout/cliente/componentes/clienteModal --skip-tests=true`
 
 ## Notion
 
