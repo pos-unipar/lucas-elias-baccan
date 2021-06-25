@@ -1,7 +1,80 @@
 {
-  "grupos": [],
-  "produtos": [],
-  "clientes": [],
+  "grupos": [
+    {
+      "descricao": "Comida",
+      "dateInsert": "2021-06-24T02:37:50.698Z",
+      "id": 1
+    },
+    {
+      "descricao": "Bebida",
+      "dateInsert": "2021-06-24T02:38:18.171Z",
+      "id": 2
+    },
+    {
+      "descricao": "asdasd",
+      "dateInsert": "2021-06-24T04:15:44.457Z",
+      "id": 3
+    }
+  ],
+  "produtos": [
+    {
+      "descricao": "Chocolate",
+      "estoque": 10,
+      "preco": {
+        "compra": 1,
+        "venda": 3.99
+      },
+      "dateInsert": "2021-06-24T02:05:23.396Z",
+      "id": 1,
+      "dateUpdate": "2021-06-24T03:36:04.344Z",
+      "ativo": "true",
+      "groupId": "1"
+    },
+    {
+      "descricao": "Coca Cola",
+      "estoque": 15,
+      "preco": {
+        "compra": 2.5,
+        "venda": 5
+      },
+      "dateInsert": "2021-06-24T02:17:40.951Z",
+      "id": 2,
+      "ativo": "true",
+      "dateUpdate": "2021-06-24T03:36:11.606Z",
+      "groupId": "2"
+    }
+  ],
+  "clientes": [
+    {
+      "nome": "Tânia Rafaela Martins",
+      "cpf": "367.290.745-66",
+      "dataNascimento": "1975-09-24",
+      "endereco": {
+        "logradouro": "Rua Araripe Macêdo",
+        "numero": 662,
+        "bairro": "João XXIII",
+        "cidade": "Fortaleza",
+        "cep": "60525-562"
+      },
+      "dateInsert": "2021-06-24T01:05:14.682Z",
+      "id": 2,
+      "dateUpdate": "2021-06-24T01:06:59.953Z"
+    },
+    {
+      "nome": "Lúcia Luiza Pinto",
+      "cpf": "503.943.053-10",
+      "dataNascimento": "2000-10-19",
+      "endereco": {
+        "logradouro": "Praça das Rosas",
+        "numero": 456,
+        "bairro": "Centro",
+        "cidade": "Petrópolis",
+        "cep": "25680-362"
+      },
+      "dateInsert": "2021-06-24T01:17:42.074Z",
+      "id": 3
+    }
+  ],
   "cidades": [
     {
       "id": 1,

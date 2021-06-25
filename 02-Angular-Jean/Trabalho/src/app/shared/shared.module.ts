@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CpfOrCnpjPipe } from './pipes/cpf-pipe';
 import { CepPipe } from './pipes/cep-pipe';
+import { MessageValidControlComponent } from './message-valid-control/message-valid-control.component';
 
 @NgModule({
   imports: [
@@ -13,10 +14,15 @@ import { CepPipe } from './pipes/cep-pipe';
   declarations: [
     CepPipe,
     CpfOrCnpjPipe,
+    MessageValidControlComponent,
   ],
   exports: [
     CepPipe,
     CpfOrCnpjPipe,
+    MessageValidControlComponent,
+  ],
+  entryComponents: [
+    MessageValidControlComponent
   ]
 })
 export class SharedModule { }

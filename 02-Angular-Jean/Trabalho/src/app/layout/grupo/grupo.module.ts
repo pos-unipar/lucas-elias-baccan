@@ -5,6 +5,7 @@ import { GrupoRoutingModule } from './grupo-routing.module';
 import { GrupoComponent } from './grupo.component';
 import { GrupoModalComponent } from './componentes/grupo-modal/grupo-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    GrupoRoutingModule
+    GrupoRoutingModule,
+    SharedModule,
   ]
 })
 export class GrupoModule { }

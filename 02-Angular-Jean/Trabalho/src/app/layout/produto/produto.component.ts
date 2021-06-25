@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime } from 'rxjs/operators';
+import { Grupo } from '../grupo/models/grupo.models';
+import { GrupoService } from '../grupo/services/grupo.service';
 import { ProdutoModalComponent } from './componentes/produto-modal/produto-modal.component';
 import { Produto } from './models/produto.models';
 import { ProdutoService } from './services/produto.service';
@@ -15,12 +17,14 @@ import { ProdutoService } from './services/produto.service';
 export class ProdutoComponent implements OnInit {
 
   produtos: Produto[] = [];
+  grupos: Grupo[] = [];
   produtosSearch: Produto[] = [];
   searchControl: FormControl = new FormControl();
 
   constructor(
     private toastr: ToastrService,
     private produtoService: ProdutoService,
+    private grupoService: GrupoService,
     private modalService: NgbModal,
   ) {
 
@@ -33,6 +37,7 @@ export class ProdutoComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregaProdutosFromApi();
+    this.carregaGruposFromApi();
   }
 
   private filtrarProdutos(value: string): void {
@@ -51,22 +56,32 @@ export class ProdutoComponent implements OnInit {
       });
   }
 
+  private carregaGruposFromApi(): void {
+    this.grupoService.buscarTodos()
+      .subscribe(result => {
+        this.grupos = result;
+      }, error => {
+        this.toastr.error(error.message, 'Ops.');
+      });
+  }
+
   public abrirModal(produto: Produto | undefined): void {
     const modalRef = this.modalService.open(ProdutoModalComponent, { size: 'lg' });
 
     modalRef.componentInstance.produto = produto;
+    modalRef.componentInstance.grupos = this.grupos;
 
-    modalRef.componentInstance.onSave.subscribe((result: Produto) => {
-      this.toastr.success('Produto salvo com sucesso!');
+      modalRef.componentInstance.onSave.subscribe((result: Produto) => {
+        this.toastr.success('Produto salvo com sucesso!');
 
-      if (!produto?.id) {
-        this.produtos.push(result);
-      } else {
-        const idx = this.produtos.findIndex(u => u.id === result!.id);
-        this.produtos.splice(idx, 1, result);
-      }
-      this.limpaPesquisa();
-    });
+        if (!produto?.id) {
+          this.produtos.push(result);
+        } else {
+          const idx = this.produtos.findIndex(u => u.id === result!.id);
+          this.produtos.splice(idx, 1, result);
+        }
+        this.limpaPesquisa();
+      });
 
     modalRef.componentInstance.onDelete.subscribe(() => {
       this.toastr.success('Produto excluído com sucesso!');

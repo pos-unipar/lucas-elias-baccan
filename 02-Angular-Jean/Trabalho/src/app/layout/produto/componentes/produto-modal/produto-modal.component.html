@@ -1,1 +1,89 @@
-<p>produto-modal works!</p>
+<div class="modal-header">
+  <h5 class="modal-title">{{produto?.id ? 'Editando': 'Inserindo'}} produto</h5>
+</div>
+<div class="modal-body m-3">
+
+  <form [formGroup]="formGroup" *ngIf="formGroup">
+
+    <!--
+      groupId: number; // id do grupo
+    -->
+
+    <div class="row">
+      <!-- Campo de Nome -->
+      <div class=" col-md-8 mt-1 form-group">
+        <label class="form-control-label">Descrição</label>
+        <input type="text" class="form-control" formControlName="descricao">
+        <app-message-valid-control [control]="getControl('descricao')"> </app-message-valid-control>
+      </div>
+
+      <!-- Ativo -->
+      <div class="col-md-4 mt-1 form-group">
+        <label class="form-control-label">Ativo</label>
+        <select class="form-control" formControlName="ativo">
+          <option value=true>Ativo</option>
+          <option value=false>Inativo</option>
+        </select>
+        <app-message-valid-control [control]="getControl('ativo')"> </app-message-valid-control>
+      </div>
+
+      <!-- Grupo -->
+      <div class="col-md-6 mt-1 form-group">
+        <label class="form-control-label">Grupo</label>
+        <select class="form-control" formControlName="groupId">
+          <option *ngFor="let grupo of grupos" value="{{grupo.id}}">{{grupo.descricao}}
+          </option>
+        </select>
+        <app-message-valid-control [control]="getControl('groupId')"> </app-message-valid-control>
+      </div>
+
+      <!-- Estoque -->
+      <div class="col-md-6 mt-1 form-group">
+        <label class="form-control-label">Estoque</label>
+        <input type="number" class="form-control" formControlName="estoque">
+        <app-message-valid-control [control]="getControl('estoque')"> </app-message-valid-control>
+      </div>
+
+      <!-- Compra -->
+      <div class="col-md-6 mt-1 form-group" formGroupName="preco">
+        <label class="form-control-label">Preço compra</label>
+        <input type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control"
+          formControlName="compra" [min]=0 [max]=999999999>
+        <app-message-valid-control [control]="getControl('preco.compra')"> </app-message-valid-control>
+      </div>
+
+      <!-- Venda -->
+      <div class="col-md-6 mt-1 form-group" formGroupName="preco">
+        <label class="form-control-label">Preço venda</label>
+        <input type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control"
+          formControlName="venda">
+        <app-message-valid-control [control]="getControl('preco.venda')"> </app-message-valid-control>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <!-- Mostra as informações de datas -->
+      <div class="col-md-6 mt-3 text-info" *ngIf="produto?.dateInsert">
+        Data da Inclusão: {{produto?.dateInsert | date : 'dd/MM/yyyy HH:mm:ss'}}
+      </div>
+      <div class="col-md-6 mt-3 text-info" *ngIf="produto?.dateUpdate">
+        Data da Atualização: {{produto?.dateUpdate | date : 'dd/MM/yyyy HH:mm:ss'}}
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <!-- Botão para salvar o usuário -->
+  <button class="btn btn-success" (click)="salvar()">
+    <i class="fa fa-save mr-2"></i>
+    Salvar
+  </button>
+  <!-- Botão para excluír o usuário (só mostra se já tiver ID, senão não precisa excluir poir nem inseriu) -->
+  <button class="btn btn-danger" (click)="excluir()" *ngIf="produto?.id">
+    <i class="fa fa-delete mr-2"></i>
+    Excluír
+  </button>
+</div>

@@ -21,7 +21,6 @@ export class ClienteService extends BaseRestService {
 
   public salvar(cliente: Cliente): Observable<Cliente> {
     this.countSaved++;
-    // Verifica se o cliente já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
     if (cliente.id) {
       cliente.dateUpdate = new Date();
       return this.put<Cliente>(`clientes/${cliente.id}`, cliente);

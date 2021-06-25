@@ -15,13 +15,19 @@ export class ProdutoService extends BaseRestService {
     return this.getter<Produto[]>('produtos').pipe(take(1));
   }
 
+  public buscarTodosQuery(filtros: any): Observable<Produto[]> {
+    const options = {
+      params: this.parseObjectToHttpParams(filtros)
+    };
+    return this.getter<Produto[]>('produtos', options).pipe(take(1));
+  }
+
   public buscarPorId(id: number): Observable<Produto> {
     return this.getter<Produto>(`produtos/${id}`).pipe(take(1));
   }
 
   public salvar(produto: Produto): Observable<Produto> {
     this.countSaved++;
-    // Verifica se o cliente já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
     if (produto.id) {
       produto.dateUpdate = new Date();
       return this.put<Produto>(`produtos/${produto.id}`, produto);
@@ -35,9 +41,4 @@ export class ProdutoService extends BaseRestService {
     return this.delete(`produtos/${id}`).pipe(take(1));
   }
 
-  public canDeleteGroup(groupId: number): void {
-    // const produtos: Produto[] = this.buscarTodos().subscribe(value => {return value});
-
-    // console.log(produtos)
-  }
 }

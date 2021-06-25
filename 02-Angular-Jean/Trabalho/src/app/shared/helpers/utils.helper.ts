@@ -1,7 +1,9 @@
 const CPF_PATTERN = /^(\d{11}|\d{3}\.\d{3}\.\d{3}\-\d{2})$/;
 const CNPJ_PATTERN = /^(\d{14}|\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2})$/;
+const CEP_PATTERN = /^(\d{8}|\d{5}\-\d{3})$/;
 export const maskCPF = [/[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 export const maskCNPJ = [/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+export const maskCEP = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 
 export const isCPF = (value: string,): boolean => {
 	if (!CPF_PATTERN.test(value))
@@ -31,6 +33,13 @@ export const isCNPJ = (value: string): boolean => {
 		numbers[12] === getRemaining(checkers[0]) &&
 		numbers[13] === getRemaining(checkers[1])
 	);
+};
+
+export const isCEP = (value: string): boolean => {
+	if (!CEP_PATTERN.test(value)) {
+		return false;
+	}
+	return true;
 };
 
 export const mapToNumbers = (value: string): Array<number> => mapToNumeric(value).split('').map(Number);
@@ -68,5 +77,5 @@ export const formatToCNPJ = (value: string): string => (
 
 export const formatToCEP = (value: string): string => (
 	mapToNumeric(value)
-		.replace(/(\d{5})(\d{1,2})$/, '$1-$2')
+		.replace(/(\d{5})(\d{1,3})$/, '$1-$2')
 );

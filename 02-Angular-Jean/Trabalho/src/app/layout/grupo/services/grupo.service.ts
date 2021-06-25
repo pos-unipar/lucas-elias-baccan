@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { BaseRestService } from 'src/app/shared/services/base-rest.service';
+import { ProdutoService } from '../../produto/services/produto.service';
 import { Grupo } from '../models/grupo.models';
 
 @Injectable({
@@ -21,7 +22,6 @@ export class GrupoService extends BaseRestService {
 
   public salvar(grupo: Grupo): Observable<Grupo> {
     this.countSaved++;
-    // Verifica se o cliente já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
     if (grupo.id) {
       grupo.dateUpdate = new Date();
       return this.put<Grupo>(`grupos/${grupo.id}`, grupo);
@@ -32,6 +32,8 @@ export class GrupoService extends BaseRestService {
   }
 
   public excluir(id: number): Observable<void> {
+
+
     return this.delete(`grupos/${id}`).pipe(take(1));
   }
 }
