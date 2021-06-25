@@ -15,15 +15,20 @@ export class ProdutoService extends BaseRestService {
     return this.getter<Produto[]>('produtos').pipe(take(1));
   }
 
-  public buscarTodosQuery(filtros: any): Observable<Produto[]> {
-    const options = {
-      params: this.parseObjectToHttpParams(filtros)
-    };
-    return this.getter<Produto[]>('produtos', options).pipe(take(1));
-  }
-
   public buscarPorId(id: number): Observable<Produto> {
     return this.getter<Produto>(`produtos/${id}`).pipe(take(1));
+  }
+
+  public buscarPorGroupId(id: number): Observable<Produto[]> {
+    return this.getter<Produto[]>(`produtos?groupId=${id}`).pipe(take(1));
+  }
+
+  public existeProdutoPorGrupoId(id: number): Observable<boolean> {
+    return this.getter<Produto[]>(`produtos?groupId=${id}`)
+    .pipe(
+      map((value: Produto[]) => value.length > 0),
+      take(1)
+    );
   }
 
   public salvar(produto: Produto): Observable<Produto> {

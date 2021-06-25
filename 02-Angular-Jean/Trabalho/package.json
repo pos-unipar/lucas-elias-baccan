@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-app": "ng serve -o",
-    "start-server": "json-server mocks/data.json --routes mocks/routes.json --port 3000 --middlewares mocks/middlewares/index.js",
+    "start-app": "ng serve -o --host 0.0.0.0 --disable-host-check",
+    "start-server": "json-server mocks/data.json --routes mocks/routes.json --host 0.0.0.0 --port 3000 --middlewares mocks/middlewares/index.js",
     "start-all": "concurrently \"npm:start-app\"  \"npm:start-server\" --color -k --kill-others-on-fail",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

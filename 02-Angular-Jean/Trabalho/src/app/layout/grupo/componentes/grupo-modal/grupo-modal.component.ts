@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { Endereco } from 'src/app/layout/cliente/models/cliente.models';
-import { validateAllFormFields, hasErrors } from 'src/app/shared/helpers/iu.helper';
-import { GenericValidator } from 'src/app/shared/helpers/validators.helper';
+import { ProdutoService } from 'src/app/layout/produto/services/produto.service';
+import { hasErrors, validateAllFormFields } from 'src/app/shared/helpers/iu.helper';
 import { Grupo } from '../../models/grupo.models';
 import { GrupoService } from '../../services/grupo.service';
 
@@ -31,7 +30,8 @@ export class GrupoModalComponent implements OnInit {
     private activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private grupoService: GrupoService
+    private grupoService: GrupoService,
+    private produtoService: ProdutoService
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class GrupoModalComponent implements OnInit {
 
   createForm(grupo: Grupo) {
     this.formGroup = this.formBuilder.group({
-      nome: [
+      descricao: [
         grupo.descricao,
         Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])
       ],
@@ -69,13 +69,23 @@ export class GrupoModalComponent implements OnInit {
   }
 
   public excluir(): void {
-    this.grupoService.excluir(this.grupo!.id!).subscribe(() => {
-      this.onDelete.emit();
+    this.produtoService.existeProdutoPorGrupoId(this.grupo?.id!).subscribe(
+      result => {
+        // Se existir algum produto com o grupo, retorna TRUE, então NÃO pode deletar
+        if (!result) {
+          this.grupoService.excluir(this.grupo!.id!).subscribe(() => {
+            this.onDelete.emit();
+            this.activeModal.close();
+          }, error => {
+            this.toastr.error(error.message);
+          });
+        } else {
+          this.toastr.error("Grupo não pode ser deletado por estar em uso em um produto!");
+        }
+      }
+    );
 
-      this.activeModal.close();
-    }, error => {
-      this.toastr.error(error.message);
-    });
+
   }
 
   public getControl(controlName: string): AbstractControl {
