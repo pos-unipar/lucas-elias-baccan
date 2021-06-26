@@ -9,4 +9,8 @@ export class HeaderComponent {
 
   constructor() { }
 
+  onNavigate() {
+    window.open("https://github.com/pos-unipar/lucas-elias-baccan/tree/master/02-Angular-Jean/Trabalho", "_blank");
+  }
+
 }

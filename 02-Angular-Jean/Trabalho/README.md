@@ -72,20 +72,29 @@ Pacote para gerar componentes
 
 Grupo
 `ng g component layout/grupo --skip-tests=true`
+
 `ng g module layout/grupo/ --module app --route grupo`
+
 `ng g service layout/grupo/services/grupo --skipTests=true`
+
 `ng g interface layout/grupo/models/grupo --type models`
 
 Produto
 `ng g component layout/produto --skip-tests=true`
+
 `ng g module layout/produto/ --module app --route produto`
+
 `ng g service layout/produto/services/produto --skipTests=true`
+
 `ng g interface layout/produto/models/produto --type models`
 
 Cliente
 `ng g component layout/cliente --skip-tests=true`
+
 `ng g module layout/cliente/ --module app --route cliente`
+
 `ng g service layout/cliente/services/cliente --skipTests=true`
+
 `ng g interface layout/cliente/models/cliente --type models`
 
 Grupo Modal
@@ -99,7 +108,3 @@ Cliente Modal
 
 Chart-Baccan
 `ng g component layout/home/components/chart-baccan/chart-baccan --skip-tests`
-
-## Notion
-
-[Notion.so](https://www.notion.so/Trabalho-Angular-e614d6a2a6f84cf6a017ab820065f2ed)
