@@ -1,32 +1,28 @@
 {
   "grupos": [
     {
-      "descricao": "Geovana",
+      "descricao": "Doce",
       "dateInsert": "2021-06-24T02:37:50.698Z",
       "id": 1,
-      "dateUpdate": "2021-06-25T01:41:11.967Z"
+      "dateUpdate": "2021-06-25T02:46:44.425Z"
     },
     {
-      "descricao": "Geovana linda",
+      "descricao": "Bebida",
       "dateInsert": "2021-06-25T01:08:44.959Z",
       "id": 2,
-      "dateUpdate": "2021-06-25T01:41:31.229Z"
+      "dateUpdate": "2021-06-25T02:46:29.763Z"
     },
     {
-      "descricao": "Geovanaaaaaa ",
+      "descricao": "Salgado",
       "dateInsert": "2021-06-25T01:12:52.498Z",
       "id": 3,
-      "dateUpdate": "2021-06-25T01:41:41.575Z"
+      "dateUpdate": "2021-06-25T02:46:39.836Z"
     },
     {
-      "descricao": "Geovana",
+      "descricao": "Almoço",
       "dateInsert": "2021-06-25T01:40:33.466Z",
-      "id": 4
-    },
-    {
-      "descricao": "Amor de Lucas",
-      "dateInsert": "2021-06-25T01:40:48.136Z",
-      "id": 5
+      "id": 4,
+      "dateUpdate": "2021-06-25T02:47:02.085Z"
     }
   ],
   "produtos": [
@@ -39,7 +35,7 @@
       },
       "dateInsert": "2021-06-24T02:05:23.396Z",
       "id": 1,
-      "dateUpdate": "2021-06-24T03:36:04.344Z",
+      "dateUpdate": "2021-06-25T02:47:23.073Z",
       "ativo": "true",
       "groupId": "1"
     },
@@ -53,8 +49,33 @@
       "dateInsert": "2021-06-24T02:17:40.951Z",
       "id": 2,
       "ativo": "true",
-      "dateUpdate": "2021-06-24T03:36:11.606Z",
+      "dateUpdate": "2021-06-25T02:47:20.005Z",
       "groupId": "2"
+    },
+    {
+      "descricao": "Pizza",
+      "ativo": "false",
+      "groupId": "3",
+      "estoque": 7,
+      "preco": {
+        "compra": 5,
+        "venda": 10
+      },
+      "dateInsert": "2021-06-25T02:47:46.165Z",
+      "id": 3,
+      "dateUpdate": "2021-06-26T00:17:24.602Z"
+    },
+    {
+      "descricao": "Balas",
+      "ativo": "true",
+      "groupId": "1",
+      "estoque": 100,
+      "preco": {
+        "compra": 0.01,
+        "venda": 0.05
+      },
+      "dateInsert": "2021-06-25T02:48:07.936Z",
+      "id": 4
     }
   ],
   "clientes": [

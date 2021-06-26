@@ -1,1 +1,55 @@
 <p>... Home ...</p>
+
+<div class="row principal">
+
+  <!-- Produto por Grupo -->
+  <div class="col-md-6">
+    <div class="atom-container">
+      <header>
+        <h5>Produtos por Grupo</h5>
+        <button class="btn" (click)="buscarDadosVendaAsync()">Atualizar</button>
+      </header>
+      <div class="atom-body form-row">
+        <canvas baseChart *ngIf="!produtosGrupo.loading"
+                [datasets]="produtosGrupo.datasets"
+                [labels]="produtosGrupo.labels"
+                [options]="{ responsive: true, scales: { yAxes: [{ ticks: { beginAtZero: true } }]} }"
+                [legend]="false"
+                [chartType]="'bar'">
+        </canvas>
+        <div class="d-flex justify-content-center" *ngIf="produtosGrupo.loading">
+          <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Produtos ativos -->
+  <div class="col-md-6">
+    <div class="atom-container">
+      <header>
+        <h5>Produtos Ativos X Inativos</h5>
+        <button class="btn" (click)="buscarDadosVendaAsync()">Atualizar</button>
+      </header>
+      <div class="atom-body form-row">
+        <canvas baseChart *ngIf="!produtosStatus.loading"
+                [datasets]="produtosStatus.datasets"
+                [labels]="produtosStatus.labels"
+                [options]="{ responsive: true, scales: { yAxes: [{ ticks: { beginAtZero: true } }]} }"
+                [legend]="true"
+                [colors]="doughnutChartColors"
+                [chartType]="'pie'">
+        </canvas>
+        <div class="d-flex justify-content-center" *ngIf="produtosStatus.loading">
+          <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

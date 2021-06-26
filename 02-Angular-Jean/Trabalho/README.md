@@ -97,6 +97,9 @@ Produto Modal
 Cliente Modal
 `ng g component layout/cliente/componentes/clienteModal --skip-tests=true`
 
+Chart-Baccan
+`ng g component layout/home/components/chart-baccan/chart-baccan --skip-tests`
+
 ## Notion
 
 [Notion.so](https://www.notion.so/Trabalho-Angular-e614d6a2a6f84cf6a017ab820065f2ed)
