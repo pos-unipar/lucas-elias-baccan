@@ -35,13 +35,20 @@
     - [Aula-03/exemplo-aula/app-unipar2](https://github.com/pos-unipar/app-unipar2.git)  
         Projeto do professor com exemplos feitos durante a aula.
 
-### Aula 03
+### Aula 04
 
-- [**exemplo-aula**](./Aula-03/exemplo-aula/)
+- [**exemplo-aula**](./Aula-04/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [Aula-03/exemplo-aula/app-unipar2](https://github.com/pos-unipar/app-unipar2.git)  
+    - [Aula-04/exemplo-aula/app-unipar2](https://github.com/pos-unipar/app-unipar4.git)  
         Projeto do professor com exemplos feitos durante a aula.
+
+### Trabalho
+
+A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/docs/angular#trabalho-final).
+
+- [**Trabalho**](./Trabalho/)
+    Versão simplificada que contem todos os itens solicitados
 
 ## Outras configurações
 
