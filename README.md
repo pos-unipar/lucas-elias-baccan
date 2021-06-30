@@ -22,3 +22,4 @@ git clone --recursive https://github.com/pos-unipar/lucas-elias-baccan.git
 |Nome|Link|
 |-|-|
 |01-HTML-CSS-JS-Jemerson|[Link](./01-HTML-CSS-JS-Jemerson/)
+|02-Angular|[Link](./02-Angular-Jean/)

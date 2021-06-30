@@ -40,7 +40,7 @@
 - [**exemplo-aula**](./Aula-04/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [Aula-04/exemplo-aula/app-unipar2](https://github.com/pos-unipar/app-unipar4.git)  
+    - [Aula-04/exemplo-aula/app-unipar4](https://github.com/pos-unipar/app-unipar4.git)  
         Projeto do professor com exemplos feitos durante a aula.
 
 ### Trabalho
