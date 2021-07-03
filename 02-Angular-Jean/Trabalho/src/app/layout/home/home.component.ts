@@ -33,10 +33,11 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.buscarDadosVendaAsync();
+    this.buscarDadosAsync();
   }
 
-  async buscarDadosVendaAsync(): Promise<void> {
+  async buscarDadosAsync(): Promise<void> {
+
     this.produtosGrupo = { loading: true, datasets: [], labels: [] };
     this.produtosStatus = { loading: true, datasets: [], labels: [] };
 

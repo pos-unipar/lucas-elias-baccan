@@ -4,10 +4,18 @@
 
   <!-- Produto por Grupo -->
   <div class="col-md-6">
-    <div class="atom-container">
+    <app-chart-baccan
+      [chartTitle]="'Produtos por Grupo'"
+      [chartData]="produtosGrupo"
+      [chartType]="'bar'"
+      (onRefresh)="buscarDadosAsync()"
+    >
+    </app-chart-baccan>
+
+    <!-- <div class="atom-container">
       <header>
         <h5>Produtos por Grupo</h5>
-        <button class="btn" (click)="buscarDadosVendaAsync()">Atualizar</button>
+        <button class="btn" (click)="buscarDadosAsync()">Atualizar</button>
       </header>
       <div class="atom-body form-row">
         <canvas baseChart *ngIf="!produtosGrupo.loading"
@@ -23,15 +31,26 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
   </div>
 
   <!-- Produtos ativos -->
   <div class="col-md-6">
-    <div class="atom-container">
+
+    <app-chart-baccan
+      [chartTitle]="'Produtos Ativos X Inativos'"
+      [chartData]="produtosStatus"
+      [chartType]="'pie'"
+      [colors]="doughnutChartColors"
+      (onRefresh)="buscarDadosAsync()"
+    >
+    </app-chart-baccan>
+
+    <!-- <div class="atom-container">
       <header>
         <h5>Produtos Ativos X Inativos</h5>
-        <button class="btn" (click)="buscarDadosVendaAsync()">Atualizar</button>
+        <button class="btn" (click)="buscarDadosAsync()">Atualizar</button>
       </header>
       <div class="atom-body form-row">
         <canvas baseChart *ngIf="!produtosStatus.loading"
@@ -48,8 +67,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </div> -->
 
+  </div>
 
 </div>

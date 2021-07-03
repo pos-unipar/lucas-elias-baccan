@@ -1,1 +1,21 @@
-<p>chart-baccan works!</p>
+<div class="atom-container">
+  <header>
+    <h5>{{chartTitle}}</h5>
+    <button class="btn" (click)="onRefreshChart()">Atualizar</button>
+  </header>
+  <div class="atom-body form-row">
+    <canvas baseChart *ngIf="!chartData.loading"
+            [datasets]="chartData.datasets"
+            [labels]="chartData.labels"
+            [options]="{ responsive: true, scales: { yAxes: [{ ticks: { beginAtZero: true } }]} }"
+            [legend]="false"
+            [colors]="colors"
+            [chartType]="chartType">
+    </canvas>
+    <div class="d-flex justify-content-center" *ngIf="chartData.loading">
+      <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+  </div>
+</div>
