@@ -22,3 +22,10 @@
     Projeto feito durante a aula. [link](https://pos-unipar.github.io/docs/banco-de-dados#atividade-4)
     - [Aula-02/atividades/atividade05/](./Aula-02/atividades/atividade05/)  
     Projeto feito durante a aula. [link](https://pos-unipar.github.io/docs/banco-de-dados#atividade-5)
+
+### Trabalho
+
+A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/docs/banco-de-dados#trabalho-final).
+
+- [**Trabalho**](./Trabalho/)
+    Versão simplificada que contem todos os itens solicitados
