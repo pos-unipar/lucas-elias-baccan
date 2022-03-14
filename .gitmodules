@@ -16,3 +16,9 @@
 [submodule "02-Angular-Jean/Aula-04/exemplo-aula/app-unipar4"]
 	path = 02-Angular-Jean/Aula-04/exemplo-aula/app-unipar4
 	url = https://github.com/pos-unipar/app-unipar4.git
+[submodule "04-Backend-Java-Djonathan/Aula-02/exemplo-aula/unipar-2021-pos-backend-plano"]
+	path = 04-Backend-Java-Djonathan/Aula-02/exemplo-aula/unipar-2021-pos-backend-plano
+	url = https://github.com/pos-unipar/unipar-2021-pos-backend-plano.git
+[submodule "04-Backend-Java-Djonathan/Trabalho/unipar-2021-trabalho-plano"]
+	path = 04-Backend-Java-Djonathan/Trabalho/unipar-2021-trabalho-plano
+	url = https://github.com/pos-unipar/unipar-2021-trabalho-plano.git
