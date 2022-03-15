@@ -22,3 +22,6 @@
 [submodule "04-Backend-Java-Djonathan/Trabalho/unipar-2021-trabalho-plano"]
 	path = 04-Backend-Java-Djonathan/Trabalho/unipar-2021-trabalho-plano
 	url = https://github.com/pos-unipar/unipar-2021-trabalho-plano.git
+[submodule "05-Android-Paulo/Aula-01/exemplo-aula/unipar-CadastroAlunos"]
+	path = 05-Android-Paulo/Aula-01/exemplo-aula/unipar-CadastroAlunos
+	url = https://github.com/pos-unipar/unipar-CadastroAlunos.git
