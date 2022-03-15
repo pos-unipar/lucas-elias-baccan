@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroAlunos">
         <activity
+            android:name=".CardViewCurso"
+            android:exported="false" />
+        <activity
             android:name=".activitys.curso.CadastroCursoActivity"
             android:exported="false"
             android:label="@string/appBarCadastroCursoActivity" />

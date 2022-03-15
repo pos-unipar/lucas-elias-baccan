@@ -2,10 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/mn_deletar"
+        android:icon="@drawable/ic_deletar"
+        android:title="@string/deletar"
+        app:showAsAction="ifRoom"
+        android:visible="false"
+        />
+    <item
         android:id="@+id/mn_gerar_dados"
         android:icon="@drawable/ic_gerar_dados"
         android:title="@string/gerarDadosFake"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/mn_limpar"
         android:icon="@drawable/ic_clear"

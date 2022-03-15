@@ -27,4 +27,5 @@
     <string name="limparBancoDados">Limpar banco de dados</string>
     <string name="gerarDadosFake">Gerar dados fake</string>
     <string name="id">ID</string>
+    <string name="deletar">Deletar</string>
 </resources>

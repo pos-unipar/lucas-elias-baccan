@@ -23,10 +23,12 @@ import com.example.cadastroalunos.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaCursoActivity extends AppCompatActivity {
+public class ListaCursoActivity extends AppCompatActivity implements CursoAdapter.OnCursoListenner {
 
     private RecyclerView rvListaCursos;
     private LinearLayout lnLista;
+    private List<Curso> cursoList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +41,11 @@ public class ListaCursoActivity extends AppCompatActivity {
     }
 
     public void atualizaLista() {
-        List<Curso> cursoList = new ArrayList<>();
         cursoList = CursoDAO.getAll("", new String[]{}, "nome asc");
         Log.e("PHS", "Tamanho da lista: " + cursoList.size());
 
         rvListaCursos = findViewById(R.id.rvListaCursos);
-        CursoAdapter adapter = new CursoAdapter(cursoList, this);
+        CursoAdapter adapter = new CursoAdapter(cursoList, this, this);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvListaCursos.setLayoutManager(llm);
         rvListaCursos.setAdapter(adapter);
@@ -78,8 +79,15 @@ public class ListaCursoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            Util.customSnackBar(lnLista, "Curso salvo com sucesso!", 1);
+            Util.customSnackBar(lnLista, "Sucesso ao executar ação!", 1);
         }
         atualizaLista();
+    }
+
+    @Override
+    public void onCursoClick(int position) {
+        Intent intent = new Intent(this, CadastroCursoActivity.class);
+        intent.putExtra("id", cursoList.get(position).getId());
+        startActivityForResult(intent, 1);
     }
 }

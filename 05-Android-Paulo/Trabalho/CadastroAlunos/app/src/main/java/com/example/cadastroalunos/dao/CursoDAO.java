@@ -46,6 +46,9 @@ public class CursoDAO {
 
     public static boolean delete(Curso model) {
         try {
+            if(!AlunoDAO.getAll("curso = ?", new String[]{model.getId().toString()}, "").isEmpty())
+                return false;
+
             return Curso.delete(model);
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao apagar: " + ex.getMessage());

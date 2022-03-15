@@ -18,21 +18,37 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
 
     private List<Curso> cursoList;
     private Context context;
+    private OnCursoListenner onCursoListenner;
 
-    public CursoAdapter(List<Curso> cursoList, Context context) {
+    public CursoAdapter(List<Curso> cursoList, OnCursoListenner onCursoListenner, Context context) {
         this.cursoList = cursoList;
+        this.onCursoListenner = onCursoListenner;
         this.context = context;
     }
 
-    public static class CursoViewHolder extends RecyclerView.ViewHolder {
+    public static class CursoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextInputEditText edIdCurso;
         TextInputEditText edNomeCurso;
 
-        public CursoViewHolder(@NonNull View itemView) {
+        OnCursoListenner onCursoListenner;
+
+        public CursoViewHolder(@NonNull View itemView, OnCursoListenner onCursoListenner) {
             super(itemView);
+
+            this.onCursoListenner = onCursoListenner;
 
             edIdCurso = (TextInputEditText) itemView.findViewById(R.id.edIdCurso);
             edNomeCurso = (TextInputEditText) itemView.findViewById(R.id.edNomeCurso);
+
+            edIdCurso.setOnClickListener(this);
+            edNomeCurso.setOnClickListener(this);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onCursoListenner.onCursoClick(getAdapterPosition());
         }
     }
 
@@ -40,7 +56,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
     public CursoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_curso, parent, false);
-        CursoViewHolder viewHolder = new CursoViewHolder(view);
+        CursoViewHolder viewHolder = new CursoViewHolder(view, onCursoListenner);
 
         return viewHolder;
     }
@@ -57,4 +73,10 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
     public int getItemCount() {
         return cursoList.size();
     }
+
+    public interface OnCursoListenner {
+        void onCursoClick(int position);
+    }
+
+
 }
