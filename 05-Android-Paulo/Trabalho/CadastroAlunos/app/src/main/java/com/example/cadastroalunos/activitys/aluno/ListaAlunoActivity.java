@@ -2,7 +2,6 @@ package com.example.cadastroalunos.activitys.aluno;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,10 +23,11 @@ import com.example.cadastroalunos.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaAlunoActivity extends AppCompatActivity {
+public class ListaAlunoActivity extends AppCompatActivity implements AlunoAdapter.OnListenner {
 
     private RecyclerView rvListaAlunos;
     private LinearLayout lnLista;
+    private List<Aluno> listaAluno = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +40,10 @@ public class ListaAlunoActivity extends AppCompatActivity {
     }
 
     public void atualizaLista(){
-        List<Aluno> listaAluno = new ArrayList<>();
         listaAluno = AlunoDAO.getAll("", new String[]{}, "nome asc");
-        Log.e("PHS", "Tamanho da lista: "+listaAluno.size());
 
         rvListaAlunos = findViewById(R.id.rvListaAlunos);
-        AlunoAdapter adapter = new AlunoAdapter(listaAluno, this);
+        AlunoAdapter adapter = new AlunoAdapter(listaAluno, this, this);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvListaAlunos.setLayoutManager(llm);
         rvListaAlunos.setAdapter(adapter);
@@ -84,8 +82,15 @@ public class ListaAlunoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK){
-            Util.customSnackBar(lnLista, "Aluno salvo com sucesso!", 1);
+            Util.customSnackBar(lnLista, "Sucesso ao executar ação!", 1);
         }
         atualizaLista();
+    }
+
+    @Override
+    public void onListennerClick(int position) {
+        Intent intent = new Intent(this, CadastroAlunoActivity.class);
+        intent.putExtra("id", listaAluno.get(position).getId());
+        startActivityForResult(intent, 1);
     }
 }

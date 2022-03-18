@@ -2,6 +2,7 @@ package com.example.cadastroalunos.activitys.aluno;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,6 +34,8 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 
 public class CadastroAlunoActivity extends AppCompatActivity {
 
+    private Aluno aluno;
+
     private TextInputEditText edRaAluno;
     private TextInputEditText edNomeAluno;
     private TextInputEditText edCpfAluno;
@@ -45,7 +48,10 @@ public class CadastroAlunoActivity extends AppCompatActivity {
     private int vAno;
     private int vMes;
     private int vDia;
+
     private View dataSelecionada;
+
+    private Menu optionsMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,15 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         iniciaSpinners();
 
         setDataAtual();
+
+        Intent iin = getIntent();
+        Bundle b = iin.getExtras();
+
+        if (b != null) {
+            Long id = (Long) b.get("id");
+            aluno = AlunoDAO.getById(id.intValue());
+            popularCampos(aluno);
+        }
     }
 
     private void setDataAtual() {
@@ -184,16 +199,34 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         }
     }
 
+    public void deletar(){
+        if(AlunoDAO.delete(aluno)){
+            setResult(RESULT_OK);
+            finish();
+        } else {
+            Util.customSnackBar(lnPrincipal, "Erro ao deletar o curso (" + aluno.getNome() + ") " + "verifique o log", 0);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflaterMenu = getMenuInflater();
         inflaterMenu.inflate(R.menu.menu_cadastro, menu);
+
+        optionsMenu = menu;
+
+        if(aluno != null){
+            optionsMenu.findItem(R.id.mn_deletar).setVisible(true);
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.mn_deletar:
+                deletar();
+                return true;
             case R.id.mn_gerar_dados:
                 gerarDados();
                 return true;
@@ -261,4 +294,15 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         spCursos.setSelection(Util.getIndex(spCursos, aluno.getCurso().getNome()));
         spPeriodo.setSelection(Util.getIndex(spPeriodo, aluno.getPeriodo().toString()));
     }
+
+    private void popularCampos(Aluno aluno) {
+        edRaAluno.setText(String.valueOf(aluno.getRa()));
+        edNomeAluno.setText(aluno.getNome());
+        edCpfAluno.setText(aluno.getCpf());
+        edDtNascAluno.setText(aluno.getDtNasc());
+        edDtMatAluno.setText(aluno.getDtMatricula());
+        spCursos.setSelection(Util.getIndex(spCursos, aluno.getCurso().getNome()));
+        spPeriodo.setSelection(Util.getIndex(spPeriodo, aluno.getPeriodo().toString()));
+    }
+
 }

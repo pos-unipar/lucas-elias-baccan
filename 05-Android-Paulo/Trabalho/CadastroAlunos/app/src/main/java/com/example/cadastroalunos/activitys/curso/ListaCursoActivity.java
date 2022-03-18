@@ -2,7 +2,6 @@ package com.example.cadastroalunos.activitys.curso;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,12 +22,11 @@ import com.example.cadastroalunos.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaCursoActivity extends AppCompatActivity implements CursoAdapter.OnCursoListenner {
+public class ListaCursoActivity extends AppCompatActivity implements CursoAdapter.OnListenner {
 
     private RecyclerView rvListaCursos;
     private LinearLayout lnLista;
     private List<Curso> cursoList = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,6 @@ public class ListaCursoActivity extends AppCompatActivity implements CursoAdapte
 
     public void atualizaLista() {
         cursoList = CursoDAO.getAll("", new String[]{}, "nome asc");
-        Log.e("PHS", "Tamanho da lista: " + cursoList.size());
 
         rvListaCursos = findViewById(R.id.rvListaCursos);
         CursoAdapter adapter = new CursoAdapter(cursoList, this, this);
@@ -85,7 +82,7 @@ public class ListaCursoActivity extends AppCompatActivity implements CursoAdapte
     }
 
     @Override
-    public void onCursoClick(int position) {
+    public void onListennerClick(int position) {
         Intent intent = new Intent(this, CadastroCursoActivity.class);
         intent.putExtra("id", cursoList.get(position).getId());
         startActivityForResult(intent, 1);

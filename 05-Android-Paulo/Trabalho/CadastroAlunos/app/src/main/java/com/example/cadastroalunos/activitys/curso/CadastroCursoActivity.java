@@ -19,12 +19,12 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CadastroCursoActivity extends AppCompatActivity {
 
+    private Curso curso;
+
     private TextInputEditText edNomeCurso;
     private LinearLayout lnPrincipal;
 
-    private Curso curso;
-
-    Menu optionsMenu;
+    private Menu optionsMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

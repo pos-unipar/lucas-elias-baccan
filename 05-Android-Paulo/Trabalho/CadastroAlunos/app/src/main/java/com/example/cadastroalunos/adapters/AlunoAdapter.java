@@ -18,13 +18,15 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
 
     private List<Aluno> listaAlunos;
     private Context context;
+    private OnListenner onListenner;
 
-    public AlunoAdapter(List<Aluno> listaAlunos, Context context) {
+    public AlunoAdapter(List<Aluno> listaAlunos, OnListenner onListenner, Context context) {
         this.listaAlunos = listaAlunos;
+        this.onListenner = onListenner;
         this.context = context;
     }
 
-    public static class AlunoViewHolder extends RecyclerView.ViewHolder {
+    public static class AlunoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextInputEditText edRaAluno;
         TextInputEditText edNomeAluno;
         TextInputEditText edCpfAluno;
@@ -33,8 +35,12 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
         TextInputEditText edDtMatricula;
         TextInputEditText edDtNasc;
 
-        public AlunoViewHolder(@NonNull View itemView) {
+        OnListenner onListenner;
+
+        public AlunoViewHolder(@NonNull View itemView, OnListenner onListenner) {
             super(itemView);
+
+            this.onListenner = onListenner;
 
             edRaAluno = (TextInputEditText) itemView.findViewById(R.id.edIdCurso);
             edNomeAluno = (TextInputEditText) itemView.findViewById(R.id.edNomeAluno);
@@ -43,6 +49,21 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
             edPeriodo = (TextInputEditText) itemView.findViewById(R.id.edPeriodoAluno);
             edDtMatricula = (TextInputEditText) itemView.findViewById(R.id.edDtMatricula);
             edDtNasc = (TextInputEditText) itemView.findViewById(R.id.edDtNascAluno);
+
+            edRaAluno.setOnClickListener(this);
+            edNomeAluno.setOnClickListener(this);
+            edCpfAluno.setOnClickListener(this);
+            edCurso.setOnClickListener(this);
+            edPeriodo.setOnClickListener(this);
+            edDtMatricula.setOnClickListener(this);
+            edDtNasc.setOnClickListener(this);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onListenner.onListennerClick(getAdapterPosition());
         }
     }
 
@@ -50,7 +71,7 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
     public AlunoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_aluno, parent, false);
-        AlunoAdapter.AlunoViewHolder viewHolder = new AlunoViewHolder(view);
+        AlunoAdapter.AlunoViewHolder viewHolder = new AlunoViewHolder(view, onListenner);
 
         return viewHolder;
     }
@@ -71,5 +92,9 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
     @Override
     public int getItemCount() {
         return listaAlunos.size();
+    }
+
+    public interface OnListenner {
+        void onListennerClick(int position);
     }
 }

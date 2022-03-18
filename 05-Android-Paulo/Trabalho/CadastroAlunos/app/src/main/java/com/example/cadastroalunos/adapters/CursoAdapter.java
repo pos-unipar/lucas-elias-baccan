@@ -18,11 +18,11 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
 
     private List<Curso> cursoList;
     private Context context;
-    private OnCursoListenner onCursoListenner;
+    private OnListenner onListenner;
 
-    public CursoAdapter(List<Curso> cursoList, OnCursoListenner onCursoListenner, Context context) {
+    public CursoAdapter(List<Curso> cursoList, OnListenner onListenner, Context context) {
         this.cursoList = cursoList;
-        this.onCursoListenner = onCursoListenner;
+        this.onListenner = onListenner;
         this.context = context;
     }
 
@@ -30,12 +30,12 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
         TextInputEditText edIdCurso;
         TextInputEditText edNomeCurso;
 
-        OnCursoListenner onCursoListenner;
+        OnListenner onListenner;
 
-        public CursoViewHolder(@NonNull View itemView, OnCursoListenner onCursoListenner) {
+        public CursoViewHolder(@NonNull View itemView, OnListenner onListenner) {
             super(itemView);
 
-            this.onCursoListenner = onCursoListenner;
+            this.onListenner = onListenner;
 
             edIdCurso = (TextInputEditText) itemView.findViewById(R.id.edIdCurso);
             edNomeCurso = (TextInputEditText) itemView.findViewById(R.id.edNomeCurso);
@@ -48,7 +48,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
 
         @Override
         public void onClick(View view) {
-            onCursoListenner.onCursoClick(getAdapterPosition());
+            onListenner.onListennerClick(getAdapterPosition());
         }
     }
 
@@ -56,7 +56,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
     public CursoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_curso, parent, false);
-        CursoViewHolder viewHolder = new CursoViewHolder(view, onCursoListenner);
+        CursoViewHolder viewHolder = new CursoViewHolder(view, onListenner);
 
         return viewHolder;
     }
@@ -74,8 +74,8 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.CursoViewHol
         return cursoList.size();
     }
 
-    public interface OnCursoListenner {
-        void onCursoClick(int position);
+    public interface OnListenner {
+        void onListennerClick(int position);
     }
 
 
