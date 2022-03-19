@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.activitys.aluno.ListaAlunoActivity;
 import com.example.cadastroalunos.activitys.curso.ListaCursoActivity;
+import com.example.cadastroalunos.activitys.professor.ListaProfessorActivity;
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navegarProfessores(View view) {
-        Toast.makeText(this, "Professores", Toast.LENGTH_SHORT).show();
-    }
+        Intent intent = new Intent(this, ListaProfessorActivity.class);
+        startActivity(intent);    }
 
     public void navegarCursos(View view) {
         Intent intent = new Intent(this, ListaCursoActivity.class);
@@ -97,10 +98,6 @@ public class MainActivity extends AppCompatActivity {
         Curso curso = new Curso("Curso 1");
         curso.save();
 
-//        Curso curso,
-//        List<Aluno> alunos,
-//        List<Diciplina> diciplinas,
-//        RegimeEnum regime
 
         Turma turma = new Turma(
                 curso,

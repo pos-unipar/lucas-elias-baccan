@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lnPrincipalAluno"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/lnPrincipalProfessor"
     android:orientation="vertical"
-    tools:context=".activitys.aluno.CadastroAlunoActivity">
+    tools:context=".activitys.professor.CadastroProfessorActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:hint="@string/ra">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edRaAluno"
+            android:id="@+id/edRaProfessor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -29,7 +29,7 @@
         android:hint="@string/nome">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edNomeAluno"
+            android:id="@+id/edNomeProfessor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white" />
@@ -42,7 +42,7 @@
         android:hint="@string/cpf">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edCpfAluno"
+            android:id="@+id/edCpfProfessor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -62,7 +62,7 @@
             android:hint="@string/dtNasc">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edDtNascAluno"
+                android:id="@+id/edDtNascProfessor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
@@ -77,7 +77,7 @@
             android:hint="@string/dtMatricula">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edDtMatAluno"
+                android:id="@+id/edDtMatProfessor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
@@ -85,25 +85,5 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-
-    <fr.ganfra.materialspinner.MaterialSpinner
-        android:id="@+id/spCursos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:ms_arrowColor="?attr/colorPrimary"
-        app:ms_floatingLabelText="@string/cursos"
-        app:ms_hint="@string/selecioneCurso"
-        app:ms_multiline="false" />
-
-    <fr.ganfra.materialspinner.MaterialSpinner
-        android:id="@+id/spPeriodo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:ms_arrowColor="?attr/colorPrimary"
-        app:ms_floatingLabelText="@string/periodo"
-        app:ms_hint="@string/selecionePeriodo"
-        app:ms_multiline="false" />
 
 </LinearLayout>

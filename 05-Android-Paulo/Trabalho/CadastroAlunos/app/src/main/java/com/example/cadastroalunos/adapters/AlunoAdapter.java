@@ -32,7 +32,7 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
         TextInputEditText edCpfAluno;
         TextInputEditText edCurso;
         TextInputEditText edPeriodo;
-        TextInputEditText edDtMatricula;
+        TextInputEditText edDtMatAluno;
         TextInputEditText edDtNasc;
 
         OnListenner onListenner;
@@ -42,12 +42,12 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
 
             this.onListenner = onListenner;
 
-            edRaAluno = (TextInputEditText) itemView.findViewById(R.id.edIdCurso);
+            edRaAluno = (TextInputEditText) itemView.findViewById(R.id.edRaAluno);
             edNomeAluno = (TextInputEditText) itemView.findViewById(R.id.edNomeAluno);
             edCpfAluno = (TextInputEditText) itemView.findViewById(R.id.edCpfAluno);
             edCurso = (TextInputEditText) itemView.findViewById(R.id.edCursoAluno);
             edPeriodo = (TextInputEditText) itemView.findViewById(R.id.edPeriodoAluno);
-            edDtMatricula = (TextInputEditText) itemView.findViewById(R.id.edDtMatricula);
+            edDtMatAluno = (TextInputEditText) itemView.findViewById(R.id.edDtMatAluno);
             edDtNasc = (TextInputEditText) itemView.findViewById(R.id.edDtNascAluno);
 
             edRaAluno.setOnClickListener(this);
@@ -55,7 +55,7 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
             edCpfAluno.setOnClickListener(this);
             edCurso.setOnClickListener(this);
             edPeriodo.setOnClickListener(this);
-            edDtMatricula.setOnClickListener(this);
+            edDtMatAluno.setOnClickListener(this);
             edDtNasc.setOnClickListener(this);
 
             itemView.setOnClickListener(this);
@@ -85,7 +85,7 @@ public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHol
         holder.edNomeAluno.setText(aluno.getNome());
         holder.edCurso.setText(aluno.getCurso().getNome());
         holder.edPeriodo.setText(aluno.getPeriodo().toString());
-        holder.edDtMatricula.setText(aluno.getDtMatricula());
+        holder.edDtMatAluno.setText(aluno.getDtMatricula());
         holder.edDtNasc.setText(aluno.getDtNasc());
     }
 

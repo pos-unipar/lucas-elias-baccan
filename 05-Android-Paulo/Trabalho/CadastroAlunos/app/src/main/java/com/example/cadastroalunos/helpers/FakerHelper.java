@@ -2,9 +2,11 @@ package com.example.cadastroalunos.helpers;
 
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
+import com.example.cadastroalunos.dao.ProfessorDAO;
 import com.example.cadastroalunos.enums.PeriodoEnum;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.Curso;
+import com.example.cadastroalunos.model.Professor;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,9 +31,9 @@ public class FakerHelper {
 
     public static Aluno gerarAlunoFake(boolean salvar, Curso curso) {
         Aluno model = new Aluno(
-                Integer.parseInt(String.valueOf(faker.number.between(11111l,99999l))),
+                Integer.parseInt(String.valueOf(faker.number.between(11111l, 99999l))),
                 faker.name.name(),
-                String.valueOf(faker.number.between(11111111111l,99999999999l)),
+                String.valueOf(faker.number.between(11111111111l, 99999999999l)),
                 formatter.format(faker.date.birthday(-20, -50)),
                 formatter.format(faker.date.birthday(0, -4)),
                 curso,
@@ -45,5 +47,19 @@ public class FakerHelper {
 
     public static Aluno gerarAlunoFake(boolean salvar) {
         return gerarAlunoFake(salvar, gerarCursoFake(salvar));
+    }
+
+    public static Professor gerarProfessorFake(boolean salvar) {
+        Professor model = new Professor(
+                Integer.parseInt(String.valueOf(faker.number.between(11111l, 99999l))),
+                faker.name.name(),
+                String.valueOf(faker.number.between(11111111111l, 99999999999l)),
+                formatter.format(faker.date.birthday(-20, -50)),
+                formatter.format(faker.date.birthday(0, -4))
+        );
+        if (salvar) {
+            ProfessorDAO.salvar(model);
+        }
+        return model;
     }
 }

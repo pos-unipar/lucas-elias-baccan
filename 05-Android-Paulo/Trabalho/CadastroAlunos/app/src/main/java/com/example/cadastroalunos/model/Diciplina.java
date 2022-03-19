@@ -7,15 +7,13 @@ import java.util.Objects;
 public class Diciplina extends SugarRecord {
 
     private String nome;
-    private Turma turma;
     private Professor professor;
 
     public Diciplina() {
     }
 
-    public Diciplina(String nome, Turma turma, Professor professor) {
+    public Diciplina(String nome, Professor professor) {
         this.nome = nome;
-        this.turma = turma;
         this.professor = professor;
     }
 
@@ -25,14 +23,6 @@ public class Diciplina extends SugarRecord {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Turma getTurma() {
-        return turma;
-    }
-
-    public void setTurma(Turma turma) {
-        this.turma = turma;
     }
 
     public Professor getProfessor() {

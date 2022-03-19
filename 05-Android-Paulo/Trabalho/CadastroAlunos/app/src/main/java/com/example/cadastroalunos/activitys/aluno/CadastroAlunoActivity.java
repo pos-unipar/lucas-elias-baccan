@@ -58,11 +58,12 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_aluno);
 
-        edRaAluno = findViewById(R.id.edIdCurso);
+        edRaAluno = findViewById(R.id.edRaAluno);
         edNomeAluno = findViewById(R.id.edNomeAluno);
         edCpfAluno = findViewById(R.id.edCpfAluno);
         edDtNascAluno = findViewById(R.id.edDtNascAluno);
         edDtMatAluno = findViewById(R.id.edDtMatAluno);
+        
         lnPrincipal = findViewById(R.id.lnPrincipalAluno);
 
         edDtNascAluno.setFocusable(false);
@@ -150,14 +151,14 @@ public class CadastroAlunoActivity extends AppCompatActivity {
             return;
         }
 
-        //Valida o campo de CPF do aluno
+        //Valida o campo de data de nascimento do aluno
         if (edDtNascAluno.getText().toString().equals("")) {
             edDtNascAluno.setError("Informe a data de nascimento do aluno!");
             edDtNascAluno.requestFocus();
             return;
         }
 
-        //Valida o campo de CPF do aluno
+        //Valida o campo de data de matricula do aluno
         if (edDtMatAluno.getText().toString().equals("")) {
             edDtMatAluno.setError("Informe a data de matricula do aluno!");
             edDtMatAluno.requestFocus();

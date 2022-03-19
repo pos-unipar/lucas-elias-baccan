@@ -28,4 +28,6 @@
     <string name="gerarDadosFake">Gerar dados fake</string>
     <string name="id">ID</string>
     <string name="deletar">Deletar</string>
+    <string name="appBarCadastroProfessorActivity">Professor</string>
+    <string name="appBarListProfessorActivity">Menu professor</string>
 </resources>
