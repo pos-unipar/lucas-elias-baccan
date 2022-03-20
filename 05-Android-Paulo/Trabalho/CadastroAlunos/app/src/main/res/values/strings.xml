@@ -30,4 +30,7 @@
     <string name="deletar">Deletar</string>
     <string name="appBarCadastroProfessorActivity">Professor</string>
     <string name="appBarListProfessorActivity">Menu professor</string>
+    <string name="professor">Professor</string>
+    <string name="appBarListDiciplinaActivity">Menu diciplina</string>
+    <string name="appBarCadastroDiciplinaActivity">Diciplina</string>
 </resources>

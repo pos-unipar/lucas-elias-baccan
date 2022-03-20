@@ -1,11 +1,16 @@
 package com.example.cadastroalunos.util;
 
+import android.content.Context;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.cadastroalunos.R;
 import com.google.android.material.snackbar.Snackbar;
+import com.orm.SugarRecord;
+
+import java.util.List;
 
 public class Util {
 
@@ -27,7 +32,7 @@ public class Util {
         snackbar.show();
     }
 
-    public static int getIndex(Spinner spinner, String myString) {
+    public static int getIndexFromSpinner(Spinner spinner, String myString) {
         for (int i = 0; i < spinner.getCount(); i++) {
             if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)) {
                 return i + 1;
@@ -35,6 +40,25 @@ public class Util {
         }
 
         return 0;
+    }
+
+    public static ArrayAdapter<String> getAutocompleteAdapter(Context context, List<? extends SugarRecord> objectList) {
+        String[] itensList = new String[objectList.size()];
+        for (int i = 0; i < objectList.size(); i++) {
+            Object item = objectList.get(i);
+            itensList[i] = item.toString();
+        }
+        //Criando o adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                context,
+                android.R.layout.simple_dropdown_item_1line,
+                itensList
+        );
+        return adapter;
+    }
+
+    public static int getSubstring(String string, String divider) {
+        return Integer.parseInt(string.substring(0, string.indexOf(divider)).trim());
     }
 
 }

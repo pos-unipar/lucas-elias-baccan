@@ -1,4 +1,4 @@
-package com.example.cadastroalunos.activitys.professor;
+package com.example.cadastroalunos.activitys.diciplina;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,39 +14,44 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.example.cadastroalunos.R;
-import com.example.cadastroalunos.adapters.ProfessorAdapter;
+import com.example.cadastroalunos.activitys.aluno.CadastroAlunoActivity;
+import com.example.cadastroalunos.adapters.AlunoAdapter;
+import com.example.cadastroalunos.adapters.DiciplinaAdapter;
+import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
+import com.example.cadastroalunos.dao.DiciplinaDAO;
 import com.example.cadastroalunos.dao.ProfessorDAO;
-import com.example.cadastroalunos.model.Professor;
+import com.example.cadastroalunos.model.Aluno;
+import com.example.cadastroalunos.model.Diciplina;
 import com.example.cadastroalunos.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaProfessorActivity extends AppCompatActivity implements ProfessorAdapter.OnListenner {
+public class ListaDiciplinaActivity extends AppCompatActivity implements DiciplinaAdapter.OnListenner {
 
-    private RecyclerView rvListaProfessor;
+    private RecyclerView rvListaDiciplina;
     private LinearLayout lnLista;
-    private List<Professor> professorList = new ArrayList<>();
+    private List<Diciplina> listaDiciplina = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_professor);
+        setContentView(R.layout.activity_lista_diciplina);
 
-        lnLista = findViewById(R.id.lnListaProfessor);
+        lnLista = findViewById(R.id.lnListaDiciplina);
 
         atualizaLista();
     }
 
     public void atualizaLista(){
-        professorList = ProfessorDAO.getAll("", new String[]{}, "nome asc");
+        listaDiciplina = DiciplinaDAO.getAll("", new String[]{}, "nome asc");
 
-        rvListaProfessor = findViewById(R.id.rvListaProfessor);
-        ProfessorAdapter adapter = new ProfessorAdapter(professorList, this, this);
+        rvListaDiciplina = findViewById(R.id.rvListDiciplinas);
+        DiciplinaAdapter adapter = new DiciplinaAdapter(listaDiciplina, this, this);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        rvListaProfessor.setLayoutManager(llm);
-        rvListaProfessor.setAdapter(adapter);
+        rvListaDiciplina.setLayoutManager(llm);
+        rvListaDiciplina.setAdapter(adapter);
     }
 
     @Override
@@ -68,12 +73,12 @@ public class ListaProfessorActivity extends AppCompatActivity implements Profess
     }
 
     private void abrirCadastro() {
-        if(CursoDAO.getAll().isEmpty()) {
-            Util.customSnackBar(lnLista, "Não existem cursos cadastrados!", 2);
+        if(ProfessorDAO.getAll().isEmpty()) {
+            Util.customSnackBar(lnLista, "Não existem professores cadastrados!", 2);
             return;
         }
 
-        Intent intent = new Intent(this, CadastroProfessorActivity.class);
+        Intent intent = new Intent(this, CadastroDiciplinaActivity.class);
         startActivityForResult(intent, 1);
     }
 
@@ -89,8 +94,8 @@ public class ListaProfessorActivity extends AppCompatActivity implements Profess
 
     @Override
     public void onListennerClick(int position) {
-        Intent intent = new Intent(this, CadastroProfessorActivity.class);
-        intent.putExtra("id", professorList.get(position).getId());
+        Intent intent = new Intent(this, CadastroDiciplinaActivity.class);
+        intent.putExtra("id", listaDiciplina.get(position).getId());
         startActivityForResult(intent, 1);
     }
 }

@@ -20,7 +20,7 @@ import com.example.cadastroalunos.R;
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.enums.PeriodoEnum;
-import com.example.cadastroalunos.helpers.FakerHelper;
+import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.Curso;
 import com.example.cadastroalunos.util.CpfMask;
@@ -82,6 +82,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
             Long id = (Long) b.get("id");
             aluno = AlunoDAO.getById(id.intValue());
             popularCampos(aluno);
+        } else {
+            aluno = new Aluno();
         }
     }
 
@@ -183,7 +185,6 @@ public class CadastroAlunoActivity extends AppCompatActivity {
     }
 
     public void salvar() {
-        Aluno aluno = new Aluno();
         aluno.setRa(Integer.parseInt(edRaAluno.getText().toString()));
         aluno.setNome(edNomeAluno.getText().toString());
         aluno.setCpf(edCpfAluno.getText().toString());
@@ -216,7 +217,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
 
         optionsMenu = menu;
 
-        if(aluno != null){
+        if(aluno != null && aluno.getId() != null){
             optionsMenu.findItem(R.id.mn_deletar).setVisible(true);
         }
         return true;
@@ -284,7 +285,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
 
     private void gerarDados() {
         final Curso curso = CursoDAO.getAleatorio();
-        final Aluno aluno = FakerHelper.gerarAlunoFake(false, curso);
+        final Aluno aluno = FakerUtil.gerarAlunoFake(false, curso);
 
         edRaAluno.setText(String.valueOf(aluno.getRa()));
         edNomeAluno.setText(aluno.getNome());
@@ -292,8 +293,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         edDtNascAluno.setText(aluno.getDtNasc());
         edDtMatAluno.setText(aluno.getDtMatricula());
 
-        spCursos.setSelection(Util.getIndex(spCursos, aluno.getCurso().getNome()));
-        spPeriodo.setSelection(Util.getIndex(spPeriodo, aluno.getPeriodo().toString()));
+        spCursos.setSelection(Util.getIndexFromSpinner(spCursos, aluno.getCurso().getNome()));
+        spPeriodo.setSelection(Util.getIndexFromSpinner(spPeriodo, aluno.getPeriodo().toString()));
     }
 
     private void popularCampos(Aluno aluno) {
@@ -302,8 +303,8 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         edCpfAluno.setText(aluno.getCpf());
         edDtNascAluno.setText(aluno.getDtNasc());
         edDtMatAluno.setText(aluno.getDtMatricula());
-        spCursos.setSelection(Util.getIndex(spCursos, aluno.getCurso().getNome()));
-        spPeriodo.setSelection(Util.getIndex(spPeriodo, aluno.getPeriodo().toString()));
+        spCursos.setSelection(Util.getIndexFromSpinner(spCursos, aluno.getCurso().getNome()));
+        spPeriodo.setSelection(Util.getIndexFromSpinner(spPeriodo, aluno.getPeriodo().toString()));
     }
 
 }

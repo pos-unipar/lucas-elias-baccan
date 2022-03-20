@@ -2,9 +2,8 @@ package com.example.cadastroalunos.dao;
 
 import android.util.Log;
 
-import com.example.cadastroalunos.helpers.FakerHelper;
+import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Aluno;
-import com.example.cadastroalunos.model.Curso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +58,7 @@ public class AlunoDAO {
         if (alunoList.isEmpty()) {
             return null;
         }
-        return alunoList.get(FakerHelper.getIndex(alunoList.size()));
+        return alunoList.get(FakerUtil.getIndex(alunoList.size()));
     }
 
 }

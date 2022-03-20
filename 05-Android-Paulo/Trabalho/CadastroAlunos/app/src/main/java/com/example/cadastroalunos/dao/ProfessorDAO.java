@@ -2,7 +2,7 @@ package com.example.cadastroalunos.dao;
 
 import android.util.Log;
 
-import com.example.cadastroalunos.helpers.FakerHelper;
+import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Professor;
 
 import java.util.ArrayList;
@@ -24,6 +24,19 @@ public class ProfessorDAO {
     public static Professor getById(int id) {
         try {
             return Professor.findById(Professor.class, id);
+        } catch (Exception ex) {
+            Log.e("Erro", "(" + nome + ") Erro ao retornar: " + ex.getMessage());
+            return null;
+        }
+    }
+
+    public static Professor getByRa(int ra) {
+        try {
+            List<Professor> professorList = getAll("ra = ?", new String[]{String.valueOf(ra)}, "");
+            if (!professorList.isEmpty()) {
+                return professorList.get(0);
+            }
+            return null;
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao retornar: " + ex.getMessage());
             return null;
@@ -63,7 +76,7 @@ public class ProfessorDAO {
         if (professorList.isEmpty()) {
             return null;
         }
-        return professorList.get(FakerHelper.getIndex(professorList.size()));
+        return professorList.get(FakerUtil.getIndex(professorList.size()));
     }
 
 }

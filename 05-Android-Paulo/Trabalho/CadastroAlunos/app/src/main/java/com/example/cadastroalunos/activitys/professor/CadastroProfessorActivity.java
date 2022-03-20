@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.R;
 import com.example.cadastroalunos.dao.ProfessorDAO;
-import com.example.cadastroalunos.helpers.FakerHelper;
+import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.util.Util;
 import com.google.android.material.textfield.TextInputEditText;
@@ -53,6 +53,7 @@ public class CadastroProfessorActivity extends AppCompatActivity {
         edCpfProfessor = findViewById(R.id.edCpfProfessor);
         edDtNascProfessor = findViewById(R.id.edDtNascProfessor);
         edDtMatProfessor = findViewById(R.id.edDtMatProfessor);
+
         lnPrincipal = findViewById(R.id.lnPrincipalProfessor);
 
         setDataAtual();
@@ -64,6 +65,8 @@ public class CadastroProfessorActivity extends AppCompatActivity {
             Long id = (Long) b.get("id");
             professor = ProfessorDAO.getById(id.intValue());
             popularCampos(professor);
+        } else {
+            professor = new Professor();
         }
     }
 
@@ -109,7 +112,6 @@ public class CadastroProfessorActivity extends AppCompatActivity {
     }
 
     public void salvar() {
-        Professor professor = new Professor();
         professor.setRa(Integer.parseInt(edRaProfessor.getText().toString()));
         professor.setNome(edNomeProfessor.getText().toString());
         professor.setCpf(edCpfProfessor.getText().toString());
@@ -140,7 +142,7 @@ public class CadastroProfessorActivity extends AppCompatActivity {
 
         optionsMenu = menu;
 
-        if (professor != null) {
+        if (professor != null && professor.getId() != null) {
             optionsMenu.findItem(R.id.mn_deletar).setVisible(true);
         }
         return true;
@@ -205,7 +207,7 @@ public class CadastroProfessorActivity extends AppCompatActivity {
     }
 
     private void gerarDados() {
-        final Professor professor = FakerHelper.gerarProfessorFake(false);
+        final Professor professor = FakerUtil.gerarProfessorFake(false);
 
         edRaProfessor.setText(String.valueOf(professor.getRa()));
         edNomeProfessor.setText(professor.getNome());

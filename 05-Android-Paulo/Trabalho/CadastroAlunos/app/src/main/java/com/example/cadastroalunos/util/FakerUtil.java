@@ -1,11 +1,13 @@
-package com.example.cadastroalunos.helpers;
+package com.example.cadastroalunos.util;
 
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
+import com.example.cadastroalunos.dao.DiciplinaDAO;
 import com.example.cadastroalunos.dao.ProfessorDAO;
 import com.example.cadastroalunos.enums.PeriodoEnum;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.Curso;
+import com.example.cadastroalunos.model.Diciplina;
 import com.example.cadastroalunos.model.Professor;
 
 import java.text.DateFormat;
@@ -13,7 +15,7 @@ import java.text.SimpleDateFormat;
 
 import io.bloco.faker.Faker;
 
-public class FakerHelper {
+public class FakerUtil {
     private static DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     private static Faker faker = new Faker(); // https://github.com/blocoio/faker
 
@@ -61,5 +63,20 @@ public class FakerHelper {
             ProfessorDAO.salvar(model);
         }
         return model;
+    }
+
+    public static Diciplina gerarDiciplinaFake(boolean salvar, Professor professor) {
+        Diciplina model = new Diciplina(
+                faker.name.name(),
+                professor
+        );
+        if (salvar) {
+            DiciplinaDAO.salvar(model);
+        }
+        return model;
+    }
+
+    public static Diciplina gerarDiciplinaFake(boolean salvar) {
+        return gerarDiciplinaFake(salvar, gerarProfessorFake(salvar));
     }
 }

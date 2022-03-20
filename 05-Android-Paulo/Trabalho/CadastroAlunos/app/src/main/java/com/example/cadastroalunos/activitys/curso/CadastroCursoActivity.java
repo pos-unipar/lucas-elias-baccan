@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.R;
 import com.example.cadastroalunos.dao.CursoDAO;
-import com.example.cadastroalunos.helpers.FakerHelper;
+import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Curso;
 import com.example.cadastroalunos.util.Util;
 import com.google.android.material.textfield.TextInputEditText;
@@ -41,6 +41,8 @@ public class CadastroCursoActivity extends AppCompatActivity {
             Long id = (Long) b.get("id");
             curso = CursoDAO.getById(id.intValue());
             popularCampos(curso);
+        } else {
+            curso = new Curso();
         }
     }
 
@@ -83,7 +85,7 @@ public class CadastroCursoActivity extends AppCompatActivity {
 
         optionsMenu = menu;
 
-        if(curso != null){
+        if(curso != null && curso.getId() != null){
             optionsMenu.findItem(R.id.mn_deletar).setVisible(true);
         }
         return true;
@@ -114,7 +116,7 @@ public class CadastroCursoActivity extends AppCompatActivity {
     }
 
     private void gerarDados() {
-        final Curso curso = FakerHelper.gerarCursoFake(false);
+        final Curso curso = FakerUtil.gerarCursoFake(false);
         popularCampos(curso);
     }
 

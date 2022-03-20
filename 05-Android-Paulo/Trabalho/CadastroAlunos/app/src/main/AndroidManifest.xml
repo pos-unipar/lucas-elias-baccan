@@ -11,6 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroAlunos">
         <activity
+            android:name=".activitys.diciplina.ListaDiciplinaActivity"
+            android:exported="false"
+            android:label="@string/appBarListDiciplinaActivity" />
+        <activity
+            android:name=".activitys.diciplina.CadastroDiciplinaActivity"
+            android:exported="false"
+            android:label="@string/appBarCadastroDiciplinaActivity" />
+        <activity
             android:name=".activitys.professor.ListaProfessorActivity"
             android:exported="false"
             android:label="@string/appBarListProfessorActivity" />

@@ -3,16 +3,16 @@ package com.example.cadastroalunos.dao;
 import android.util.Log;
 
 import com.example.cadastroalunos.util.FakerUtil;
-import com.example.cadastroalunos.model.Curso;
+import com.example.cadastroalunos.model.Diciplina;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CursoDAO {
+public class DiciplinaDAO {
 
-    static String nome = "CURSO";
+    static String nome = "DICIPLINA";
 
-    public static long salvar(Curso model) {
+    public static long salvar(Diciplina model) {
         try {
             return model.save();
         } catch (Exception ex) {
@@ -21,47 +21,44 @@ public class CursoDAO {
         }
     }
 
-    public static Curso getById(int id) {
+    public static Diciplina getById(int id) {
         try {
-            return Curso.findById(Curso.class, id);
+            return Diciplina.findById(Diciplina.class, id);
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao retornar: " + ex.getMessage());
             return null;
         }
     }
 
-    public static List<Curso> getAll() {
+    public static List<Diciplina> getAll() {
         return getAll("", new String[]{}, "");
     }
 
-    public static List<Curso> getAll(String where, String[] whereArgs, String orderBy) {
-        List<Curso> list = new ArrayList<>();
+    public static List<Diciplina> getAll(String where, String[] whereArgs, String orderBy) {
+        List<Diciplina> list = new ArrayList<>();
         try {
-            list = Curso.find(Curso.class, where, whereArgs, "", orderBy, "");
+            list = Diciplina.find(Diciplina.class, where, whereArgs, "", orderBy, "");
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao retornar lista: " + ex.getMessage());
         }
         return list;
     }
 
-    public static boolean delete(Curso model) {
+    public static boolean delete(Diciplina model) {
         try {
-            if(!AlunoDAO.getAll("curso = ?", new String[]{model.getId().toString()}, "").isEmpty())
-                return false;
-
-            return Curso.delete(model);
+            return Diciplina.delete(model);
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao apagar: " + ex.getMessage());
             return false;
         }
     }
 
-    public static Curso getAleatorio() {
-        List<Curso> cursoList = getAll();
-        if (cursoList.isEmpty()) {
+    public static Diciplina getAleatorio() {
+        List<Diciplina> diciplinaList = getAll();
+        if (diciplinaList.isEmpty()) {
             return null;
         }
-        return cursoList.get(FakerUtil.getIndex(cursoList.size()));
+        return diciplinaList.get(FakerUtil.getIndex(diciplinaList.size()));
     }
 
 }

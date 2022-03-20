@@ -10,12 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.activitys.aluno.ListaAlunoActivity;
 import com.example.cadastroalunos.activitys.curso.ListaCursoActivity;
+import com.example.cadastroalunos.activitys.diciplina.CadastroDiciplinaActivity;
+import com.example.cadastroalunos.activitys.diciplina.ListaDiciplinaActivity;
 import com.example.cadastroalunos.activitys.professor.ListaProfessorActivity;
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.enums.RegimeEnum;
-import com.example.cadastroalunos.helpers.FakerHelper;
+import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.AlunoTurma;
 import com.example.cadastroalunos.model.Curso;
@@ -49,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navegarDiciplinas(View view) {
-        Toast.makeText(this, "Diciplinas", Toast.LENGTH_SHORT).show();
-    }
+        Intent intent = new Intent(this, ListaDiciplinaActivity.class);
+        startActivity(intent);    }
 
     public void navegarTurmas(View view) {
         Toast.makeText(this, "Turmas", Toast.LENGTH_SHORT).show();
@@ -78,18 +80,18 @@ public class MainActivity extends AppCompatActivity {
     public void gerarValores(View view) {
 
         // CURSOS
-        FakerHelper.gerarCursoFake(true);
-        FakerHelper.gerarCursoFake(true);
+        FakerUtil.gerarCursoFake(true);
+        FakerUtil.gerarCursoFake(true);
 
         Curso curso1 = CursoDAO.getById(1);
         Curso curso2 = CursoDAO.getById(2);
 
         // ALUNOS
-        FakerHelper.gerarAlunoFake(true, curso1);
-        FakerHelper.gerarAlunoFake(true, curso1);
-        FakerHelper.gerarAlunoFake(true, curso1);
-        FakerHelper.gerarAlunoFake(true, curso2);
-        FakerHelper.gerarAlunoFake(true); // Tem que gerar um terceiro curso
+        FakerUtil.gerarAlunoFake(true, curso1);
+        FakerUtil.gerarAlunoFake(true, curso1);
+        FakerUtil.gerarAlunoFake(true, curso1);
+        FakerUtil.gerarAlunoFake(true, curso2);
+        FakerUtil.gerarAlunoFake(true); // Tem que gerar um terceiro curso
 
 
         List<Aluno> alunos = AlunoDAO.getAll("", new String[]{}, "");
