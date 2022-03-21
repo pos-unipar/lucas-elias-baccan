@@ -10,18 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.activitys.aluno.ListaAlunoActivity;
 import com.example.cadastroalunos.activitys.curso.ListaCursoActivity;
-import com.example.cadastroalunos.activitys.diciplina.CadastroDiciplinaActivity;
 import com.example.cadastroalunos.activitys.diciplina.ListaDiciplinaActivity;
 import com.example.cadastroalunos.activitys.professor.ListaProfessorActivity;
+import com.example.cadastroalunos.activitys.turma.ListaTurmaActivity;
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.enums.RegimeEnum;
-import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.AlunoTurma;
 import com.example.cadastroalunos.model.Curso;
 import com.example.cadastroalunos.model.Turma;
+import com.example.cadastroalunos.util.FakerUtil;
 import com.orm.SchemaGenerator;
 import com.orm.SugarContext;
 import com.orm.SugarDb;
@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void navegarProfessores(View view) {
         Intent intent = new Intent(this, ListaProfessorActivity.class);
-        startActivity(intent);    }
+        startActivity(intent);
+    }
 
     public void navegarCursos(View view) {
         Intent intent = new Intent(this, ListaCursoActivity.class);
@@ -52,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void navegarDiciplinas(View view) {
         Intent intent = new Intent(this, ListaDiciplinaActivity.class);
-        startActivity(intent);    }
+        startActivity(intent);
+    }
 
     public void navegarTurmas(View view) {
-        Toast.makeText(this, "Turmas", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ListaTurmaActivity.class);
+        startActivity(intent);
     }
 
     public void navegarFrequencia(View view) {

@@ -209,12 +209,6 @@ public class CadastroProfessorActivity extends AppCompatActivity {
     private void gerarDados() {
         final Professor professor = FakerUtil.gerarProfessorFake(false);
 
-        edRaProfessor.setText(String.valueOf(professor.getRa()));
-        edNomeProfessor.setText(professor.getNome());
-        edCpfProfessor.setText(professor.getCpf());
-        edDtNascProfessor.setText(professor.getDtNasc());
-        edDtMatProfessor.setText(professor.getDtMatricula());
-
         popularCampos(professor);
     }
 

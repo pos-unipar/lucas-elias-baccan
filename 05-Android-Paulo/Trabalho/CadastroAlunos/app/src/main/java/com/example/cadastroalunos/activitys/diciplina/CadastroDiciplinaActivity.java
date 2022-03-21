@@ -127,14 +127,12 @@ public class CadastroDiciplinaActivity extends AppCompatActivity {
 
     private void limparCampos() {
         edNomeDiciplina.setText("");
+        atProfessor.setText("");
     }
 
     private void gerarDados() {
         final Professor professor = ProfessorDAO.getAleatorio();
         final Diciplina diciplina = FakerUtil.gerarDiciplinaFake(false, professor);
-
-        edNomeDiciplina.setText(diciplina.getNome());
-        atProfessor.setText(diciplina.getProfessor().toString());
 
         popularCampos(diciplina);
     }

@@ -28,10 +28,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/ra">
+                    android:hint="@string/id">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edRaProfessor"
+                        android:id="@+id/edIdTurma"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -42,11 +42,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_weight="2"
-                    android:hint="@string/cpf">
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="5"
+                    android:hint="@string/curso">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edCpfProfessor"
+                        android:id="@+id/edNomeCurso"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -54,21 +55,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:hint="@string/nome">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edNomeProfessor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:focusable="false" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,10 +66,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/dtMatricula">
+                    android:hint="@string/qtdAlunos">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edDtMatProfessor"
+                        android:id="@+id/edQtdAlunos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -95,10 +81,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
-                    android:hint="@string/dtNasc">
+                    android:hint="@string/qtdDiciplinas">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edDtNascProfessor"
+                        android:id="@+id/edQtdDiciplinas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"

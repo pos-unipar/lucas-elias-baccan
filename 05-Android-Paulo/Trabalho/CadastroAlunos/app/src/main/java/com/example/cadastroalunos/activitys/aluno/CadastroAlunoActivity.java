@@ -43,6 +43,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
     private TextInputEditText edDtMatAluno;
     private MaterialSpinner spCursos;
     private MaterialSpinner spPeriodo;
+
     private LinearLayout lnPrincipal;
 
     private int vAno;
@@ -287,14 +288,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         final Curso curso = CursoDAO.getAleatorio();
         final Aluno aluno = FakerUtil.gerarAlunoFake(false, curso);
 
-        edRaAluno.setText(String.valueOf(aluno.getRa()));
-        edNomeAluno.setText(aluno.getNome());
-        edCpfAluno.setText(aluno.getCpf());
-        edDtNascAluno.setText(aluno.getDtNasc());
-        edDtMatAluno.setText(aluno.getDtMatricula());
-
-        spCursos.setSelection(Util.getIndexFromSpinner(spCursos, aluno.getCurso().getNome()));
-        spPeriodo.setSelection(Util.getIndexFromSpinner(spPeriodo, aluno.getPeriodo().toString()));
+        popularCampos(aluno);
     }
 
     private void popularCampos(Aluno aluno) {
@@ -303,6 +297,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         edCpfAluno.setText(aluno.getCpf());
         edDtNascAluno.setText(aluno.getDtNasc());
         edDtMatAluno.setText(aluno.getDtMatricula());
+
         spCursos.setSelection(Util.getIndexFromSpinner(spCursos, aluno.getCurso().getNome()));
         spPeriodo.setSelection(Util.getIndexFromSpinner(spPeriodo, aluno.getPeriodo().toString()));
     }

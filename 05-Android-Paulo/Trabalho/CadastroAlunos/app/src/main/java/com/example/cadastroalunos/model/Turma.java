@@ -26,6 +26,14 @@ public class Turma extends SugarRecord {
 
     public Turma(
             Curso curso,
+            RegimeEnum regime
+    ) {
+        this.curso = curso;
+        this.regime = regime;
+    }
+
+    public Turma(
+            Curso curso,
             List<Aluno> alunos,
             List<Diciplina> diciplinas,
             RegimeEnum regime

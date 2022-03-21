@@ -38,7 +38,6 @@ public class Curso extends SugarRecord {
 
     @Override
     public String toString() {
-        return nome;
-
+        return getId() + " - " + nome;
     }
 }

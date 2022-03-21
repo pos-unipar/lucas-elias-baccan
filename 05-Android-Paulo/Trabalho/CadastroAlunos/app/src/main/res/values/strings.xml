@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">CadastroAlunos</string>
+    <string name="app_name">Pos Unipar - Sistema</string>
     <string name="ra">Ra</string>
     <string name="nome">Nome</string>
     <string name="cpf">CPF</string>
-    <string name="dtNasc">Dt. Nascimento</string>
-    <string name="dtMatricula">Dt. Matricula</string>
+    <string name="dtNasc">Dt. nascimento</string>
+    <string name="dtMatricula">Dt. matricula</string>
     <string name="cursos">Cursos</string>
     <string name="periodo">Período</string>
-    <string name="selecioneCurso">Selecione o Curso</string>
-    <string name="selecionePeriodo">Selecione o Período</string>
+    <string name="selecioneCurso">Selecione o curso</string>
+    <string name="selecionePeriodo">Selecione o período</string>
     <string name="limpar">Limpar</string>
     <string name="salvar">Salvar</string>
     <string name="curso">Curso</string>
@@ -33,4 +33,10 @@
     <string name="professor">Professor</string>
     <string name="appBarListDiciplinaActivity">Menu diciplina</string>
     <string name="appBarCadastroDiciplinaActivity">Diciplina</string>
+    <string name="qtdAlunos">Qtd. Alunos</string>
+    <string name="qtdDiciplinas">Qtd. Diciplinas</string>
+    <string name="regime">Regime</string>
+    <string name="selecioneRegime">Selecione o regime</string>
+    <string name="appBarListTurmaActivity">Menu turma</string>
+    <string name="appBarCadastroTurmaActivity">Turma</string>
 </resources>

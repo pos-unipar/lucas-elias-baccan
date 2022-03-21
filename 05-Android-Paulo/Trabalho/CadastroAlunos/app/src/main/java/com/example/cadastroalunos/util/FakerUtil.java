@@ -4,11 +4,14 @@ import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.DiciplinaDAO;
 import com.example.cadastroalunos.dao.ProfessorDAO;
+import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.enums.PeriodoEnum;
+import com.example.cadastroalunos.enums.RegimeEnum;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.Curso;
 import com.example.cadastroalunos.model.Diciplina;
 import com.example.cadastroalunos.model.Professor;
+import com.example.cadastroalunos.model.Turma;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -78,5 +81,20 @@ public class FakerUtil {
 
     public static Diciplina gerarDiciplinaFake(boolean salvar) {
         return gerarDiciplinaFake(salvar, gerarProfessorFake(salvar));
+    }
+
+    public static Turma gerarTurmaFake(boolean salvar, Curso curso) {
+        Turma model = new Turma(
+                curso,
+                RegimeEnum.values()[getIndex(RegimeEnum.values().length)]
+        );
+        if (salvar) {
+            TurmaDAO.salvar(model);
+        }
+        return model;
+    }
+
+    public static Turma gerarTurmaFake(boolean salvar) {
+        return gerarTurmaFake(salvar, gerarCursoFake(salvar));
     }
 }

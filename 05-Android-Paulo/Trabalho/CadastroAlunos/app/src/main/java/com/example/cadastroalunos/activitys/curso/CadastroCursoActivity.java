@@ -22,6 +22,7 @@ public class CadastroCursoActivity extends AppCompatActivity {
     private Curso curso;
 
     private TextInputEditText edNomeCurso;
+
     private LinearLayout lnPrincipal;
 
     private Menu optionsMenu;
