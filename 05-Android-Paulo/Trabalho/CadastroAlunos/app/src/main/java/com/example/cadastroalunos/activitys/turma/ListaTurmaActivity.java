@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.example.cadastroalunos.R;
 import com.example.cadastroalunos.adapters.TurmaAdapter;
+import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.model.Turma;
 import com.example.cadastroalunos.util.Util;
@@ -67,6 +68,11 @@ public class ListaTurmaActivity extends AppCompatActivity implements TurmaAdapte
     }
 
     private void abrirCadastro() {
+        if(CursoDAO.getAll().isEmpty()) {
+            Util.customSnackBar(lnListaTurma, "Não existem cursos cadastrados!", 2);
+            return;
+        }
+
         Intent intent = new Intent(this, CadastroTurmaActivity.class);
         startActivityForResult(intent, 1);
     }

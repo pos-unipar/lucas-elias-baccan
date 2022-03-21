@@ -109,26 +109,6 @@ public class CadastroAlunoActivity extends AppCompatActivity {
 
         spCursos.setAdapter(adapterCursos);
         spPeriodo.setAdapter(adapterPeriodo);
-
-        //Ação ao selecionar o item da lista
-        spCursos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0) {
-
-                    /*Button btADS = new Button(getBaseContext());
-                    btADS.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                    btADS.setText("Botao ADS");
-                    btADS.setBackgroundColor(getColor(R.color.teal_200));
-
-                    llPrincipal.addView(btADS);*/
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
     }
 
     //Validação dos campos
@@ -298,7 +278,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         edDtNascAluno.setText(aluno.getDtNasc());
         edDtMatAluno.setText(aluno.getDtMatricula());
 
-        spCursos.setSelection(Util.getIndexFromSpinner(spCursos, aluno.getCurso().getNome()));
+        spCursos.setSelection(Util.getIndexFromSpinner(spCursos, aluno.getCurso().toString()));
         spPeriodo.setSelection(Util.getIndexFromSpinner(spPeriodo, aluno.getPeriodo().toString()));
     }
 
