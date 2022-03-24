@@ -5,22 +5,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.R;
+import com.example.cadastroalunos.activitys.aluno.CadastroAlunoActivity;
 import com.example.cadastroalunos.dao.CursoDAO;
-import com.example.cadastroalunos.dao.ProfessorDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
-import com.example.cadastroalunos.enums.PeriodoEnum;
 import com.example.cadastroalunos.enums.RegimeEnum;
 import com.example.cadastroalunos.model.Curso;
-import com.example.cadastroalunos.model.Diciplina;
-import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.model.Turma;
 import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.util.Util;
@@ -33,6 +32,8 @@ public class CadastroTurmaActivity extends AppCompatActivity {
 
     private AutoCompleteTextView atCurso;
     private MaterialSpinner spRegime;
+    private Button btGerenciarAlunos;
+    private Button btGerenciarDiciplinas;
 
     private LinearLayout lnPrincipal;
 
@@ -44,6 +45,10 @@ public class CadastroTurmaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_turma);
 
         atCurso = findViewById(R.id.atCurso);
+        btGerenciarAlunos = findViewById(R.id.btGerenciarAlunos);
+        btGerenciarDiciplinas = findViewById(R.id.btGerenciarDiciplinas);
+
+        lnPrincipal = findViewById(R.id.lnPrincipalTurma);
 
         iniciaSpinners();
 
@@ -157,5 +162,17 @@ public class CadastroTurmaActivity extends AppCompatActivity {
     private void popularCampos(Turma turma) {
         atCurso.setText(turma.getCurso().toString());
         spRegime.setSelection(Util.getIndexFromSpinner(spRegime, turma.getRegime().toString()));
+    }
+
+    public void gerenciarAlunos(View view){
+        Intent intent = new Intent(this, GerenciarAlunosActivity.class);
+        intent.putExtra("id", turma.getId());
+        startActivityForResult(intent, 1);
+    }
+
+    public void gerenciarDiciplinas(View view){
+        Intent intent = new Intent(this, GerenciarDiciplinasActivity.class);
+        intent.putExtra("id", turma.getId());
+        startActivityForResult(intent, 1);
     }
 }

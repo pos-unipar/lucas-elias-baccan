@@ -39,4 +39,8 @@
     <string name="selecioneRegime">Selecione o regime</string>
     <string name="appBarListTurmaActivity">Menu turma</string>
     <string name="appBarCadastroTurmaActivity">Turma</string>
+    <string name="gerenciarAlunos">Gerenciar alunos</string>
+    <string name="gerenciarDiciplinas">Gerenciar diciplinas</string>
+    <string name="aluno">Aluno</string>
+    <string name="selecioneAluno">Selecione o aluno</string>
 </resources>

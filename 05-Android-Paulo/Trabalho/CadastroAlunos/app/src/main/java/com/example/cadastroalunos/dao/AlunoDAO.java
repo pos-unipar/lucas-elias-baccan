@@ -2,6 +2,7 @@ package com.example.cadastroalunos.dao;
 
 import android.util.Log;
 
+import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Aluno;
 
@@ -24,6 +25,19 @@ public class AlunoDAO {
     public static Aluno getById(int id) {
         try {
             return Aluno.findById(Aluno.class, id);
+        } catch (Exception ex) {
+            Log.e("Erro", "(" + nome + ") Erro ao retornar: " + ex.getMessage());
+            return null;
+        }
+    }
+
+    public static Aluno getByRa(int ra) {
+        try {
+            List<Aluno> alunoList = getAll("ra = ?", new String[]{String.valueOf(ra)}, "");
+            if (!alunoList.isEmpty()) {
+                return alunoList.get(0);
+            }
+            return null;
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao retornar: " + ex.getMessage());
             return null;

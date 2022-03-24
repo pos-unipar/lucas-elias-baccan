@@ -16,10 +16,9 @@ public class TurmaDAO {
     public static long salvar(Turma model) {
         try {
             long id = model.save();
-            for (Aluno aluno : model.getAlunos()) {
-                AlunoTurma at = new AlunoTurma(aluno.getId(), id);
-                at.save();
-            }
+
+            salvarAlteracaoAlunos(model);
+
             return id;
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao salvar: " + ex.getMessage());
@@ -56,7 +55,7 @@ public class TurmaDAO {
             // Deletar os "AlunoTurma"
             List<AlunoTurma> alunoTurmaList = AlunoTurma.find(
                     AlunoTurma.class,
-                    "turma_id = ? ",
+                    "turma = ? ",
                     new String[]{model.getId().toString()}
             );
             for (AlunoTurma alunoTurma : alunoTurmaList) {
@@ -72,15 +71,30 @@ public class TurmaDAO {
 
     public static List<Aluno> getAlunosFromTurma(Turma turma) {
         try {
-            List<Aluno> alunos = Aluno.findWithQuery(
-                    Aluno.class,
-                    "SELECT * FROM Aluno INNER JOIN aluno_turma at ON at.aluno_id = aluno.id AND at.turma_id = ?",
-                    turma.getId().toString()
-            );
+            List<AlunoTurma> alunoTurmaList = AlunoTurma.find(AlunoTurma.class, "turma = ?", new String[]{String.valueOf(turma.getId())});
+            List<Aluno> alunos = new ArrayList<>();
+            for (AlunoTurma at : alunoTurmaList) {
+                alunos.add(at.getAluno());
+            }
+
+            turma.setAlunos(alunos);
+
             return alunos;
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao retornar alunos: " + ex.getMessage());
             return null;
+        }
+    }
+
+    public static void salvarAlteracaoAlunos(Turma model) {
+        if (model.getId() == null) {
+            model = getById((int) salvar(model));
+        }
+        // Delete all AlunoTurma
+        AlunoTurma.deleteAll(AlunoTurma.class, "turma = ?", new String[]{String.valueOf(model.getId())});
+        for (Aluno aluno : model.getAlunos()) {
+            AlunoTurma at = new AlunoTurma(AlunoDAO.getByRa(aluno.getRa()), model);
+            at.save();
         }
     }
 }

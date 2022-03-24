@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroAlunos">
         <activity
+            android:name=".activitys.turma.GerenciarDiciplinasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activitys.turma.GerenciarAlunosActivity"
+            android:exported="false" />
+        <activity
             android:name=".activitys.turma.ListaTurmaActivity"
             android:exported="false"
             android:label="@string/appBarListTurmaActivity" />
