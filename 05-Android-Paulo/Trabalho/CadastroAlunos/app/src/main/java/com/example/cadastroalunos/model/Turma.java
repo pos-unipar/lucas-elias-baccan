@@ -63,6 +63,8 @@ public class Turma extends SugarRecord {
     }
 
     public List<Diciplina> getDiciplinas() {
+        if (diciplinas.isEmpty())
+            diciplinas = TurmaDAO.getDiciplinaFromTurma(this);
         return diciplinas;
     }
 

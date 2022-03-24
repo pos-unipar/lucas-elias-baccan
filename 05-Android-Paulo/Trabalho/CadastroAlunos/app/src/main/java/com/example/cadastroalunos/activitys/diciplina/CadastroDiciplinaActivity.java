@@ -48,7 +48,7 @@ public class CadastroDiciplinaActivity extends AppCompatActivity {
 
         if (b != null) {
             Long id = (Long) b.get("id");
-            diciplina = DiciplinaDAO.getById(id.intValue());
+            diciplina = DiciplinaDAO.getById(id);
             popularCampos(diciplina);
         } else {
             diciplina = new Diciplina();

@@ -50,7 +50,7 @@ public class GerenciarAlunosActivity extends AppCompatActivity {
 
         if (b != null) {
             Long id = (Long) b.get("id");
-            turma = TurmaDAO.getById(id.intValue());
+            turma = TurmaDAO.getById(id);
 
             setTitle("Turma: " + turma.getId() + "-" + turma.getCurso().getNome());
         }

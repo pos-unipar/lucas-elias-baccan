@@ -21,7 +21,7 @@ public class DiciplinaDAO {
         }
     }
 
-    public static Diciplina getById(int id) {
+    public static Diciplina getById(Long id) {
         try {
             return Diciplina.findById(Diciplina.class, id);
         } catch (Exception ex) {

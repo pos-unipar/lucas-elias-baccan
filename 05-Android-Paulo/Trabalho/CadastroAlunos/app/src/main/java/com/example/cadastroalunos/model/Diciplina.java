@@ -45,4 +45,9 @@ public class Diciplina extends SugarRecord {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+    @Override
+    public String toString() {
+        return getId() + " - " + nome;
+    }
 }

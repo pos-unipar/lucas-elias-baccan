@@ -6,15 +6,31 @@ import java.util.Objects;
 
 public class DiciplinaTurma extends SugarRecord {
 
-    private long diciplinaId;
-    private long turmaId;
+    private Diciplina diciplina;
+    private Turma turma;
 
     public DiciplinaTurma() {
     }
 
-    public DiciplinaTurma(long diciplinaId, long turmaId) {
-        this.diciplinaId = diciplinaId;
-        this.turmaId = turmaId;
+    public DiciplinaTurma(Diciplina diciplina, Turma turma) {
+        this.diciplina = diciplina;
+        this.turma = turma;
+    }
+
+    public Diciplina getDiciplina() {
+        return diciplina;
+    }
+
+    public void setDiciplina(Diciplina diciplina) {
+        this.diciplina = diciplina;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 
     @Override

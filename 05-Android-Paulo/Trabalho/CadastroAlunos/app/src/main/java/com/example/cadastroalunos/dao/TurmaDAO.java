@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.AlunoTurma;
+import com.example.cadastroalunos.model.Diciplina;
+import com.example.cadastroalunos.model.DiciplinaTurma;
 import com.example.cadastroalunos.model.Turma;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class TurmaDAO {
             long id = model.save();
 
             salvarAlteracaoAlunos(model);
+            salvarAlteracaoDiciplinas(model);
 
             return id;
         } catch (Exception ex) {
@@ -26,7 +29,7 @@ public class TurmaDAO {
         }
     }
 
-    public static Turma getById(int id) {
+    public static Turma getById(long id) {
         try {
             Turma turma = Turma.findById(Turma.class, id);
             turma.setAlunos(getAlunosFromTurma(turma));
@@ -52,15 +55,8 @@ public class TurmaDAO {
 
     public static boolean delete(Turma model) {
         try {
-            // Deletar os "AlunoTurma"
-            List<AlunoTurma> alunoTurmaList = AlunoTurma.find(
-                    AlunoTurma.class,
-                    "turma = ? ",
-                    new String[]{model.getId().toString()}
-            );
-            for (AlunoTurma alunoTurma : alunoTurmaList) {
-                alunoTurma.delete();
-            }
+            AlunoTurma.deleteAll(AlunoTurma.class, "turma = ?", new String[]{String.valueOf(model.getId())});
+            DiciplinaTurma.deleteAll(DiciplinaTurma.class, "turma = ?", new String[]{String.valueOf(model.getId())});
 
             return Turma.delete(model);
         } catch (Exception ex) {
@@ -95,6 +91,35 @@ public class TurmaDAO {
         for (Aluno aluno : model.getAlunos()) {
             AlunoTurma at = new AlunoTurma(AlunoDAO.getByRa(aluno.getRa()), model);
             at.save();
+        }
+    }
+
+    public static List<Diciplina> getDiciplinaFromTurma(Turma turma) {
+        try {
+            List<DiciplinaTurma> alunoTurmaList = DiciplinaTurma.find(DiciplinaTurma.class, "turma = ?", new String[]{String.valueOf(turma.getId())});
+            List<Diciplina> diciplinas = new ArrayList<>();
+            for (DiciplinaTurma dt : alunoTurmaList) {
+                diciplinas.add(dt.getDiciplina());
+            }
+
+            turma.setDiciplinas(diciplinas);
+
+            return diciplinas;
+        } catch (Exception ex) {
+            Log.e("Erro", "(" + nome + ") Erro ao retornar diciplinas: " + ex.getMessage());
+            return null;
+        }
+    }
+
+    public static void salvarAlteracaoDiciplinas(Turma model) {
+        if (model.getId() == null) {
+            model = getById((int) salvar(model));
+        }
+        // Delete all AlunoTurma
+        DiciplinaTurma.deleteAll(DiciplinaTurma.class, "turma = ?", new String[]{String.valueOf(model.getId())});
+        for (Diciplina diciplina : model.getDiciplinas()) {
+            DiciplinaTurma dt = new DiciplinaTurma(DiciplinaDAO.getById(diciplina.getId()), model);
+            dt.save();
         }
     }
 }

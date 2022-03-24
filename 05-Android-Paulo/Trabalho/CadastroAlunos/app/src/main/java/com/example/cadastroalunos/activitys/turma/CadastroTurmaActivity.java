@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.R;
-import com.example.cadastroalunos.activitys.aluno.CadastroAlunoActivity;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.enums.RegimeEnum;
@@ -97,9 +96,10 @@ public class CadastroTurmaActivity extends AppCompatActivity {
         turma.setCurso(CursoDAO.getById(Util.getSubstring(atCurso.getText().toString(), "-")));
         turma.setRegime((RegimeEnum) spRegime.getSelectedItem());
 
-        if (TurmaDAO.salvar(turma) > 0) {
-            setResult(RESULT_OK);
-            finish();
+        long id = TurmaDAO.salvar(turma);
+        if (id > 0) {
+            turma.setId(id);
+            Util.customSnackBar(lnPrincipal, "Salvo com sucesso", 1);
         } else {
             Util.customSnackBar(lnPrincipal, "Erro ao salvar a turma (" + turma.getId() + ") " + "verifique o log", 0);
         }
@@ -164,13 +164,21 @@ public class CadastroTurmaActivity extends AppCompatActivity {
         spRegime.setSelection(Util.getIndexFromSpinner(spRegime, turma.getRegime().toString()));
     }
 
-    public void gerenciarAlunos(View view){
+    public void gerenciarAlunos(View view) {
+        if (turma.getId() == null) {
+            salvar();
+            turma = TurmaDAO.getById(TurmaDAO.salvar(turma));
+        }
         Intent intent = new Intent(this, GerenciarAlunosActivity.class);
         intent.putExtra("id", turma.getId());
         startActivityForResult(intent, 1);
     }
 
-    public void gerenciarDiciplinas(View view){
+    public void gerenciarDiciplinas(View view) {
+        if (turma.getId() == null) {
+            salvar();
+            turma = TurmaDAO.getById(TurmaDAO.salvar(turma));
+        }
         Intent intent = new Intent(this, GerenciarDiciplinasActivity.class);
         intent.putExtra("id", turma.getId());
         startActivityForResult(intent, 1);

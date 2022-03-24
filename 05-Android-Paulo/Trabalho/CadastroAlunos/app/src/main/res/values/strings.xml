@@ -43,4 +43,5 @@
     <string name="gerenciarDiciplinas">Gerenciar diciplinas</string>
     <string name="aluno">Aluno</string>
     <string name="selecioneAluno">Selecione o aluno</string>
+    <string name="selecioneDiciplina">Selecione a diciplina</string>
 </resources>
