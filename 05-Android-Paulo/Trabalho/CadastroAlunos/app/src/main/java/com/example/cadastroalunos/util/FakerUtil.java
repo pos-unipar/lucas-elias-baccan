@@ -28,6 +28,10 @@ public class FakerUtil {
         return faker.number.between(0, length - 1);
     }
 
+    public static int getNumber() {
+        return faker.number.between(0, 100);
+    }
+
     public static Curso gerarCursoFake(boolean salvar) {
         Curso model = new Curso(faker.commerce.productName());
         if (salvar) {

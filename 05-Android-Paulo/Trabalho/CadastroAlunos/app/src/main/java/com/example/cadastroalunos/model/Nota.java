@@ -11,10 +11,10 @@ public class Nota extends SugarRecord {
     private Aluno aluno;
     private Turma turma;
     private Diciplina diciplina;
-    private int nota1;
-    private int nota2;
-    private int nota3;
-    private int nota4;
+    private int nota1 = 0;
+    private int nota2 = 0;
+    private int nota3 = 0;
+    private int nota4 = 0;
 
     public Nota() {
     }

@@ -18,6 +18,48 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/turma">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edTurma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:focusable="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/diciplina">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edNomeDiciplina"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:focusable="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/aluno">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edAluno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:focusable="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,10 +70,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/id">
+                    android:hint="@string/nota1">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edIdTurma"
+                        android:id="@+id/edNota1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -42,12 +84,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="5"
-                    android:hint="@string/curso">
+                    android:layout_weight="1"
+                    android:hint="@string/nota2">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edNomeCurso"
+                        android:id="@+id/edNota2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -63,13 +104,14 @@
                 android:padding="5dp">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edNota3Input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/qtdAlunos">
+                    android:hint="@string/nota3">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edQtdAlunos"
+                        android:id="@+id/edNota3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
@@ -77,14 +119,15 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edNota4Input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
-                    android:hint="@string/qtdDiciplinas">
+                    android:hint="@string/nota4">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edQtdDiciplinas"
+                        android:id="@+id/edNota4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"

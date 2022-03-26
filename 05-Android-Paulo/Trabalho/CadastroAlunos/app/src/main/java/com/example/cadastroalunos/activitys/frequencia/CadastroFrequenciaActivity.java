@@ -83,11 +83,6 @@ public class CadastroFrequenciaActivity extends AppCompatActivity {
                 }
         );
 
-        atDiciplina.setEnabled(false);
-        atDiciplina.setFocusable(false);
-        atDiciplinaBtn.setEnabled(false);
-        atDiciplinaBtn.setFocusable(false);
-
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
 
@@ -97,10 +92,17 @@ public class CadastroFrequenciaActivity extends AppCompatActivity {
             alunoList.clear();
             alunoList.add(frequencia.getAluno());
             lista.setAdapter(Util.getChoiceAdapter(this, alunoList));
-            lista.setItemChecked(0,frequencia.isPresente());
+            lista.setItemChecked(0, frequencia.isPresente());
             popularCampos(frequencia);
         } else {
             frequencia = new Frequencia();
+        }
+
+        if (frequencia.getId() == null) {
+            atDiciplina.setEnabled(false);
+            atDiciplina.setFocusable(false);
+            atDiciplinaBtn.setEnabled(false);
+            atDiciplinaBtn.setFocusable(false);
         }
     }
 
@@ -193,6 +195,7 @@ public class CadastroFrequenciaActivity extends AppCompatActivity {
         atDiciplinaBtn.setEnabled(false);
         atDiciplinaBtn.setFocusable(false);
         atTurma.setText("");
+        atDiciplina.setText("");
     }
 
     public void limparTurma(View view) {
