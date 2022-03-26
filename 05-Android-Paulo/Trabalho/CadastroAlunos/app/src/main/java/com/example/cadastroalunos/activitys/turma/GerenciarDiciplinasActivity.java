@@ -45,7 +45,7 @@ public class GerenciarDiciplinasActivity extends AppCompatActivity {
         btAdicionarDiciplina = findViewById(R.id.btAdicionarDiciplina);
         btRemoverDiciplina = findViewById(R.id.btRemoverDiciplina);
 
-        lnPrincipal = findViewById(R.id.lnPrincipalGerenciamento);
+        lnPrincipal = findViewById(R.id.lnPrincipal);
 
         Intent iin = getIntent();
         Bundle b = iin.getExtras();

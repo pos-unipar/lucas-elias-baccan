@@ -18,7 +18,6 @@ public class Frequencia extends SugarRecord {
             Aluno aluno,
             Turma turma,
             Diciplina diciplina,
-            int nota,
             boolean presente
     ) {
         this.aluno = aluno;

@@ -4,9 +4,12 @@ import android.util.Log;
 
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.AlunoTurma;
+import com.example.cadastroalunos.model.Curso;
 import com.example.cadastroalunos.model.Diciplina;
 import com.example.cadastroalunos.model.DiciplinaTurma;
+import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.model.Turma;
+import com.example.cadastroalunos.util.FakerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +36,16 @@ public class TurmaDAO {
         try {
             Turma turma = Turma.findById(Turma.class, id);
             turma.setAlunos(getAlunosFromTurma(turma));
+            turma.setDiciplinas(getDiciplinaFromTurma(turma));
             return turma;
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao retornar: " + ex.getMessage());
             return null;
         }
+    }
+
+    public static List<Turma> getAll() {
+        return getAll("", new String[]{}, "");
     }
 
     public static List<Turma> getAll(String where, String[] whereArgs, String orderBy) {
@@ -46,6 +54,7 @@ public class TurmaDAO {
             list = Turma.find(Turma.class, where, whereArgs, "", orderBy, "");
             for (Turma t : list) {
                 t.setAlunos(getAlunosFromTurma(t));
+                t.setDiciplinas(getDiciplinaFromTurma(t));
             }
         } catch (Exception ex) {
             Log.e("Erro", "(" + nome + ") Erro ao retornar lista: " + ex.getMessage());
@@ -121,5 +130,13 @@ public class TurmaDAO {
             DiciplinaTurma dt = new DiciplinaTurma(DiciplinaDAO.getById(diciplina.getId()), model);
             dt.save();
         }
+    }
+
+    public static Turma getAleatorio() {
+        List<Turma> turmaList = getAll();
+        if (turmaList.isEmpty()) {
+            return null;
+        }
+        return turmaList.get(FakerUtil.getIndex(turmaList.size()));
     }
 }

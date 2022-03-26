@@ -6,6 +6,8 @@
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_cadastro_aluno.xml" value="0.10555555555555556" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_cadastro_curso.xml" value="0.10555555555555556" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_cadastro_diciplina.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_cadastro_frequencia.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_cadastro_nota.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_cadastro_professor.xml" value="0.1" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_cadastro_turma.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_gerenciar_alunos.xml" value="0.1" />
@@ -13,12 +15,16 @@
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_lista_aluno.xml" value="0.10555555555555556" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_lista_curso.xml" value="0.30238726790450926" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_lista_diciplina.xml" value="0.10648148148148148" />
+        <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_lista_frequencia.xml" value="0.23020833333333332" />
+        <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_lista_nota.xml" value="0.23020833333333332" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_lista_professor.xml" value="0.10648148148148148" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_lista_turma.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/card_view_aluno.xml" value="0.10555555555555556" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/card_view_curso.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/card_view_diciplina.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/card_view_frequencia.xml" value="0.23020833333333332" />
+        <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/card_view_nota.xml" value="0.23020833333333332" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/card_view_professor.xml" value="0.11018518518518519" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/layout/card_view_turma.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/LucasBaccan/git/lucas-elias-baccan/05-Android-Paulo/Trabalho/CadastroAlunos/app/src/main/res/menu/menu_cadastro.xml" value="0.36614583333333334" />

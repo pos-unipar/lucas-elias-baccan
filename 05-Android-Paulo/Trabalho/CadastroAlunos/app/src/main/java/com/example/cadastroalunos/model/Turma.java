@@ -92,4 +92,9 @@ public class Turma extends SugarRecord {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+    @Override
+    public String toString() {
+        return getId() + " - " + curso.getNome();
+    }
 }

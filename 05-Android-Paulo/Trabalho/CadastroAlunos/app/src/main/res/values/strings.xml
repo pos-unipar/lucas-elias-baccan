@@ -44,4 +44,11 @@
     <string name="aluno">Aluno</string>
     <string name="selecioneAluno">Selecione o aluno</string>
     <string name="selecioneDiciplina">Selecione a diciplina</string>
+    <string name="appBarListNotaActivity">Menu nota</string>
+    <string name="appBarCadastroNotaActivity">Nota</string>
+    <string name="appBarCadastroFrequenciaActivity">Frequencia</string>
+    <string name="appBarListFrequenciaActivity">Menu frequencia</string>
+    <string name="selecioneTurma">Selecione uma turma</string>
+    <string name="turma">Turma</string>
+    <string name="diciplina">Diciplina</string>
 </resources>

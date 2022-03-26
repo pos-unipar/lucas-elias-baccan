@@ -2,6 +2,7 @@ package com.example.cadastroalunos.dao;
 
 import android.util.Log;
 
+import com.example.cadastroalunos.model.AlunoTurma;
 import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Aluno;
@@ -22,7 +23,7 @@ public class AlunoDAO {
         }
     }
 
-    public static Aluno getById(int id) {
+    public static Aluno getById(long id) {
         try {
             return Aluno.findById(Aluno.class, id);
         } catch (Exception ex) {
@@ -73,6 +74,13 @@ public class AlunoDAO {
             return null;
         }
         return alunoList.get(FakerUtil.getIndex(alunoList.size()));
+    }
+
+    public static boolean podeDeletar(Aluno model) {
+        if(!AlunoTurma.find(AlunoTurma.class, "aluno = ?", new String[]{String.valueOf(model.getId())}).isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
 }

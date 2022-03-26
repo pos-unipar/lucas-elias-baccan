@@ -3,6 +3,7 @@ package com.example.cadastroalunos.util;
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.DiciplinaDAO;
+import com.example.cadastroalunos.dao.FrequenciaDAO;
 import com.example.cadastroalunos.dao.ProfessorDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.enums.PeriodoEnum;
@@ -10,6 +11,7 @@ import com.example.cadastroalunos.enums.RegimeEnum;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.Curso;
 import com.example.cadastroalunos.model.Diciplina;
+import com.example.cadastroalunos.model.Frequencia;
 import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.model.Turma;
 
@@ -19,8 +21,8 @@ import java.text.SimpleDateFormat;
 import io.bloco.faker.Faker;
 
 public class FakerUtil {
-    private static DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-    private static Faker faker = new Faker(); // https://github.com/blocoio/faker
+    private static final DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    private static final Faker faker = new Faker(); // https://github.com/blocoio/faker
 
     public static int getIndex(int length) {
         return faker.number.between(0, length - 1);
@@ -96,5 +98,22 @@ public class FakerUtil {
 
     public static Turma gerarTurmaFake(boolean salvar) {
         return gerarTurmaFake(salvar, gerarCursoFake(salvar));
+    }
+
+    public static Frequencia gerarFrequenciaFake(boolean salvar, Aluno aluno, Turma turma, Diciplina diciplina) {
+        Frequencia model = new Frequencia(
+                aluno,
+                turma,
+                diciplina,
+                faker.bool.bool()
+        );
+        if (salvar) {
+            FrequenciaDAO.salvar(model);
+        }
+        return model;
+    }
+
+    public static Frequencia gerarFrequenciaFake(boolean salvar) {
+        return gerarFrequenciaFake(salvar, gerarAlunoFake(salvar), gerarTurmaFake(salvar), gerarDiciplinaFake(salvar));
     }
 }

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.R;
+import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Curso;
@@ -33,7 +34,7 @@ public class CadastroCursoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_curso);
 
         edNomeCurso = findViewById(R.id.edNomeCurso);
-        lnPrincipal = findViewById(R.id.lnPrincipalCurso);
+        lnPrincipal = findViewById(R.id.lnPrincipal);
 
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
@@ -71,6 +72,10 @@ public class CadastroCursoActivity extends AppCompatActivity {
     }
 
     public void deletar(){
+        if(!CursoDAO.podeDeletar(curso)){
+            Util.customSnackBar(lnPrincipal, "Essa informação está sento utilizada em outro local", 0);
+            return;
+        }
         if(CursoDAO.delete(curso)){
             setResult(RESULT_OK);
             finish();

@@ -54,7 +54,7 @@ public class CadastroProfessorActivity extends AppCompatActivity {
         edDtNascProfessor = findViewById(R.id.edDtNascProfessor);
         edDtMatProfessor = findViewById(R.id.edDtMatProfessor);
 
-        lnPrincipal = findViewById(R.id.lnPrincipalProfessor);
+        lnPrincipal = findViewById(R.id.lnPrincipal);
 
         setDataAtual();
 

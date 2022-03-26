@@ -11,21 +11,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cadastroalunos.activitys.aluno.ListaAlunoActivity;
 import com.example.cadastroalunos.activitys.curso.ListaCursoActivity;
 import com.example.cadastroalunos.activitys.diciplina.ListaDiciplinaActivity;
+import com.example.cadastroalunos.activitys.frequencia.ListaFrequenciaActivity;
+import com.example.cadastroalunos.activitys.nota.ListaNotaActivity;
 import com.example.cadastroalunos.activitys.professor.ListaProfessorActivity;
 import com.example.cadastroalunos.activitys.turma.ListaTurmaActivity;
 import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
+import com.example.cadastroalunos.dao.DiciplinaDAO;
+import com.example.cadastroalunos.dao.ProfessorDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.enums.RegimeEnum;
 import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.AlunoTurma;
 import com.example.cadastroalunos.model.Curso;
+import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.model.Turma;
 import com.example.cadastroalunos.util.FakerUtil;
 import com.orm.SchemaGenerator;
 import com.orm.SugarContext;
 import com.orm.SugarDb;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navegarFrequencia(View view) {
-        Toast.makeText(this, "Frequencia", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ListaFrequenciaActivity.class);
+        startActivity(intent);
     }
 
     public void navegarNotas(View view) {
-        Toast.makeText(this, "Notas", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ListaNotaActivity.class);
+        startActivity(intent);
     }
 
     public void limparBancoDados(View view) {
@@ -82,47 +91,79 @@ public class MainActivity extends AppCompatActivity {
 
     public void gerarValores(View view) {
 
-        // CURSOS
+        // Curso
         FakerUtil.gerarCursoFake(true);
         FakerUtil.gerarCursoFake(true);
+        FakerUtil.gerarCursoFake(true);
+        FakerUtil.gerarCursoFake(true);
+        FakerUtil.gerarCursoFake(true);
 
-        Curso curso1 = CursoDAO.getById(1);
-        Curso curso2 = CursoDAO.getById(2);
+        // Aluno
+        FakerUtil.gerarAlunoFake(true, CursoDAO.getAleatorio());
+        FakerUtil.gerarAlunoFake(true, CursoDAO.getAleatorio());
+        FakerUtil.gerarAlunoFake(true, CursoDAO.getAleatorio());
+        FakerUtil.gerarAlunoFake(true, CursoDAO.getAleatorio());
+        FakerUtil.gerarAlunoFake(true, CursoDAO.getAleatorio());
 
-        // ALUNOS
-        FakerUtil.gerarAlunoFake(true, curso1);
-        FakerUtil.gerarAlunoFake(true, curso1);
-        FakerUtil.gerarAlunoFake(true, curso1);
-        FakerUtil.gerarAlunoFake(true, curso2);
-        FakerUtil.gerarAlunoFake(true); // Tem que gerar um terceiro curso
+        // Professor
+        FakerUtil.gerarProfessorFake(true);
+        FakerUtil.gerarProfessorFake(true);
+        FakerUtil.gerarProfessorFake(true);
+        FakerUtil.gerarProfessorFake(true);
+        FakerUtil.gerarProfessorFake(true);
 
+        // Diciplina
+        FakerUtil.gerarDiciplinaFake(true, ProfessorDAO.getAleatorio());
+        FakerUtil.gerarDiciplinaFake(true, ProfessorDAO.getAleatorio());
+        FakerUtil.gerarDiciplinaFake(true, ProfessorDAO.getAleatorio());
+        FakerUtil.gerarDiciplinaFake(true, ProfessorDAO.getAleatorio());
+        FakerUtil.gerarDiciplinaFake(true, ProfessorDAO.getAleatorio());
 
-        List<Aluno> alunos = AlunoDAO.getAll("", new String[]{}, "");
-        Log.v("", "" + alunos.size());
+        // Turma
+        Turma t;
+        t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.setAlunos(new ArrayList<>(new HashSet<>(t.getAlunos())));
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
+        TurmaDAO.salvar(t);
 
-        Curso curso = new Curso("Curso 1");
-        curso.save();
+        t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.setAlunos(new ArrayList<>(new HashSet<>(t.getAlunos())));
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
+        TurmaDAO.salvar(t);
 
+        t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.setAlunos(new ArrayList<>(new HashSet<>(t.getAlunos())));
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
+        TurmaDAO.salvar(t);
 
-        Turma turma = new Turma(
-                curso,
-                alunos,
-                null,
-                RegimeEnum.ANUAL
-        );
-        TurmaDAO.salvar(turma);
-
-        List<Turma> turmas = TurmaDAO.getAll("", new String[]{}, "");
-        Log.v("", "" + turmas.size());
-
-        List<AlunoTurma> alunoTurmaList = AlunoTurma.listAll(AlunoTurma.class);
-        Log.v("", "" + alunoTurmaList.size());
-
-        TurmaDAO.delete(turma);
-
-        alunoTurmaList = AlunoTurma.listAll(AlunoTurma.class);
-        Log.v("", "" + alunoTurmaList.size());
-
+        t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.setAlunos(new ArrayList<>(new HashSet<>(t.getAlunos())));
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
+        TurmaDAO.salvar(t);
 
         Toast.makeText(this, "Dados gerados!", Toast.LENGTH_SHORT).show();
 

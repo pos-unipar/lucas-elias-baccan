@@ -21,7 +21,7 @@ public class ProfessorDAO {
         }
     }
 
-    public static Professor getById(int id) {
+    public static Professor getById(long id) {
         try {
             return Professor.findById(Professor.class, id);
         } catch (Exception ex) {

@@ -17,6 +17,22 @@
             android:name=".activitys.turma.GerenciarAlunosActivity"
             android:exported="false" />
         <activity
+            android:name=".activitys.nota.CadastroNotaActivity"
+            android:exported="false"
+            android:label="@string/appBarCadastroNotaActivity" />
+        <activity
+            android:name=".activitys.nota.ListaNotaActivity"
+            android:exported="false"
+            android:label="@string/appBarListNotaActivity" />
+        <activity
+            android:name=".activitys.frequencia.CadastroFrequenciaActivity"
+            android:exported="false"
+            android:label="@string/appBarCadastroFrequenciaActivity" />
+        <activity
+            android:name=".activitys.frequencia.ListaFrequenciaActivity"
+            android:exported="false"
+            android:label="@string/appBarListFrequenciaActivity" />
+        <activity
             android:name=".activitys.turma.ListaTurmaActivity"
             android:exported="false"
             android:label="@string/appBarListTurmaActivity" />

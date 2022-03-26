@@ -47,7 +47,7 @@ public class CadastroTurmaActivity extends AppCompatActivity {
         btGerenciarAlunos = findViewById(R.id.btGerenciarAlunos);
         btGerenciarDiciplinas = findViewById(R.id.btGerenciarDiciplinas);
 
-        lnPrincipal = findViewById(R.id.lnPrincipalTurma);
+        lnPrincipal = findViewById(R.id.lnPrincipal);
 
         iniciaSpinners();
 

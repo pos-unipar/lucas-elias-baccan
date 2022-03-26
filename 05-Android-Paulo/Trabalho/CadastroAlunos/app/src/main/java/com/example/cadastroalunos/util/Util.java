@@ -56,6 +56,21 @@ public class Util {
         );
         return adapter;
     }
+    public static ArrayAdapter<String> getChoiceAdapter(Context context, List<? extends SugarRecord> objectList) {
+        String[] itensList = new String[objectList.size()];
+        for (int i = 0; i < objectList.size(); i++) {
+            Object item = objectList.get(i);
+            itensList[i] = item.toString();
+        }
+        //Criando o adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                context,
+                android.R.layout.simple_list_item_multiple_choice,
+                itensList
+        );
+        return adapter;
+    }
+
 
     public static int getSubstring(String string, String divider) {
         return Integer.parseInt(string.substring(0, string.indexOf(divider)).trim());

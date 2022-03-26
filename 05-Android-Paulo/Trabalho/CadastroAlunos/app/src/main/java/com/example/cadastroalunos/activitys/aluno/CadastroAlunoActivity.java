@@ -65,7 +65,7 @@ public class CadastroAlunoActivity extends AppCompatActivity {
         edDtNascAluno = findViewById(R.id.edDtNascAluno);
         edDtMatAluno = findViewById(R.id.edDtMatAluno);
         
-        lnPrincipal = findViewById(R.id.lnPrincipalAluno);
+        lnPrincipal = findViewById(R.id.lnPrincipal);
 
         edDtNascAluno.setFocusable(false);
         edDtMatAluno.setFocusable(false);
@@ -183,6 +183,11 @@ public class CadastroAlunoActivity extends AppCompatActivity {
     }
 
     public void deletar(){
+        if(!AlunoDAO.podeDeletar(aluno)){
+            Util.customSnackBar(lnPrincipal, "Essa informação está sento utilizada em outro local", 0);
+            return;
+        }
+
         if(AlunoDAO.delete(aluno)){
             setResult(RESULT_OK);
             finish();

@@ -40,7 +40,7 @@ public class CadastroDiciplinaActivity extends AppCompatActivity {
         edNomeDiciplina = findViewById(R.id.edNomeDiciplina);
         atProfessor = findViewById(R.id.atProfessor);
 
-        lnPrincipal = findViewById(R.id.lnPrincipalDiciplina);
+        lnPrincipal = findViewById(R.id.lnPrincipal);
 
         atProfessor.setAdapter(Util.getAutocompleteAdapter(this, ProfessorDAO.getAll()));
 

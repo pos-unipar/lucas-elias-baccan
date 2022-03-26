@@ -43,7 +43,7 @@ public class GerenciarAlunosActivity extends AppCompatActivity {
         btAdicionarAluno = findViewById(R.id.btAdicionarAluno);
         btRemoverAluno = findViewById(R.id.btRemoverAluno);
 
-        lnPrincipal = findViewById(R.id.lnPrincipalGerenciamento);
+        lnPrincipal = findViewById(R.id.lnPrincipal);
 
         Intent iin = getIntent();
         Bundle b = iin.getExtras();

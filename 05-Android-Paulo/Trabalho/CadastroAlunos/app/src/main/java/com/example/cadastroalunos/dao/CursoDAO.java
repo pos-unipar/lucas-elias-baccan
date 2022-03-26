@@ -2,8 +2,8 @@ package com.example.cadastroalunos.dao;
 
 import android.util.Log;
 
-import com.example.cadastroalunos.util.FakerUtil;
 import com.example.cadastroalunos.model.Curso;
+import com.example.cadastroalunos.util.FakerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class CursoDAO {
         }
     }
 
-    public static Curso getById(int id) {
+    public static Curso getById(long id) {
         try {
             return Curso.findById(Curso.class, id);
         } catch (Exception ex) {
@@ -46,7 +46,7 @@ public class CursoDAO {
 
     public static boolean delete(Curso model) {
         try {
-            if(!AlunoDAO.getAll("curso = ?", new String[]{model.getId().toString()}, "").isEmpty())
+            if (!AlunoDAO.getAll("curso = ?", new String[]{model.getId().toString()}, "").isEmpty())
                 return false;
 
             return Curso.delete(model);
@@ -62,6 +62,13 @@ public class CursoDAO {
             return null;
         }
         return cursoList.get(FakerUtil.getIndex(cursoList.size()));
+    }
+
+    public static boolean podeDeletar(Curso model) {
+        if (!getAll("curso = ?", new String[]{String.valueOf(model.getId())}, "").isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
 }
