@@ -1,5 +1,7 @@
 package com.example.cadastroalunos.model;
 
+import android.util.Log;
+
 import com.example.cadastroalunos.dao.FrequenciaDAO;
 import com.example.cadastroalunos.dao.NotaDAO;
 import com.example.cadastroalunos.enums.RegimeEnum;
@@ -89,6 +91,8 @@ public class Boletim {
         for (Nota nota : notaList) {
             if (turma.getRegime() == RegimeEnum.SEMESTRAL) {
                 quantNotas = quantNotas - 2;
+                nota.setNota3(0);
+                nota.setNota4(0);
             }
 
             totalNotas = totalNotas + nota.getNota1();
@@ -107,6 +111,10 @@ public class Boletim {
 
         if (media >= 70) {
             aprovadoNota = true;
+        }
+
+        if(media > 100 ){
+            Log.d("DEBUG", "ERRO");
         }
 
         return media + "/100";

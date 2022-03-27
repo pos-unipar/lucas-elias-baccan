@@ -139,4 +139,20 @@ public class TurmaDAO {
         }
         return turmaList.get(FakerUtil.getIndex(turmaList.size()));
     }
+
+    public static Diciplina getDiciplinaAleatoriaFromTurma(Turma turma){
+        List<Diciplina> diciplinaList = turma.getDiciplinas();
+        if (diciplinaList.isEmpty()) {
+            return null;
+        }
+        return diciplinaList.get(FakerUtil.getIndex(diciplinaList.size()));
+    }
+
+    public static Aluno getAlunoAleatoriaFromTurma(Turma turma){
+        List<Aluno> alunoList = turma.getAlunos();
+        if (alunoList.isEmpty()) {
+            return null;
+        }
+        return alunoList.get(FakerUtil.getIndex(alunoList.size()));
+    }
 }

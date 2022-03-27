@@ -4,6 +4,7 @@ import com.example.cadastroalunos.dao.AlunoDAO;
 import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.DiciplinaDAO;
 import com.example.cadastroalunos.dao.FrequenciaDAO;
+import com.example.cadastroalunos.dao.NotaDAO;
 import com.example.cadastroalunos.dao.ProfessorDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.enums.PeriodoEnum;
@@ -12,6 +13,7 @@ import com.example.cadastroalunos.model.Aluno;
 import com.example.cadastroalunos.model.Curso;
 import com.example.cadastroalunos.model.Diciplina;
 import com.example.cadastroalunos.model.Frequencia;
+import com.example.cadastroalunos.model.Nota;
 import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.model.Turma;
 
@@ -119,5 +121,25 @@ public class FakerUtil {
 
     public static Frequencia gerarFrequenciaFake(boolean salvar) {
         return gerarFrequenciaFake(salvar, gerarAlunoFake(salvar), gerarTurmaFake(salvar), gerarDiciplinaFake(salvar));
+    }
+
+    public static Nota gerarNotaFake(boolean salvar, Aluno aluno, Turma turma, Diciplina diciplina) {
+        Nota model = new Nota(
+                aluno,
+                turma,
+                diciplina,
+                faker.number.between(80, 100),
+                faker.number.between(0, 100),
+                faker.number.between(0, 100),
+                faker.number.between(0, 100)
+        );
+        if (salvar) {
+            NotaDAO.salvar(model);
+        }
+        return model;
+    }
+
+    public static Nota gerarNotaFake(boolean salvar) {
+        return gerarNotaFake(salvar, gerarAlunoFake(salvar), gerarTurmaFake(salvar), gerarDiciplinaFake(salvar));
     }
 }

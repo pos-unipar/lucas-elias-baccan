@@ -2,7 +2,6 @@ package com.example.cadastroalunos;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,11 +20,6 @@ import com.example.cadastroalunos.dao.CursoDAO;
 import com.example.cadastroalunos.dao.DiciplinaDAO;
 import com.example.cadastroalunos.dao.ProfessorDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
-import com.example.cadastroalunos.enums.RegimeEnum;
-import com.example.cadastroalunos.model.Aluno;
-import com.example.cadastroalunos.model.AlunoTurma;
-import com.example.cadastroalunos.model.Curso;
-import com.example.cadastroalunos.model.Professor;
 import com.example.cadastroalunos.model.Turma;
 import com.example.cadastroalunos.util.FakerUtil;
 import com.orm.SchemaGenerator;
@@ -34,7 +28,6 @@ import com.orm.SugarDb;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -138,16 +131,13 @@ public class MainActivity extends AppCompatActivity {
         t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
         TurmaDAO.salvar(t);
 
-        t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
-        t.getAlunos().add(AlunoDAO.getAleatorio());
-        t.getAlunos().add(AlunoDAO.getAleatorio());
-        t.getAlunos().add(AlunoDAO.getAleatorio());
-        t.setAlunos(new ArrayList<>(new HashSet<>(t.getAlunos())));
-        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
-        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
-        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
-        t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
-        TurmaDAO.salvar(t);
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
 
         t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
         t.getAlunos().add(AlunoDAO.getAleatorio());
@@ -160,6 +150,20 @@ public class MainActivity extends AppCompatActivity {
         t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
         TurmaDAO.salvar(t);
 
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+
         t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
         t.getAlunos().add(AlunoDAO.getAleatorio());
         t.getAlunos().add(AlunoDAO.getAleatorio());
@@ -170,6 +174,33 @@ public class MainActivity extends AppCompatActivity {
         t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
         t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
         TurmaDAO.salvar(t);
+
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+
+        t = FakerUtil.gerarTurmaFake(true, CursoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.getAlunos().add(AlunoDAO.getAleatorio());
+        t.setAlunos(new ArrayList<>(new HashSet<>(t.getAlunos())));
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.getDiciplinas().add(DiciplinaDAO.getAleatorio());
+        t.setDiciplinas(new ArrayList<>(new HashSet<>(t.getDiciplinas())));
+        TurmaDAO.salvar(t);
+
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarFrequenciaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
+        FakerUtil.gerarNotaFake(true, TurmaDAO.getAlunoAleatoriaFromTurma(t), t, TurmaDAO.getDiciplinaAleatoriaFromTurma(t));
 
         Toast.makeText(this, "Dados gerados!", Toast.LENGTH_SHORT).show();
 
