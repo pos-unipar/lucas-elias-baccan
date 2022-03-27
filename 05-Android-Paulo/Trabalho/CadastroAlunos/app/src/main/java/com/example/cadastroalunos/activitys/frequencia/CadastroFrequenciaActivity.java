@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.R;
 import com.example.cadastroalunos.dao.AlunoDAO;
+import com.example.cadastroalunos.dao.DiciplinaDAO;
 import com.example.cadastroalunos.dao.FrequenciaDAO;
 import com.example.cadastroalunos.dao.TurmaDAO;
 import com.example.cadastroalunos.model.Aluno;
@@ -79,6 +80,15 @@ public class CadastroFrequenciaActivity extends AppCompatActivity {
                         alunoList = turma.getAlunos();
                         lista.setAdapter(Util.getChoiceAdapter(context, alunoList));
 
+                    }
+                }
+        );
+
+        atDiciplina.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        diciplina = DiciplinaDAO.getById(Util.getSubstring(adapterView.getAdapter().getItem(position).toString(), "-"));
                     }
                 }
         );

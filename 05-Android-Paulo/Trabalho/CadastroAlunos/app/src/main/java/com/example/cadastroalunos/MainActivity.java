@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadastroalunos.activitys.aluno.ListaAlunoActivity;
+import com.example.cadastroalunos.activitys.boletim.ListaBoletimActivity;
 import com.example.cadastroalunos.activitys.curso.ListaCursoActivity;
 import com.example.cadastroalunos.activitys.diciplina.ListaDiciplinaActivity;
 import com.example.cadastroalunos.activitys.frequencia.ListaFrequenciaActivity;
@@ -75,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void navegarNotas(View view) {
         Intent intent = new Intent(this, ListaNotaActivity.class);
+        startActivity(intent);
+    }
+
+    public void navegarBoletim(View view) {
+        Intent intent = new Intent(this, ListaBoletimActivity.class);
         startActivity(intent);
     }
 

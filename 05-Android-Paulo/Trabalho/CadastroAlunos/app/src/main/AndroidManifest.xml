@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroAlunos">
         <activity
+            android:name=".activitys.boletim.ListaBoletimActivity"
+            android:exported="false"
+            android:label="@string/appBarListBoletimActivity" />
+        <activity
             android:name=".activitys.turma.GerenciarDiciplinasActivity"
             android:exported="false" />
         <activity
