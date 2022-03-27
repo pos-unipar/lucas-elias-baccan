@@ -65,6 +65,12 @@ public class BoletimAdapter extends RecyclerView.Adapter<BoletimAdapter.BoletimV
         holder.edMedia.setText(boletim.getMedia());
         holder.edFrequencia.setText(boletim.getFrequencia());
         holder.cbAprovado.setChecked(boletim.isAprovado());
+
+        if (boletim.isAprovado()) {
+            holder.cbAprovado.setText("Aprovado");
+        } else {
+            holder.cbAprovado.setText("Reprovado");
+        }
     }
 
     @Override
