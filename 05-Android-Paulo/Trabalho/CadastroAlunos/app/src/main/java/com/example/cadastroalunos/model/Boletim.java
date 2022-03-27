@@ -1,7 +1,5 @@
 package com.example.cadastroalunos.model;
 
-import android.util.Log;
-
 import com.example.cadastroalunos.dao.FrequenciaDAO;
 import com.example.cadastroalunos.dao.NotaDAO;
 import com.example.cadastroalunos.enums.RegimeEnum;
@@ -109,12 +107,8 @@ public class Boletim {
 
         int media = (totalNotas / quantNotas);
 
-        if (media >= 70) {
+        if (media >= 60) {
             aprovadoNota = true;
-        }
-
-        if(media > 100 ){
-            Log.d("DEBUG", "ERRO");
         }
 
         return media + "/100";
