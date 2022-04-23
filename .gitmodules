@@ -25,3 +25,9 @@
 [submodule "05-Android-Paulo/Aula-01/exemplo-aula/unipar-CadastroAlunos"]
 	path = 05-Android-Paulo/Aula-01/exemplo-aula/unipar-CadastroAlunos
 	url = https://github.com/pos-unipar/unipar-CadastroAlunos.git
+[submodule "06-Flutter-Marcos/Aula-01/exemplo-aula/aula_01_pos_02_04_2022"]
+	path = 06-Flutter-Marcos/Aula-01/exemplo-aula/aula_01_pos_02_04_2022
+	url = https://github.com/pos-unipar/aula_01_pos_02_04_2022.git
+[submodule "06-Flutter-Marcos/Aula-02/exemplo-aula/aula_02_pos_09_04_2022"]
+	path = 06-Flutter-Marcos/Aula-02/exemplo-aula/aula_02_pos_09_04_2022
+	url = https://github.com/pos-unipar/aula_02_pos_09_04_2022.git
