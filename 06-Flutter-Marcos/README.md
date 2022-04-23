@@ -7,7 +7,7 @@
 - [**exemplo-aula**](./Aula-01/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [Aula-01/aula_01_pos_02_04_2022](./Aula-01/exemplo-aula/aula_01_pos_02_04_2022)  
+    - [Aula-01/aula_01_pos_02_04_2022](./Aula-01/exemplo-aula/)  
         Atividade feito em aula pelo professor.
 
 ### Aula 02
@@ -15,9 +15,8 @@
 - [**exemplo-aula**](./Aula-02/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [Aula-02/bootstrap](./Aula-02/exemplo-aula/aula_02_pos_09_04_2022/)  
+    - [Aula-02/exemplo-aula/aula_02_pos_09_04_2022](./Aula-02/exemplo-aula/)  
         Atividade feito em aula pelo professor.
-    
 
 ### Trabalho
 
