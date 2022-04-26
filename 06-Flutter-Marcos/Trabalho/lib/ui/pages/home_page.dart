@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../components/components.dart';
+import 'package:trabalho/ui/components/components.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +11,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Controle Escolar'),
         centerTitle: true,
       ),
-      body: HomePageBody(),
+      body: const HomePageBody(),
     );
   }
 }

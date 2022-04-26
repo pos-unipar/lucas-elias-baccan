@@ -1,72 +1,112 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho/ui/pages/pages.dart';
 
 import '../components.dart';
 
 class HomePageBody extends StatelessWidget {
-  HomePageBody({Key? key}) : super(key: key);
+  const HomePageBody({Key? key}) : super(key: key);
 
-  final List<Widget> _listaBotoes = [
+  List<Widget> _listaBotoes(BuildContext context) {
+    List<Widget> botoes = [];
     // Cursos
-    HomePageButtom(
-      texto: 'Cursos',
-      icon: Icons.book,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Cursos',
+        icon: Icons.book,
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const CursoListaPage()));
+        },
+      ),
+    );
     // Alunos
-    HomePageButtom(
-      texto: 'Alunos',
-      icon: Icons.people,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Alunos',
+        icon: Icons.people,
+        onPressed: () {
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => const AlunoListaPage()));
+        },
+      ),
+    );
     // Professores
-    HomePageButtom(
-      texto: 'Professores',
-      icon: Icons.person,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Professores',
+        icon: Icons.person,
+        onPressed: () {
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfessorListaPage()));
+        },
+      ),
+    );
     // Disciplinas
-    HomePageButtom(
-      texto: 'Disciplinas',
-      icon: Icons.bookmark,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Disciplinas',
+        icon: Icons.bookmark,
+        onPressed: () {
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => const DisciplinaListaPage()));
+        },
+      ),
+    );
     // Turmas
-    HomePageButtom(
-      texto: 'Turmas',
-      icon: Icons.co_present_sharp,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Turmas',
+        icon: Icons.co_present_sharp,
+        onPressed: () {
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => const TurmaListaPage()));
+        },
+      ),
+    );
     // Frequências
-    HomePageButtom(
-      texto: 'Frequências',
-      icon: Icons.assignment,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Frequências',
+        icon: Icons.assignment,
+        onPressed: () {
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => const FrequenciaListaPage()));
+        },
+      ),
+    );
     // Notas
-    HomePageButtom(
-      texto: 'Notas',
-      icon: Icons.assignment_turned_in,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Notas',
+        icon: Icons.assignment_turned_in,
+        onPressed: () {
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => const NotaListaPage()));
+        },
+      ),
+    );
     // Boletim
-    HomePageButtom(
-      texto: 'Boletim',
-      icon: Icons.assignment_ind,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Boletim',
+        icon: Icons.assignment_ind,
+        onPressed: () {
+          
+        },
+      ),
+    );
     // Limpar banco de dados
-    HomePageButtom(
-      texto: 'Limpar banco de dados',
-      icon: Icons.delete,
-      onPressed: () {},
-    ),
+    botoes.add(
+      HomePageButtom(
+        texto: 'Limpar banco de dados',
+        icon: Icons.delete,
+        onPressed: () {},
+      ),
+    );
     // Gerar dados falsos
-    HomePageButtom(
-      texto: 'Gerar dados falsos',
-      icon: Icons.change_circle,
-      onPressed: () {},
-    ),
-  ];
+    botoes.add(
+      HomePageButtom(
+        texto: 'Gerar dados falsos',
+        icon: Icons.change_circle,
+        onPressed: () {},
+      ),
+    );
+
+    return botoes;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +116,7 @@ class HomePageBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ..._listaBotoes,
+            ..._listaBotoes(context),
           ],
         ),
       ),
