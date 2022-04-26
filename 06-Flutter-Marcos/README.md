@@ -18,6 +18,14 @@
     - [Aula-02/exemplo-aula/aula_02_pos_09_04_2022](./Aula-02/exemplo-aula/)  
         Atividade feito em aula pelo professor.
 
+### Aula 03
+
+- [**exemplo-aula**](./Aula-03/exemplo-aula/)
+    Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
+
+    - [Aula-02/exemplo-aula/aula_03_pos_23_04_2022](./Aula-03/exemplo-aula/)  
+        Atividade feito em aula pelo professor.
+
 ### Trabalho
 
 A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/docs/flutter/#trabalho-final).
@@ -31,6 +39,7 @@ https://github.com/pos-unipar/aula_01_pos_02_04_2022.git
     ```
     git submodule add https://github.com/pos-unipar/aula_01_pos_02_04_2022.git 06-Flutter-Marcos/Aula-01/exemplo-aula/aula_01_pos_02_04_2022
     git submodule add https://github.com/pos-unipar/aula_02_pos_09_04_2022.git 06-Flutter-Marcos/Aula-02/exemplo-aula/aula_02_pos_09_04_2022
+    git submodule add https://github.com/pos-unipar/aula_03_pos_23_04_2022.git 06-Flutter-Marcos/Aula-03/exemplo-aula/aula_03_pos_23_04_2022
     ```
 
 - Baixar arquivos do submódulo(fork)
