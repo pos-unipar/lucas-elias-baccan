@@ -31,7 +31,7 @@ class BancoDados {
     final path = join(directory.path, _databaseName); //create path to database
 
     return await openDatabase(path, version: 1, onCreate: (Database database, int version) async {
-      await database.execute(CursoDatasource().createTable());
+      await database.execute(CursoDatasource().createTableSql());
     });
   }
 }

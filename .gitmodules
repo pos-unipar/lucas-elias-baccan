@@ -34,3 +34,9 @@
 [submodule "06-Flutter-Marcos/Aula-03/exemplo-aula/aula_03_pos_23_04_2022"]
 	path = 06-Flutter-Marcos/Aula-03/exemplo-aula/aula_03_pos_23_04_2022
 	url = https://github.com/pos-unipar/aula_03_pos_23_04_2022.git
+[submodule "06-Flutter-Marcos/Aula-04/exemplo-aula/aula_04_pos_30_04_2022"]
+	path = 06-Flutter-Marcos/Aula-04/exemplo-aula/aula_04_pos_30_04_2022
+	url = https://github.com/pos-unipar/aula_04_pos_30_04_2022.git
+[submodule "06-Flutter-Marcos/Aula-04/exemplo-aula/aula_04_bloc_pos_30_04_2022"]
+	path = 06-Flutter-Marcos/Aula-04/exemplo-aula/aula_04_bloc_pos_30_04_2022
+	url = https://github.com/pos-unipar/aula_04_bloc_pos_30_04_2022.git
