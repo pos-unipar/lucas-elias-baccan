@@ -1,11 +1,11 @@
 import 'package:trabalho/models/elemento.dart';
 
-class Curso extends Elemento {
+class Diciplina extends Elemento {
   late String nome;
 
-  Curso.model() : super();
+  Diciplina.model() : super();
 
-  Curso({id, required this.nome}) : super(id: id);
+  Diciplina({id, required this.nome}) : super(id: id);
 
   @override
   Map<String, Object?> toMap() {
@@ -17,7 +17,7 @@ class Curso extends Elemento {
 
   @override
   Elemento fromMap(Map<String, dynamic> map) {
-    var curso = Curso(
+    var curso = Diciplina(
       nome: map['nome'] as String,
     );
     curso.id = map['id'] as int?;

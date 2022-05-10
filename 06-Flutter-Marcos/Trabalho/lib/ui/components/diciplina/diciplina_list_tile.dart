@@ -3,15 +3,15 @@ import 'package:trabalho/models/models.dart';
 import 'package:trabalho/ui/components/components.dart';
 import 'package:trabalho/ui/pages/pages.dart';
 
-class CursoListTile extends StatefulWidget {
-  Curso model;
-  CursoListTile({Key? key, required this.model}) : super(key: key);
+class DiciplinaListTile extends StatefulWidget {
+  Diciplina model;
+  DiciplinaListTile({Key? key, required this.model}) : super(key: key);
 
   @override
-  State<CursoListTile> createState() => _CursoListTileState();
+  State<DiciplinaListTile> createState() => _DiciplinaListTileState();
 }
 
-class _CursoListTileState extends State<CursoListTile> {
+class _DiciplinaListTileState extends State<DiciplinaListTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +26,7 @@ class _CursoListTileState extends State<CursoListTile> {
           ),
         ),
         onTap: () async {
-          Curso? curso = await Navigator.push(context, MaterialPageRoute(builder: (context) => CursoFormPage(model: widget.model)));
+          Diciplina? curso = await Navigator.push(context, MaterialPageRoute(builder: (context) => DiciplinaFormPage(model: widget.model)));
           if (curso != null) {
             setState(() {
               widget.model = curso;

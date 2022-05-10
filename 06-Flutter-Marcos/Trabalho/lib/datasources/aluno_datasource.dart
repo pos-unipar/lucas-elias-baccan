@@ -1,24 +1,23 @@
-import 'package:trabalho/datasources/elemento_datasource.dart';
-import 'package:trabalho/models/elemento.dart';
+import 'package:trabalho/datasources/datasources.dart';
+import 'package:trabalho/models/models.dart';
 
-// class AlunoDatasource extends ElementoDatasource {
+class AlunoDatasource extends ElementoDatasource {
+  static const String tabela = 'aluno';
+  static const String columnId = 'id';
+  static const String columnNome = 'nome';
 
-//   @override
-//   String createTableSql() {
-//     // TODO: implement createTableSql
-//     throw UnimplementedError();
-//   }
+  final dataSource = ElementoDatasource<Aluno>(Aluno.model(), tableName: tabela);
 
-//   @override
-//   Future<List<Elemento>> getAll() async{
-//     final List<Map<String, dynamic>> maps = await getAllDatasource();
-//     return maps.map((elemento) => Aluno.fromMap(elemento)).toList();
+  AlunoDatasource(Elemento instance) : super(instance, tableName: tabela);
 
-//   }
-
-//   @override
-//   Future<Elemento> getById(String id) async{
-//     final Map<String, dynamic> maps = await getByIdDatasource(id);
-//     return Aluno.fromMap(elemento)
-//   }
-// }
+  @override
+  String createTableSql() {
+    return '''
+      CREATE TABLE IF NOT EXISTS $tabela (
+        $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+        $columnNome TEXT NOT NULL
+      )
+    ''';
+  }
+  
+}

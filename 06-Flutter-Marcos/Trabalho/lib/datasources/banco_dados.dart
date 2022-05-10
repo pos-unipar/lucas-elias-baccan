@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:trabalho/datasources/datasources.dart';
+import 'package:trabalho/models/models.dart';
 
 class BancoDados {
   static const String _databaseName = 'controle-escola.db';
@@ -31,7 +32,9 @@ class BancoDados {
     final path = join(directory.path, _databaseName); //create path to database
 
     return await openDatabase(path, version: 1, onCreate: (Database database, int version) async {
-      await database.execute(CursoDatasource().createTableSql());
+      await database.execute(CursoDatasource(Curso.model()).createTableSql());
+      await database.execute(AlunoDatasource(Aluno.model()).createTableSql());
+      await database.execute(ProfessorDatasource(Professor.model()).createTableSql());
     });
   }
 }

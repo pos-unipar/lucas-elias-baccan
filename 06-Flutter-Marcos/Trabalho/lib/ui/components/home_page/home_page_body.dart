@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trabalho/ui/pages/pages.dart';
+import 'package:trabalho/ui/components/components.dart';
 
-import '../components.dart';
+import 'package:trabalho/ui/pages/pages.dart';
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class HomePageBody extends StatelessWidget {
         texto: 'Alunos',
         icon: Icons.people,
         onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const AlunoListaPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const AlunoListaPage()));
         },
       ),
     );
@@ -34,7 +34,7 @@ class HomePageBody extends StatelessWidget {
         texto: 'Professores',
         icon: Icons.person,
         onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfessorListaPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfessorListaPage()));
         },
       ),
     );
@@ -44,7 +44,7 @@ class HomePageBody extends StatelessWidget {
         texto: 'Disciplinas',
         icon: Icons.bookmark,
         onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const DisciplinaListaPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const DiciplinaListaPage()));
         },
       ),
     );
@@ -83,9 +83,7 @@ class HomePageBody extends StatelessWidget {
       HomePageButtom(
         texto: 'Boletim',
         icon: Icons.assignment_ind,
-        onPressed: () {
-          
-        },
+        onPressed: () {},
       ),
     );
     // Limpar banco de dados

@@ -1,20 +1,6 @@
- class Elemento {
+abstract class Elemento {
+  Elemento({this.id});
   int? id;
-
-  Elemento({
-    this.id,
-  });
-
-  Map<String, Object?> toMap(){
-    return {
-      'id': id,
-    };
-  }
-  
-  factory Elemento.fromMap(Map<String, Object?> map) {
-    return Elemento(
-      id: map['id'] as int,
-    );
-  }
-
+  Map<String, dynamic> toMap();
+  Elemento fromMap(Map<String, dynamic> map);
 }

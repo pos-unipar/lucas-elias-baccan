@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:trabalho/datasources/curso_datasource.dart';
+import 'package:trabalho/datasources/datasources.dart';
 import 'package:trabalho/models/models.dart';
 import 'package:trabalho/ui/components/components.dart';
 import 'package:trabalho/ui/pages/pages.dart';
 
-class CursoListaPage extends StatefulWidget {
-  const CursoListaPage({Key? key}) : super(key: key);
+class ProfessorListaPage extends StatefulWidget {
+  const ProfessorListaPage({Key? key}) : super(key: key);
 
   @override
-  State<CursoListaPage> createState() => _CursoListaPageState();
+  State<ProfessorListaPage> createState() => _ProfessorListaPageState();
 }
 
-class _CursoListaPageState extends State<CursoListaPage> {
-  final CursoDatasource _datasource = CursoDatasource(Curso.model());
+class _ProfessorListaPageState extends State<ProfessorListaPage> {
+  final ProfessorDatasource _datasource = ProfessorDatasource(Professor.model());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gerenciar cursos'),
+        title: const Text('Gerenciar professores'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () async {
-              await Navigator.push(context, MaterialPageRoute(builder: (context) => const CursoFormPage()));
+              await Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfessorFormPage()));
               setState(() {});
             },
           ),
@@ -43,8 +43,8 @@ class _CursoListaPageState extends State<CursoListaPage> {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
-                  Curso curso = snapshot.data![index] as Curso;
-                  return CursoListTile(model: curso);
+                  Professor curso = snapshot.data![index] as Professor;
+                  return ProfessorListTile(model: curso);
                 },
               );
           }

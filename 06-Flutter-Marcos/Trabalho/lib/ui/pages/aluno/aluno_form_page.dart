@@ -3,16 +3,16 @@ import 'package:trabalho/datasources/datasources.dart';
 import 'package:trabalho/models/models.dart';
 import 'package:trabalho/ui/components/components.dart';
 
-class CursoFormPage extends StatefulWidget {
-  final Curso? model;
-  const CursoFormPage({Key? key, this.model}) : super(key: key);
+class AlunoFormPage extends StatefulWidget {
+  final Aluno? model;
+  const AlunoFormPage({Key? key, this.model}) : super(key: key);
 
   @override
-  State<CursoFormPage> createState() => _CursoFormPageState();
+  State<AlunoFormPage> createState() => _AlunoFormPageState();
 }
 
-class _CursoFormPageState extends State<CursoFormPage> {
-  final CursoDatasource _datasource = CursoDatasource(Curso.model());
+class _AlunoFormPageState extends State<AlunoFormPage> {
+  final AlunoDatasource _datasource = AlunoDatasource(Aluno.model());
   final TextEditingController _nomeController = TextEditingController();
 
   @override
@@ -27,17 +27,17 @@ class _CursoFormPageState extends State<CursoFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cadastro de curso'),
+        title: const Text('Cadastro de aluno'),
         actions: [
           IconButton(
             icon: const Icon(Icons.save),
             onPressed: () {
               Elemento model;
               if (widget.model == null) {
-                model = Curso(nome: _nomeController.text);
+                model = Aluno(nome: _nomeController.text);
                 _datasource.insert(model);
               } else {
-                model = Curso(
+                model = Aluno(
                   id: widget.model!.id,
                   nome: _nomeController.text,
                 );
