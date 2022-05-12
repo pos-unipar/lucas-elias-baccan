@@ -6,9 +6,9 @@ class CursoDatasource extends ElementoDatasource {
   static const String columnId = 'id';
   static const String columnNome = 'nome';
 
-  final dataSource = ElementoDatasource<Curso>(Curso.model(), tableName: tabela);
+  final dataSource = ElementoDatasource<Curso>(Curso.model(), nomeTabela: tabela);
 
-  CursoDatasource(Elemento instance) : super(instance, tableName: tabela);
+  CursoDatasource(Elemento instance) : super(instance, nomeTabela: tabela);
 
   @override
   String createTableSql() {

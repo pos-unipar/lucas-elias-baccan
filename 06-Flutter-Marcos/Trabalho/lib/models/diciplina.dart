@@ -5,7 +5,10 @@ class Diciplina extends Elemento {
 
   Diciplina.model() : super();
 
-  Diciplina({id, required this.nome}) : super(id: id);
+  Diciplina({
+    id,
+    required this.nome,
+  }) : super(id: id);
 
   @override
   Map<String, Object?> toMap() {
@@ -17,10 +20,10 @@ class Diciplina extends Elemento {
 
   @override
   Elemento fromMap(Map<String, dynamic> map) {
-    var curso = Diciplina(
+    Elemento model = Diciplina(
       nome: map['nome'] as String,
     );
-    curso.id = map['id'] as int?;
-    return curso;
+    model.id = map['id'] as int?;
+    return model;
   }
 }

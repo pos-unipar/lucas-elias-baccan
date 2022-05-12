@@ -18,10 +18,15 @@ class _ProfessorListTileState extends State<ProfessorListTile> {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         child: Card(
-          child: Row(
+          elevation: 5,
+          child: Column(
             children: [
-              Flexible(child: CampoTexto(controller: TextEditingController(text: widget.model.id.toString()), texto: 'ID', enabled: false)),
-              Flexible(flex: 5, child: CampoTexto(controller: TextEditingController(text: widget.model.nome), texto: 'Nome', enabled: false)),
+              Row(
+                children: [
+                  Flexible(child: CampoTexto(controller: TextEditingController(text: widget.model.id.toString()), texto: 'ID', enabled: false)),
+                  Flexible(flex: 5, child: CampoTexto(controller: TextEditingController(text: widget.model.nome), texto: 'Nome', enabled: false)),
+                ],
+              ),
             ],
           ),
         ),

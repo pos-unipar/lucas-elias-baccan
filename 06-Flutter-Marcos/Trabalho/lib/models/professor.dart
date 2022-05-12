@@ -5,7 +5,10 @@ class Professor extends Elemento {
 
   Professor.model() : super();
 
-  Professor({id, required this.nome}) : super(id: id);
+  Professor({
+    id,
+    required this.nome,
+  }) : super(id: id);
 
   @override
   Map<String, Object?> toMap() {
@@ -17,10 +20,10 @@ class Professor extends Elemento {
 
   @override
   Elemento fromMap(Map<String, dynamic> map) {
-    var curso = Professor(
+    Elemento model = Professor(
       nome: map['nome'] as String,
     );
-    curso.id = map['id'] as int?;
-    return curso;
+    model.id = map['id'] as int?;
+    return model;
   }
 }

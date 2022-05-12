@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho/datasources/banco_dados.dart';
 import 'package:trabalho/ui/components/components.dart';
 
 import 'package:trabalho/ui/pages/pages.dart';
@@ -91,7 +92,23 @@ class HomePageBody extends StatelessWidget {
       HomePageButtom(
         texto: 'Limpar banco de dados',
         icon: Icons.delete,
-        onPressed: () {},
+        onPressed: () async {
+          // show snackbar
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Limpando banco de dados...'),
+              duration: Duration(seconds: 1),
+            ),
+          );
+          // limpar banco de dados
+          await BancoDados().deletar();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Banco de dados deletado!'),
+              duration: Duration(seconds: 1),
+            ),
+          );
+        },
       ),
     );
     // Gerar dados falsos

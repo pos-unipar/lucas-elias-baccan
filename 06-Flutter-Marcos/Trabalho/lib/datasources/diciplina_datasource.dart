@@ -6,9 +6,9 @@ class DiciplinaDatasource extends ElementoDatasource {
   static const String columnId = 'id';
   static const String columnNome = 'nome';
 
-  final dataSource = ElementoDatasource<Diciplina>(Diciplina.model(), tableName: tabela);
+  final dataSource = ElementoDatasource<Diciplina>(Diciplina.model(), nomeTabela: tabela);
 
-  DiciplinaDatasource(Elemento instance) : super(instance, tableName: tabela);
+  DiciplinaDatasource(Elemento instance) : super(instance, nomeTabela: tabela);
 
   @override
   String createTableSql() {

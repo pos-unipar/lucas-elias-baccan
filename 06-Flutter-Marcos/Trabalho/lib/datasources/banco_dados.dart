@@ -37,4 +37,17 @@ class BancoDados {
       await database.execute(ProfessorDatasource(Professor.model()).createTableSql());
     });
   }
+
+  Future<void> close() async {
+    final Database dbClient = await database;
+    await dbClient.close();
+  }
+
+  Future<void> deletar() async {
+    final Directory directory = await getApplicationDocumentsDirectory();
+    final path = join(directory.path, _databaseName);
+    deleteDatabase(path);
+    _database = null;
+  }
+  
 }

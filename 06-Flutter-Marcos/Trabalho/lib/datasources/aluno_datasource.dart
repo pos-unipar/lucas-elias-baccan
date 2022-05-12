@@ -5,17 +5,21 @@ class AlunoDatasource extends ElementoDatasource {
   static const String tabela = 'aluno';
   static const String columnId = 'id';
   static const String columnNome = 'nome';
+  static const String columnRa = 'ra';
+  static const String columnEmail = 'email';
 
-  final dataSource = ElementoDatasource<Aluno>(Aluno.model(), tableName: tabela);
+  final dataSource = ElementoDatasource<Aluno>(Aluno.model(), nomeTabela: tabela);
 
-  AlunoDatasource(Elemento instance) : super(instance, tableName: tabela);
+  AlunoDatasource(Elemento instance) : super(instance, nomeTabela: tabela);
 
   @override
   String createTableSql() {
     return '''
       CREATE TABLE IF NOT EXISTS $tabela (
         $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-        $columnNome TEXT NOT NULL
+        $columnNome TEXT NOT NULL,
+        $columnRa INTEGER NOT NULL,
+        $columnEmail TEXT NOT NULL
       )
     ''';
   }
