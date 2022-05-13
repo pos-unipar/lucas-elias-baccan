@@ -41,10 +41,8 @@ class ElementoDatasource<T extends Elemento> {
   }
 
   Future<void> delete(Elemento model) async {
-    final Database dbClient = await BancoDados().database;
-    await dbClient.delete(nomeTabela, where: "id = ?", whereArgs: [model.id]);
+     deleteById(model.id!);
   }
-
   Future<void> deleteById(int id) async {
     final Database dbClient = await BancoDados().database;
     await dbClient.delete(nomeTabela, where: "id = ?", whereArgs: [id]);

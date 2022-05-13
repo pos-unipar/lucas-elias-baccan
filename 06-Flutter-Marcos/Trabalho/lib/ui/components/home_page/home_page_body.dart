@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho/datasources/banco_dados.dart';
+import 'package:trabalho/helpers/faker.dart';
 import 'package:trabalho/ui/components/components.dart';
 
 import 'package:trabalho/ui/pages/pages.dart';
@@ -116,7 +117,15 @@ class HomePageBody extends StatelessWidget {
       HomePageButtom(
         texto: 'Gerar dados falsos',
         icon: Icons.change_circle,
-        onPressed: () {},
+        onPressed: () {
+          Faker.gerarDadosFake();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Dados gerados!'),
+              duration: Duration(seconds: 1),
+            ),
+          );
+        },
       ),
     );
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components.dart';
+
 class CustomDismissible extends StatelessWidget {
   final Widget child;
   final Function() onDelete;
@@ -19,16 +21,20 @@ class CustomDismissible extends StatelessWidget {
       direction: DismissDirection.horizontal,
       secondaryBackground: Container(
         color: Colors.red,
-        child: const Align(
-          alignment: Alignment.centerRight,
-          child: Icon(Icons.delete, color: Colors.white, size: 40),
+        child: const Center(
+          child: ListTile(
+            trailing: Icon(Icons.delete),
+            title: Text('Excluir', textAlign: TextAlign.end),
+          ),
         ),
       ),
       background: Container(
         color: Colors.green,
-        child: const Align(
-          alignment: Alignment.centerLeft,
-          child: Icon(Icons.check, color: Colors.white, size: 40),
+        child: const Center(
+          child: ListTile(
+            leading: Icon(Icons.edit),
+            title: Text('Editar', textAlign: TextAlign.start),
+          ),
         ),
       ),
       onDismissed: (DismissDirection direction) async {
@@ -42,19 +48,7 @@ class CustomDismissible extends StatelessWidget {
         if (direction == DismissDirection.endToStart) {
           return await showDialog(
             context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Deseja realmente excluir?'),
-              actions: [
-                OutlinedButton(
-                  onPressed: () => Navigator.pop(context, false),
-                  child: const Text('Não'),
-                ),
-                ElevatedButton(
-                  onPressed: () => Navigator.pop(context, true),
-                  child: const Text('Sim'),
-                ),
-              ],
-            ),
+            builder: (context) => const ExcluirDialog(),
           );
         }
         return true;
