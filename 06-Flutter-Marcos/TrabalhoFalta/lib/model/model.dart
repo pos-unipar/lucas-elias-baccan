@@ -1,0 +1,1 @@
+export 'emissora.dart';
