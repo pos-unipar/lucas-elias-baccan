@@ -70,6 +70,7 @@ class Faker {
     DiciplinaDatasource _datasource = DiciplinaDatasource(Diciplina.model());
     var diciplina = Diciplina(
       nome: _faker.sport.name() + ' Nível ' + _faker.randomGenerator.integer(5, min: 1).toString(),
+      professor: gerarProfessor(),
     );
     _datasource.insert(diciplina);
     return diciplina;

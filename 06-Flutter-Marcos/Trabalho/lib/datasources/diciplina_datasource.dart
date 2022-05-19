@@ -5,6 +5,7 @@ class DiciplinaDatasource extends ElementoDatasource {
   static const String tabela = 'diciplina';
   static const String columnId = 'id';
   static const String columnNome = 'nome';
+  static const String columnProfessor = 'professor';
 
   final dataSource = ElementoDatasource<Diciplina>(Diciplina.model(), nomeTabela: tabela);
 
@@ -15,9 +16,9 @@ class DiciplinaDatasource extends ElementoDatasource {
     return '''
       CREATE TABLE IF NOT EXISTS $tabela (
         $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-        $columnNome TEXT NOT NULL
+        $columnNome TEXT NOT NULL,
+        $columnProfessor TEXT NOT NULL
       )
     ''';
   }
-  
 }

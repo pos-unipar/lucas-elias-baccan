@@ -18,7 +18,7 @@ class _DiciplinaListaPageState extends State<DiciplinaListaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gerenciar alunos'),
+        title: const Text('Gerenciar diciplinas'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),

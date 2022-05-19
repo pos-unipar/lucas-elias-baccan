@@ -14,32 +14,42 @@ class DiciplinaFormPage extends StatefulWidget {
 class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
   final DiciplinaDatasource _datasource = DiciplinaDatasource(Diciplina.model());
   final TextEditingController _nomeController = TextEditingController();
+  late Professor professorSelecionado;
 
   @override
   void initState() {
     super.initState();
     if (widget.model != null) {
       _nomeController.text = widget.model!.nome;
+      professorSelecionado = widget.model!.professor;
     }
+  }
+
+  void onProfessorSelected(Professor professor) {
+    professorSelecionado = professor;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cadastro de aluno'),
+        title: const Text('Cadastro de disciplina'),
         actions: [
           IconButton(
             icon: const Icon(Icons.save),
             onPressed: () {
               Elemento model;
               if (widget.model == null) {
-                model = Diciplina(nome: _nomeController.text);
+                model = Diciplina(
+                  nome: _nomeController.text,
+                  professor: professorSelecionado,
+                );
                 _datasource.insert(model);
               } else {
                 model = Diciplina(
                   id: widget.model!.id,
                   nome: _nomeController.text,
+                  professor: professorSelecionado,
                 );
                 _datasource.update(model);
               }
@@ -51,6 +61,10 @@ class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
       body: ListView(
         children: [
           CampoTexto(controller: _nomeController, texto: 'Nome'),
+          CampoDropdownProfessor(
+            onChanged: onProfessorSelected,
+            selecionado: professorSelecionado,
+          ),
         ],
       ),
     );
