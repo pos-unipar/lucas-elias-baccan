@@ -25,10 +25,6 @@ class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
     }
   }
 
-  void onProfessorSelected(Professor professor) {
-    professorSelecionado = professor;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,12 +57,24 @@ class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
       body: ListView(
         children: [
           CampoTexto(controller: _nomeController, texto: 'Nome'),
-          CampoDropdownProfessor(
+          CampoDropdown<Professor>(
+            titulo: "Professor",
+            descricao: "Selecione o professor",
+            getAll: ProfessorDatasource(Professor.model()).getAll,
+            itemAsString: itemAsString,
             onChanged: onProfessorSelected,
             selecionado: widget.model?.professor,
           ),
         ],
       ),
     );
+  }
+
+  void onProfessorSelected(Professor? professor) {
+    professorSelecionado = professor;
+  }
+
+  String itemAsString(Professor? elemento) {
+    return elemento!.nome;
   }
 }
