@@ -19,5 +19,4 @@ class ProfessorDatasource extends ElementoDatasource {
       )
     ''';
   }
-  
 }

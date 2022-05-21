@@ -11,7 +11,7 @@ class Curso extends Elemento {
   }) : super(id: id);
 
   @override
-  Map<String, Object?> toMap() {
+  Future<Map<String, Object?>> toMap() async {
     return {
       'id': id,
       'nome': nome,
@@ -19,7 +19,7 @@ class Curso extends Elemento {
   }
 
   @override
-  Elemento fromMap(Map<String, dynamic> map) {
+  Future<Elemento> fromMap(Map<String, dynamic> map) async {
     Elemento model = Curso(
       nome: map['nome'] as String,
     );

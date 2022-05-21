@@ -1,6 +1,6 @@
-import 'dart:convert';
-
+import 'package:trabalho/datasources/datasources.dart';
 import 'package:trabalho/models/models.dart';
+import 'package:trabalho/extensions/extensions.dart';
 
 class Diciplina extends Elemento {
   late String nome;
@@ -15,19 +15,19 @@ class Diciplina extends Elemento {
   }) : super(id: id);
 
   @override
-  Map<String, Object?> toMap() {
+  Future<Map<String, Object?>> toMap() async {
     return {
       'id': id,
-      'nome': nome,
-      'professor': json.encode(professor.toMap()),
+      DiciplinaDatasource.columnNome: nome,
+      DiciplinaDatasource.columnProfessor: professor.id,
     };
   }
 
   @override
-  Elemento fromMap(Map<String, dynamic> map) {
+  Future<Elemento> fromMap(Map<String, dynamic> map) async {
     Elemento model = Diciplina(
-      nome: map['nome'] as String,
-      professor: Professor.model().fromMap(json.decode(map['professor'])) as Professor,
+      nome: map[DiciplinaDatasource.columnNome] as String,
+      professor: await ProfessorDatasource(Professor.model()).find(map[DiciplinaDatasource.columnProfessor]) as Professor,
     );
     model.id = map['id'] as int?;
     return model;

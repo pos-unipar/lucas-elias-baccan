@@ -5,11 +5,12 @@ import 'package:trabalho/models/models.dart';
 
 class CampoDropdownProfessor extends StatelessWidget {
   final Function(Professor professor) onChanged;
-  final Professor selecionado;
+  final Professor? selecionado;
+
   const CampoDropdownProfessor({
     Key? key,
     required this.onChanged,
-    required this.selecionado,
+    this.selecionado,
   }) : super(key: key);
 
   @override

@@ -11,38 +11,45 @@ class ElementoDatasource<T extends Elemento> {
     required this.nomeTabela,
   });
 
-  Elemento fromMap(dynamic map) => instance.fromMap(map);
+  Future<Elemento> fromMap(dynamic map) async {
+    return await instance.fromMap(map);
+  }
 
   Future<T> find(int id) async {
     final Database dbClient = await BancoDados().database;
     var map = await dbClient.query(nomeTabela, where: "id = ?", whereArgs: [id]);
-    return fromMap(map.first) as T;
+    return await fromMap(map.first) as T;
   }
 
   Future<List<T>> getAll() async {
     final Database dbClient = await BancoDados().database;
     var map = await dbClient.query(nomeTabela);
-    return List.generate(map.length, (i) => fromMap(map[i]) as T);
+    List<T> list = [];
+    for (var m in map) {
+      list.add((await fromMap(m)) as T);
+    }
+    return list;
   }
 
   Future<int> insert(Elemento model) async {
     final Database dbClient = await BancoDados().database;
-    return await dbClient.insert(nomeTabela, model.toMap());
+    return await dbClient.insert(nomeTabela, await model.toMap());
   }
 
   Future<void> update(Elemento model) async {
     final Database dbClient = await BancoDados().database;
     await dbClient.update(
       nomeTabela,
-      model.toMap(),
+      await model.toMap(),
       where: "id = ?",
       whereArgs: [model.id],
     );
   }
 
   Future<void> delete(Elemento model) async {
-     deleteById(model.id!);
+    deleteById(model.id!);
   }
+
   Future<void> deleteById(int id) async {
     final Database dbClient = await BancoDados().database;
     await dbClient.delete(nomeTabela, where: "id = ?", whereArgs: [id]);

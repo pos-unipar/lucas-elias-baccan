@@ -34,6 +34,7 @@ class _DiciplinaListTileState extends State<DiciplinaListTile> {
                     Flexible(child: CampoTexto(controller: TextEditingController(text: widget.model.id.toString()), texto: 'ID', enabled: false)),
                     Flexible(flex: 5, child: CampoTexto(controller: TextEditingController(text: widget.model.nome), texto: 'Nome', enabled: false)),
                   ],
+                  
                 ),
               ],
             ),

@@ -14,7 +14,7 @@ class DiciplinaFormPage extends StatefulWidget {
 class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
   final DiciplinaDatasource _datasource = DiciplinaDatasource(Diciplina.model());
   final TextEditingController _nomeController = TextEditingController();
-  late Professor professorSelecionado;
+  Professor? professorSelecionado;
 
   @override
   void initState() {
@@ -42,14 +42,14 @@ class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
               if (widget.model == null) {
                 model = Diciplina(
                   nome: _nomeController.text,
-                  professor: professorSelecionado,
+                  professor: professorSelecionado!,
                 );
                 _datasource.insert(model);
               } else {
                 model = Diciplina(
                   id: widget.model!.id,
                   nome: _nomeController.text,
-                  professor: professorSelecionado,
+                  professor: professorSelecionado!,
                 );
                 _datasource.update(model);
               }
@@ -63,7 +63,7 @@ class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
           CampoTexto(controller: _nomeController, texto: 'Nome'),
           CampoDropdownProfessor(
             onChanged: onProfessorSelected,
-            selecionado: professorSelecionado,
+            selecionado: widget.model?.professor,
           ),
         ],
       ),
