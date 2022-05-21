@@ -36,6 +36,8 @@ class BancoDados {
       await database.execute(AlunoDatasource(Aluno.model()).createTableSql());
       await database.execute(ProfessorDatasource(Professor.model()).createTableSql());
       await database.execute(DiciplinaDatasource(Diciplina.model()).createTableSql());
+      await database.execute(TurmaDatasource(Turma.model()).createTableSql());
+      await database.execute(TurmaAlunoDatasource(TurmaAluno.model()).createTableSql());
     });
   }
 
@@ -50,5 +52,4 @@ class BancoDados {
     deleteDatabase(path);
     _database = null;
   }
-  
 }

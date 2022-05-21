@@ -37,6 +37,10 @@ class Faker {
     gerarDiciplina();
   }
 
+  static int gerarId(int max) {
+    return _faker.randomGenerator.integer(max, min: 1);
+  }
+
   static Curso gerarCurso() {
     CursoDatasource _datasource = CursoDatasource(Curso.model());
     var curso = Curso(
@@ -66,11 +70,11 @@ class Faker {
     return professor;
   }
 
-  static Diciplina gerarDiciplina() {
+  static Future<Diciplina> gerarDiciplina() async {
     DiciplinaDatasource _datasource = DiciplinaDatasource(Diciplina.model());
     var diciplina = Diciplina(
       nome: _faker.sport.name() + ' Nível ' + _faker.randomGenerator.integer(5, min: 1).toString(),
-      professor: gerarProfessor(),
+      professor: await ProfessorDatasource(Professor.model()).aleatorio() as Professor,
     );
     _datasource.insert(diciplina);
     return diciplina;

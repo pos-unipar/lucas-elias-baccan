@@ -6,4 +6,8 @@ export 'diciplina.dart';
 
 export 'professor.dart';
 
+export 'turma.dart';
+
+export 'turma_aluno.dart';
+
 export 'elemento.dart';

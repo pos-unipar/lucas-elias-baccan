@@ -1,5 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:trabalho/datasources/banco_dados.dart';
+import 'package:trabalho/datasources/local/banco_dados.dart';
+import 'package:trabalho/helpers/faker.dart';
 import 'package:trabalho/models/models.dart';
 
 class ElementoDatasource<T extends Elemento> {
@@ -57,5 +58,10 @@ class ElementoDatasource<T extends Elemento> {
 
   String createTableSql() {
     throw UnimplementedError();
+  }
+
+  Future<T> aleatorio() async {
+    List<T> list = await getAll();
+    return list[Faker.gerarId(list.length)];
   }
 }
