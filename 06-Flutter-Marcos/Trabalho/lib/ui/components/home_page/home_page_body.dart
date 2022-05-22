@@ -66,7 +66,7 @@ class HomePageBody extends StatelessWidget {
         texto: 'Frequências',
         icon: Icons.assignment,
         onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const FrequenciaListaPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const LancamentoPresencaListaPage()));
         },
       ),
     );

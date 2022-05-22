@@ -5,7 +5,8 @@ import 'package:trabalho/models/models.dart';
 class CampoDropdown<T extends Elemento> extends StatelessWidget {
   final String titulo;
   final String descricao;
-  final Future<List<Elemento>> Function() getAll;
+  final Future<List<Elemento>> Function()? getAll;
+  final Future<List<Elemento>>? listItens;
   final String Function(T?) itemAsString;
   final void Function(T?)? onChanged;
   final T? selecionado;
@@ -15,8 +16,9 @@ class CampoDropdown<T extends Elemento> extends StatelessWidget {
     Key? key,
     required this.titulo,
     required this.descricao,
-    required this.getAll,
     required this.itemAsString,
+    this.getAll,
+    this.listItens,
     this.onChanged,
     this.selecionado,
     this.enabled = true,
@@ -27,12 +29,14 @@ class CampoDropdown<T extends Elemento> extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: FutureBuilder(
-        future: getAll(),
+        future: listItens ?? getAll!(),
         builder: (context, AsyncSnapshot<List<Elemento>> snapshot) {
           if (snapshot.hasData) {
             List<T> elementos = [];
             snapshot.data?.forEach((elemento) => elementos.add(elemento as T));
             return DropdownSearch<T>(
+              showClearButton: true,
+              dropdownBuilderSupportsNullItem: true,
               mode: Mode.MENU,
               enabled: enabled,
               items: elementos,

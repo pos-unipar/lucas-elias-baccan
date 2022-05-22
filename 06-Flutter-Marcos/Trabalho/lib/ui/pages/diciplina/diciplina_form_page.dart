@@ -75,6 +75,6 @@ class _DiciplinaFormPageState extends State<DiciplinaFormPage> {
   }
 
   String itemAsString(Professor? elemento) {
-    return elemento!.nome;
+    return elemento!.toString();
   }
 }

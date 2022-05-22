@@ -47,17 +47,21 @@ class TurmaDatasource extends ElementoDatasource {
 
   Future<List<Aluno>> getAlunos(Turma turma) async {
     List<TurmaAluno> turmaAlunos = await dataSourceTurmaAluno.getAllTurmaAluno(turma);
+    turma.alunos.clear();
     for (TurmaAluno turmaAluno in turmaAlunos) {
       turma.alunos.add(await AlunoDatasource(Aluno.model()).find(turmaAluno.aluno.id!) as Aluno);
     }
+    turma.alunos = turma.alunos;
     return turma.alunos;
   }
 
   Future<List<Diciplina>> getDiciplinas(Turma turma) async {
     List<TurmaDiciplina> turmaDiciplina = await dataSourceTurmaDiciplina.getAllTurmaDiciplina(turma);
+    turma.diciplinas.clear();
     for (TurmaDiciplina turmaDiciplina in turmaDiciplina) {
       turma.diciplinas.add(await DiciplinaDatasource(Diciplina.model()).find(turmaDiciplina.diciplina.id!) as Diciplina);
     }
+    turma.diciplinas = turma.diciplinas;
     return turma.diciplinas;
   }
 

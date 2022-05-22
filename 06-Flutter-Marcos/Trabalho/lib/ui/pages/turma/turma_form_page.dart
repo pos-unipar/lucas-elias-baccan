@@ -95,7 +95,7 @@ class _TurmaFormPageState extends State<TurmaFormPage> {
   }
 
   String itemAsString(Curso? curso) {
-    return curso!.nome;
+    return curso!.toString();
   }
 
   void onCursoSelected(Curso? curso) {

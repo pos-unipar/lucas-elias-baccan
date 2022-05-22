@@ -22,7 +22,7 @@ class CampoTexto extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          contentPadding: const EdgeInsets.only(left: 10,top: 10, bottom: 10),
+          contentPadding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
         ),
       ),
     );

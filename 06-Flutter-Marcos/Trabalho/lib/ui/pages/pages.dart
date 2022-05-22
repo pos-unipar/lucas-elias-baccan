@@ -7,6 +7,9 @@ export 'curso/curso_form_page.dart';
 export 'diciplina/diciplina_lista_page.dart';
 export 'diciplina/diciplina_form_page.dart';
 
+export 'lancamento_presenca/lancamento_presenca_lista_page.dart';
+export 'lancamento_presenca/lancamento_presenca_form_page.dart';
+
 export 'professor/professor_lista_page.dart';
 export 'professor/professor_form_page.dart';
 

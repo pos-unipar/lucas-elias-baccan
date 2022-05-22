@@ -41,4 +41,15 @@ class Turma extends Elemento {
     model.id = map['id'] as int?;
     return model;
   }
+
+  @override
+  String toString() {
+    return "$id - ${curso.nome}";
+  }
+
+  @override
+  operator ==(other) => other is Turma && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
