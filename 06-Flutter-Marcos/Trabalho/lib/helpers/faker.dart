@@ -5,7 +5,7 @@ import 'package:trabalho/models/models.dart';
 class Faker {
   static final faker.Faker _faker = faker.Faker();
 
-  static void gerarDadosFake() {
+  static void gerarDadosFake() async {
     gerarCurso();
     gerarCurso();
     gerarCurso();
@@ -27,51 +27,61 @@ class Faker {
     gerarProfessor();
     gerarProfessor();
 
-    gerarDiciplina();
-    gerarDiciplina();
-    gerarDiciplina();
-    gerarDiciplina();
-    gerarDiciplina();
-    gerarDiciplina();
-    gerarDiciplina();
-    gerarDiciplina();
+    await gerarDiciplina();
+    await gerarDiciplina();
+    await gerarDiciplina();
+    await gerarDiciplina();
+    await gerarDiciplina();
+    await gerarDiciplina();
+    await gerarDiciplina();
+    await gerarDiciplina();
 
-    gerarTurma();
-    gerarTurma();
-    gerarTurma();
-    gerarTurma();
+    await gerarTurma();
+    await gerarTurma();
+    await gerarTurma();
+    await gerarTurma();
+    await gerarTurma();
+    await gerarTurma();
+
+    await gerarFrequencia();
+    await gerarFrequencia();
+    await gerarFrequencia();
+
+    await gerarNotas();
+    await gerarNotas();
+    await gerarNotas();
   }
 
   static int gerarId(int max) {
     return _faker.randomGenerator.integer(max, min: 1);
   }
 
-  static Curso gerarCurso() {
+  static Future<Curso> gerarCurso() async {
     CursoDatasource _datasource = CursoDatasource(Curso.model());
     var curso = Curso(
       nome: _faker.sport.name(),
     );
-    _datasource.insert(curso);
+    await _datasource.insert(curso);
     return curso;
   }
 
-  static Aluno gerarAluno() {
+  static Future<Aluno> gerarAluno() async {
     AlunoDatasource _datasource = AlunoDatasource(Aluno.model());
     var aluno = Aluno(
       nome: _faker.person.name(),
       email: _faker.internet.email(),
       ra: _faker.randomGenerator.integer(999999),
     );
-    _datasource.insert(aluno);
+    await _datasource.insert(aluno);
     return aluno;
   }
 
-  static Professor gerarProfessor() {
+  static Future<Professor> gerarProfessor() async {
     ProfessorDatasource _datasource = ProfessorDatasource(Professor.model());
     var professor = Professor(
       nome: _faker.person.name(),
     );
-    _datasource.insert(professor);
+    await _datasource.insert(professor);
     return professor;
   }
 
@@ -81,7 +91,7 @@ class Faker {
       nome: _faker.sport.name() + ' Nível ' + _faker.randomGenerator.integer(5, min: 1).toString(),
       professor: await ProfessorDatasource(Professor.model()).aleatorio() as Professor,
     );
-    _datasource.insert(diciplina);
+    await _datasource.insert(diciplina);
     return diciplina;
   }
 
@@ -91,12 +101,52 @@ class Faker {
       curso: await CursoDatasource(Curso.model()).aleatorio() as Curso,
     );
 
-    for (var i = 0; i < _faker.randomGenerator.integer(5, min: 1); i++) {
+    for (var i = 0; i < _faker.randomGenerator.integer(3, min: 1); i++) {
       turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
       turma.diciplinas.add(await DiciplinaDatasource(Diciplina.model()).aleatorio() as Diciplina);
     }
 
-    _datasource.insert(turma);
+    await _datasource.insert(turma);
     return turma;
+  }
+
+  static Future<void> gerarFrequencia() async {
+    LancamentoPresencaDatasource _datasource = LancamentoPresencaDatasource(LancamentoPresenca.model());
+    List<Turma> turmas = await TurmaDatasource(Turma.model()).getAll(completo: true);
+    for (Turma turma in turmas) {
+      for (Diciplina diciplina in turma.diciplinas) {
+        for (Aluno aluno in turma.alunos) {
+          var lancamento = LancamentoPresenca(
+            turma: turma,
+            aluno: aluno,
+            diciplina: diciplina,
+            presenca: _faker.randomGenerator.boolean(),
+            data: _faker.date.dateTime(minYear: 2020, maxYear: 2022),
+          );
+          await _datasource.insert(lancamento);
+        }
+      }
+    }
+  }
+
+  static Future<void> gerarNotas() async {
+    LancamentoNotaDatasource _datasource = LancamentoNotaDatasource(LancamentoNota.model());
+    List<Turma> turmas = await TurmaDatasource(Turma.model()).getAll(completo: true);
+    for (Turma turma in turmas) {
+      for (Diciplina diciplina in turma.diciplinas) {
+        for (Aluno aluno in turma.alunos) {
+          var lancamento = LancamentoNota(
+            turma: turma,
+            aluno: aluno,
+            diciplina: diciplina,
+            nota1: _faker.randomGenerator.integer(100, min: 1),
+            nota2: _faker.randomGenerator.integer(100, min: 80),
+            nota3: _faker.randomGenerator.integer(100, min: 50),
+            nota4: _faker.randomGenerator.integer(100, min: 50),
+          );
+          await _datasource.insert(lancamento);
+        }
+      }
+    }
   }
 }
