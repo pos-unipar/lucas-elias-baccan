@@ -13,14 +13,16 @@ class Turma extends Elemento {
     required this.curso,
   }) : super(id: id);
 
-  List<Aluno> get alunos => _alunos;
+    List<Aluno> get alunos => _alunos;
   set alunos(List<Aluno> value) {
-    _alunos = value;
+    var seen = <String>{};
+    _alunos = value.where((item) => seen.add(item.id.toString())).toList();
   }
 
   List<Diciplina> get diciplinas => _diciplinas;
   set diciplinas(List<Diciplina> value) {
-    _diciplinas = value;
+    var seen = <String>{};
+    _diciplinas = value.where((item) => seen.add(item.id.toString())).toList();
   }
 
   @override

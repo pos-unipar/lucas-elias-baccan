@@ -4,6 +4,7 @@ export 'diciplina_datasource.dart';
 export 'professor_datasource.dart';
 export 'turma_datasource.dart';
 export 'turma_aluno_datasource.dart';
+export 'turma_diciplina_datasource.dart';
 
 export 'elemento_datasource.dart';
 

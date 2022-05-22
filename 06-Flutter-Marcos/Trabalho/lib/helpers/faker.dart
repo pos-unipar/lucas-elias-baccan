@@ -90,10 +90,11 @@ class Faker {
     var turma = Turma(
       curso: await CursoDatasource(Curso.model()).aleatorio() as Curso,
     );
-    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
-    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
-    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
-    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
+
+    for (var i = 0; i < _faker.randomGenerator.integer(5, min: 1); i++) {
+      turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
+      turma.diciplinas.add(await DiciplinaDatasource(Diciplina.model()).aleatorio() as Diciplina);
+    }
 
     _datasource.insert(turma);
     return turma;

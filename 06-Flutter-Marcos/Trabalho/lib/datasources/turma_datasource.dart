@@ -7,6 +7,7 @@ class TurmaDatasource extends ElementoDatasource {
   static const String columnCurso = 'curso';
 
   final dataSourceTurmaAluno = TurmaAlunoDatasource(TurmaAluno.model());
+  final dataSourceTurmaDiciplina = TurmaDiciplinaDatasource(TurmaDiciplina.model());
 
   TurmaDatasource(Turma instance) : super(instance, nomeTabela: tabela);
 
@@ -25,6 +26,7 @@ class TurmaDatasource extends ElementoDatasource {
     Turma turma = await super.find(id) as Turma;
     if (completo) {
       turma.alunos = await getAlunos(turma);
+      turma.diciplinas = await getDiciplinas(turma);
     }
     return turma;
   }
@@ -37,17 +39,26 @@ class TurmaDatasource extends ElementoDatasource {
       turmasAntigas.add(turma as Turma);
       if (completo) {
         turma.alunos = await getAlunos(turma);
+        turma.diciplinas = await getDiciplinas(turma);
       }
     }
     return turmasAntigas;
   }
 
   Future<List<Aluno>> getAlunos(Turma turma) async {
-    List<TurmaAluno> turmaAlunosAntigos = await dataSourceTurmaAluno.getAllTurmaAluno(turma);
-    for (TurmaAluno turmaAluno in turmaAlunosAntigos) {
+    List<TurmaAluno> turmaAlunos = await dataSourceTurmaAluno.getAllTurmaAluno(turma);
+    for (TurmaAluno turmaAluno in turmaAlunos) {
       turma.alunos.add(await AlunoDatasource(Aluno.model()).find(turmaAluno.aluno.id!) as Aluno);
     }
     return turma.alunos;
+  }
+
+  Future<List<Diciplina>> getDiciplinas(Turma turma) async {
+    List<TurmaDiciplina> turmaDiciplina = await dataSourceTurmaDiciplina.getAllTurmaDiciplina(turma);
+    for (TurmaDiciplina turmaDiciplina in turmaDiciplina) {
+      turma.diciplinas.add(await DiciplinaDatasource(Diciplina.model()).find(turmaDiciplina.diciplina.id!) as Diciplina);
+    }
+    return turma.diciplinas;
   }
 
   @override
@@ -59,6 +70,11 @@ class TurmaDatasource extends ElementoDatasource {
     // Inserir turma_aluno
     for (final aluno in turma.alunos) {
       await dataSourceTurmaAluno.insert(TurmaAluno(turma: turma, aluno: aluno));
+    }
+
+    // Inserir turma_diciplina
+    for (final diciplina in turma.diciplinas) {
+      await dataSourceTurmaDiciplina.insert(TurmaDiciplina(turma: turma, diciplina: diciplina));
     }
 
     return id;
@@ -78,6 +94,17 @@ class TurmaDatasource extends ElementoDatasource {
     // Inserir novos turma_aluno
     for (final aluno in turma.alunos) {
       await dataSourceTurmaAluno.insert(TurmaAluno(turma: turma, aluno: aluno));
+    }
+
+    // Deletar todos os turma_diciplina da turma
+    List<TurmaDiciplina> turmaDiciplinasAntigos = await dataSourceTurmaDiciplina.getAllTurmaDiciplina(turma);
+    for (TurmaDiciplina turmaDiciplina in turmaDiciplinasAntigos) {
+      await dataSourceTurmaDiciplina.delete(turmaDiciplina);
+    }
+
+    // Inserir novos turma_diciplina
+    for (final diciplina in turma.diciplinas) {
+      await dataSourceTurmaDiciplina.insert(TurmaDiciplina(turma: turma, diciplina: diciplina));
     }
   }
 

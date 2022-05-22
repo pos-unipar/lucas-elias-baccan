@@ -38,6 +38,7 @@ class BancoDados {
       await database.execute(DiciplinaDatasource(Diciplina.model()).createTableSql());
       await database.execute(TurmaDatasource(Turma.model()).createTableSql());
       await database.execute(TurmaAlunoDatasource(TurmaAluno.model()).createTableSql());
+      await database.execute(TurmaDiciplinaDatasource(TurmaDiciplina.model()).createTableSql());
     });
   }
 
