@@ -4,6 +4,8 @@ export 'curso.dart';
 
 export 'diciplina.dart';
 
+export 'lancamento_nota.dart';
+
 export 'lancamento_presenca.dart';
 
 export 'professor.dart';

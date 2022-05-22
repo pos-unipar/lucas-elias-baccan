@@ -80,18 +80,21 @@ class _LancamentoPresencaFormPageState extends State<LancamentoPresencaFormPage>
             selecionado: _diciplina,
           ),
           const Divider(thickness: 2),
-          for (final LancamentoPresenca lancamento in _lancamentos)
-            CheckboxListTile(
-              title: Text(lancamento.aluno.toString()),
-              value: lancamento.presenca,
-              onChanged: (bool? value) {
-                setState(() {
-                  lancamento.presenca = value!;
-                });
-              },
-            ),
+          for (final LancamentoPresenca lancamento in _lancamentos) criarItemListaAlunoPresenca(lancamento),
         ],
       ),
+    );
+  }
+
+  Widget criarItemListaAlunoPresenca(LancamentoPresenca lancamento) {
+    return CheckboxListTile(
+      title: Text(lancamento.aluno.toString()),
+      value: lancamento.presenca,
+      onChanged: (bool? value) {
+        setState(() {
+          lancamento.presenca = value!;
+        });
+      },
     );
   }
 

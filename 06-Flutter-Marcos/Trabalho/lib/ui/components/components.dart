@@ -4,6 +4,8 @@ export 'curso/curso_list_tile.dart';
 
 export 'diciplina/diciplina_list_tile.dart';
 
+export 'lancamento_nota/lancamento_nota_list_tile.dart';
+
 export 'lancamento_presenca/lancamento_presenca_list_tile.dart';
 
 export 'professor/professor_list_tile.dart';

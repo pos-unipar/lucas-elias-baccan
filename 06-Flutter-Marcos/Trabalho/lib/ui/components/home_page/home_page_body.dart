@@ -76,7 +76,7 @@ class HomePageBody extends StatelessWidget {
         texto: 'Notas',
         icon: Icons.assignment_turned_in,
         onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const NotaListaPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const LancamentoNotaListaPage()));
         },
       ),
     );
