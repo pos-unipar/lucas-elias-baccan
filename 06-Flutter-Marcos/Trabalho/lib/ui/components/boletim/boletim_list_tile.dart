@@ -21,7 +21,27 @@ class _BoletimListTileState extends State<BoletimListTile> {
           children: [
             Row(
               children: [
-                Flexible(child: CampoTexto(controller: TextEditingController(text: widget.model.aluno.toString()), texto: 'Aluno', enabled: false)),
+                Flexible(
+                  child: CampoTexto(
+                    controller: TextEditingController(text: widget.model.media.toString()),
+                    texto: 'Média',
+                    enabled: false,
+                  ),
+                ),
+                Flexible(
+                  child: CampoTexto(
+                    controller: TextEditingController(text: "${widget.model.faltas.toString()}/${widget.model.presencas}"),
+                    texto: 'Faltas/Presença',
+                    enabled: false,
+                  ),
+                ),
+                Flexible(
+                  child: CampoTexto(
+                    controller: TextEditingController(text: widget.model.aprovado() ? "Sim" : "Não"),
+                    texto: 'Aprovado?',
+                    enabled: false,
+                  ),
+                ),
               ],
             ),
           ],

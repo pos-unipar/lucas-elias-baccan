@@ -1,3 +1,4 @@
+import 'package:sqflite/sqlite_api.dart';
 import 'package:trabalho/datasources/datasources.dart';
 import 'package:trabalho/models/models.dart';
 
@@ -29,5 +30,19 @@ class LancamentoNotaDatasource extends ElementoDatasource {
 
       )
     ''';
+  }
+
+  Future<List<LancamentoNota>> getAllbyTurmaDiciplinaAluno(Turma turma, Diciplina diciplina, Aluno aluno) async {
+    final Database dbClient = await BancoDados().database;
+    var map = await dbClient.query(
+      nomeTabela,
+      where: columnTurma + ' = ? AND ' + columnDisciplina + ' = ? AND ' + columnAluno + ' = ?',
+      whereArgs: [turma.id, diciplina.id, aluno.id],
+    );
+    List<LancamentoNota> list = [];
+    for (var m in map) {
+      list.add((await instance.fromMap(m)) as LancamentoNota);
+    }
+    return list;
   }
 }

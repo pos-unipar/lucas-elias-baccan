@@ -18,4 +18,8 @@ class Boletim {
     required this.faltas,
     required this.presencas,
   });
+
+  bool aprovado() {
+    return media >= 60 && presencas > 0 && (faltas / presencas) <= 0.7;
+  }
 }

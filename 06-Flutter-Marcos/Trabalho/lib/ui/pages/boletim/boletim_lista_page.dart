@@ -107,11 +107,24 @@ class _BoletimListaPageState extends State<BoletimListaPage> {
       int qtdPresencas = presencas.length;
       int qtdFaltas = presencas.where((element) => false == element.presenca).length;
 
+      List<LancamentoNota> notas = await LancamentoNotaDatasource(LancamentoNota.model()).getAllbyTurmaDiciplinaAluno(_turma!, _diciplina!, _aluno!);
+      int qtdNotas = notas.length;
+      int somaNotas = 0;
+      for (LancamentoNota nota in notas) {
+        somaNotas += nota.nota1;
+        somaNotas += nota.nota2;
+        somaNotas += nota.nota3;
+        somaNotas += nota.nota4;
+        qtdNotas = qtdNotas + 4;
+      }
+
+      int media = somaNotas ~/ qtdNotas;
+
       _boletins.add(Boletim(
         turma: _turma!,
         diciplina: _diciplina!,
         aluno: _aluno!,
-        media: 0,
+        media: media,
         faltas: qtdFaltas,
         presencas: qtdPresencas,
       ));
