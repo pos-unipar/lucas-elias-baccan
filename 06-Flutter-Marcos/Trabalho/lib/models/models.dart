@@ -1,5 +1,7 @@
 export 'aluno.dart';
 
+export 'boletim.dart';
+
 export 'curso.dart';
 
 export 'diciplina.dart';

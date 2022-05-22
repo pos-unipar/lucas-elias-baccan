@@ -48,8 +48,6 @@ class Faker {
     await gerarFrequencia();
 
     await gerarNotas();
-    await gerarNotas();
-    await gerarNotas();
   }
 
   static int gerarId(int max) {

@@ -1,5 +1,7 @@
 export 'aluno/aluno_list_tile.dart';
 
+export 'boletim/boletim_list_tile.dart';
+
 export 'curso/curso_list_tile.dart';
 
 export 'diciplina/diciplina_list_tile.dart';

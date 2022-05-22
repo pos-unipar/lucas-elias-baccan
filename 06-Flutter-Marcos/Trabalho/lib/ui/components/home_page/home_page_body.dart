@@ -85,7 +85,9 @@ class HomePageBody extends StatelessWidget {
       HomePageButtom(
         texto: 'Boletim',
         icon: Icons.assignment_ind,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const BoletimListaPage()));
+        },
       ),
     );
     // Limpar banco de dados
