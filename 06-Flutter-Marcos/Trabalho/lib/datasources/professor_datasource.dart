@@ -6,9 +6,7 @@ class ProfessorDatasource extends ElementoDatasource {
   static const String columnId = 'id';
   static const String columnNome = 'nome';
 
-  final dataSource = ElementoDatasource<Professor>(Professor.model(), nomeTabela: tabela);
-
-  ProfessorDatasource(Elemento instance) : super(instance, nomeTabela: tabela);
+  ProfessorDatasource(Professor instance) : super(instance, nomeTabela: tabela);
 
   @override
   String createTableSql() {

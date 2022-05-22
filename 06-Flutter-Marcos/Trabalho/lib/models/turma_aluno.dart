@@ -25,8 +25,8 @@ class TurmaAluno extends Elemento {
   @override
   Future<Elemento> fromMap(Map<String, dynamic> map) async {
     Elemento model = TurmaAluno(
-      turma: await TurmaDatasource(TurmaAluno.model()).find(map[TurmaAlunoDatasource.columnTurma]) as Turma,
-      aluno: await AlunoDatasource(TurmaAluno.model()).find(map[TurmaAlunoDatasource.columnAluno]) as Aluno,
+      turma: await TurmaDatasource(Turma.model()).find(map[TurmaAlunoDatasource.columnTurma]),
+      aluno: await AlunoDatasource(Aluno.model()).find(map[TurmaAlunoDatasource.columnAluno]) as Aluno,
     );
     model.id = map['id'] as int?;
     return model;

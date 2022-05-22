@@ -11,7 +11,7 @@ class Turma extends Elemento {
   Turma({
     id,
     required this.curso,
-  });
+  }) : super(id: id);
 
   List<Aluno> get alunos => _alunos;
   set alunos(List<Aluno> value) {

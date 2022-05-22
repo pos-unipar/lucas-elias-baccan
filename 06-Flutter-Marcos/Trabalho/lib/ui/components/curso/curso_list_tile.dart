@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trabalho/datasources/curso_datasource.dart';
+import 'package:trabalho/datasources/datasources.dart';
 import 'package:trabalho/models/models.dart';
 import 'package:trabalho/ui/components/components.dart';
 import 'package:trabalho/ui/pages/pages.dart';

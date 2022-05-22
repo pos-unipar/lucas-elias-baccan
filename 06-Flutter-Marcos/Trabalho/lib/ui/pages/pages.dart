@@ -10,4 +10,7 @@ export 'diciplina/diciplina_form_page.dart';
 export 'professor/professor_lista_page.dart';
 export 'professor/professor_form_page.dart';
 
+export 'turma/turma_lista_page.dart';
+export 'turma/turma_form_page.dart';
+
 export 'home_page.dart';

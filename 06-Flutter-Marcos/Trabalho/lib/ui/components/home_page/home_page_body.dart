@@ -56,7 +56,7 @@ class HomePageBody extends StatelessWidget {
         texto: 'Turmas',
         icon: Icons.co_present_sharp,
         onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const TurmaListaPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const TurmaListaPage()));
         },
       ),
     );

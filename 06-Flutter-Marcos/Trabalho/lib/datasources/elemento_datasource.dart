@@ -12,14 +12,14 @@ class ElementoDatasource<T extends Elemento> {
     required this.nomeTabela,
   });
 
-  Future<Elemento> fromMap(dynamic map) async {
-    return await instance.fromMap(map);
+  Future<T> fromMap(dynamic map) async {
+    return await instance.fromMap(map) as T;
   }
 
   Future<T> find(int id) async {
     final Database dbClient = await BancoDados().database;
     var map = await dbClient.query(nomeTabela, where: "id = ?", whereArgs: [id]);
-    return await fromMap(map.first) as T;
+    return await fromMap(map.first);
   }
 
   Future<List<T>> getAll() async {
@@ -27,7 +27,7 @@ class ElementoDatasource<T extends Elemento> {
     var map = await dbClient.query(nomeTabela);
     List<T> list = [];
     for (var m in map) {
-      list.add((await fromMap(m)) as T);
+      list.add((await fromMap(m)));
     }
     return list;
   }

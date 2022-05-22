@@ -6,13 +6,9 @@ class TurmaDatasource extends ElementoDatasource {
   static const String columnId = 'id';
   static const String columnCurso = 'curso';
 
-  static const String tabelaTurmaAluno = 'turma_aluno';
-  static const String columnTurma = 'turma_id';
-  static const String columnAluno = 'aluno_id';
+  final dataSourceTurmaAluno = TurmaAlunoDatasource(TurmaAluno.model());
 
-  final dataSource = ElementoDatasource<Turma>(Turma.model(), nomeTabela: tabela);
-
-  TurmaDatasource(Elemento instance) : super(instance, nomeTabela: tabela);
+  TurmaDatasource(Turma instance) : super(instance, nomeTabela: tabela);
 
   @override
   String createTableSql() {
@@ -25,10 +21,40 @@ class TurmaDatasource extends ElementoDatasource {
   }
 
   @override
+  Future<Turma> find(int id, {completo = false}) async {
+    Turma turma = await super.find(id) as Turma;
+    if (completo) {
+      turma.alunos = await getAlunos(turma);
+    }
+    return turma;
+  }
+
+  @override
+  Future<List<Turma>> getAll({completo = false}) async {
+    List<Elemento> turmas = await super.getAll();
+    List<Turma> turmasAntigas = [];
+    for (Elemento turma in turmas) {
+      turmasAntigas.add(turma as Turma);
+      if (completo) {
+        turma.alunos = await getAlunos(turma);
+      }
+    }
+    return turmasAntigas;
+  }
+
+  Future<List<Aluno>> getAlunos(Turma turma) async {
+    List<TurmaAluno> turmaAlunosAntigos = await dataSourceTurmaAluno.getAllTurmaAluno(turma);
+    for (TurmaAluno turmaAluno in turmaAlunosAntigos) {
+      turma.alunos.add(await AlunoDatasource(Aluno.model()).find(turmaAluno.aluno.id!) as Aluno);
+    }
+    return turma.alunos;
+  }
+
+  @override
   Future<int> insert(Elemento model) async {
     final int id = await super.insert(model);
-    final Turma turma = model as Turma;
-    final dataSourceTurmaAluno = TurmaAlunoDatasource(TurmaAluno.model());
+    Turma turma = model as Turma;
+    turma.id = id;
 
     // Inserir turma_aluno
     for (final aluno in turma.alunos) {
@@ -42,7 +68,6 @@ class TurmaDatasource extends ElementoDatasource {
   Future<void> update(Elemento model) async {
     await super.update(model);
     final Turma turma = model as Turma;
-    final dataSourceTurmaAluno = TurmaAlunoDatasource(TurmaAluno.model());
 
     // Deletar todos os turma_aluno da turma
     List<TurmaAluno> turmaAlunosAntigos = await dataSourceTurmaAluno.getAllTurmaAluno(turma);

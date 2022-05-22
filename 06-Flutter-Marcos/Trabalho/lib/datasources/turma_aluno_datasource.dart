@@ -8,9 +8,7 @@ class TurmaAlunoDatasource extends ElementoDatasource {
   static const String columnTurma = 'turma_id';
   static const String columnAluno = 'aluno_id';
 
-  final dataSource = ElementoDatasource<TurmaAluno>(TurmaAluno.model(), nomeTabela: tabela);
-
-  TurmaAlunoDatasource(Elemento instance) : super(instance, nomeTabela: tabela);
+  TurmaAlunoDatasource(TurmaAluno instance) : super(instance, nomeTabela: tabela);
 
   @override
   String createTableSql() {
@@ -28,7 +26,7 @@ class TurmaAlunoDatasource extends ElementoDatasource {
     var map = await dbClient.query(nomeTabela, where: columnTurma + ' = ?', whereArgs: [turma.id]);
     List<TurmaAluno> list = [];
     for (var m in map) {
-      list.add((await fromMap(m)) as TurmaAluno);
+      list.add((await instance.fromMap(m)) as TurmaAluno);
     }
     return list;
   }

@@ -8,9 +8,7 @@ class AlunoDatasource extends ElementoDatasource {
   static const String columnRa = 'ra';
   static const String columnEmail = 'email';
 
-  final dataSource = ElementoDatasource<Aluno>(Aluno.model(), nomeTabela: tabela);
-
-  AlunoDatasource(Elemento instance) : super(instance, nomeTabela: tabela);
+  AlunoDatasource(Aluno instance) : super(instance, nomeTabela: tabela);
 
   @override
   String createTableSql() {
@@ -23,5 +21,4 @@ class AlunoDatasource extends ElementoDatasource {
       )
     ''';
   }
-  
 }

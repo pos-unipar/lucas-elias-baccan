@@ -35,6 +35,11 @@ class Faker {
     gerarDiciplina();
     gerarDiciplina();
     gerarDiciplina();
+
+    gerarTurma();
+    gerarTurma();
+    gerarTurma();
+    gerarTurma();
   }
 
   static int gerarId(int max) {
@@ -78,5 +83,19 @@ class Faker {
     );
     _datasource.insert(diciplina);
     return diciplina;
+  }
+
+  static Future<Turma> gerarTurma() async {
+    TurmaDatasource _datasource = TurmaDatasource(Turma.model());
+    var turma = Turma(
+      curso: await CursoDatasource(Curso.model()).aleatorio() as Curso,
+    );
+    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
+    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
+    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
+    turma.alunos.add(await AlunoDatasource(Aluno.model()).aleatorio() as Aluno);
+
+    _datasource.insert(turma);
+    return turma;
   }
 }

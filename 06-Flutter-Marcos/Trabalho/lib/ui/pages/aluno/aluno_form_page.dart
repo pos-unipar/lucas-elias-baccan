@@ -16,7 +16,6 @@ class _AlunoFormPageState extends State<AlunoFormPage> {
   final AlunoDatasource _datasource = AlunoDatasource(Aluno.model());
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _raController = TextEditingController();
-  final TextEditingController _dataNascimentoController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
   @override
