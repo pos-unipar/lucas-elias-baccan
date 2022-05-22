@@ -1,6 +1,5 @@
 import 'package:trabalho/datasources/datasources.dart';
 import 'package:trabalho/models/models.dart';
-import 'package:trabalho/extensions/extensions.dart';
 
 class Diciplina extends Elemento {
   late String nome;
@@ -32,4 +31,15 @@ class Diciplina extends Elemento {
     model.id = map['id'] as int?;
     return model;
   }
+
+  @override
+  String toString() {
+    return "$id - $nome";
+  }
+
+  @override
+  operator ==(other) => other is Diciplina && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }

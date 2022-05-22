@@ -34,4 +34,15 @@ class Aluno extends Elemento {
     model.id = map['id'] as int?;
     return model;
   }
+
+  @override
+  String toString() {
+    return "$id - $nome";
+  }
+
+  @override
+  operator ==(other) => other is Aluno && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }

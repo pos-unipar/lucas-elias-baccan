@@ -13,7 +13,7 @@ class Turma extends Elemento {
     required this.curso,
   }) : super(id: id);
 
-    List<Aluno> get alunos => _alunos;
+  List<Aluno> get alunos => _alunos;
   set alunos(List<Aluno> value) {
     var seen = <String>{};
     _alunos = value.where((item) => seen.add(item.id.toString())).toList();

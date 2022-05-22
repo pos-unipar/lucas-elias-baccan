@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trabalho/datasources/datasources.dart';
 import 'package:trabalho/models/models.dart';
 import 'package:trabalho/ui/components/components.dart';
+import 'package:trabalho/ui/pages/pages.dart';
 
 class TurmaFormPage extends StatefulWidget {
   final Turma? model;
@@ -69,13 +70,21 @@ class _TurmaFormPageState extends State<TurmaFormPage> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ElevatedButton(onPressed: () {}, child: const Text("Gerenciar alunos")),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => TurmaGerenciasAlunos(turma: widget.model!)));
+                      },
+                      child: const Text("Gerenciar alunos")),
                 ),
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ElevatedButton(onPressed: () {}, child: const Text("Gerenciar disciplinas")),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => TurmaGerenciasDiciplina(turma: widget.model!)));
+                      },
+                      child: const Text("Gerenciar disciplinas")),
                 ),
               ),
             ],

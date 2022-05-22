@@ -12,5 +12,7 @@ export 'professor/professor_form_page.dart';
 
 export 'turma/turma_lista_page.dart';
 export 'turma/turma_form_page.dart';
+export 'turma/turma_gerencias_alunos.dart';
+export 'turma/turma_gerencias_diciplina.dart';
 
 export 'home_page.dart';
