@@ -37,9 +37,19 @@
     - [Aula-04/exemplo-aula/aula_04_pos_30_04_2022](./Aula-04/exemplo-aula/)  
         Atividade feito em aula pelo professor.
 
+### Atividade 1
+
+A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/docs/flutter#atividade-1).
+
+- [**Atividade 1**](./TrabalhoFalta/)
+    A atividade solitada pelo professor
+
 ### Trabalho
 
 A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/docs/flutter/#trabalho-final).
+
+- [**Trabalho**](./Trabalho/)
+    O projeto solitado pelo professor
 
 
 ## Outras configurações
