@@ -1,0 +1,52 @@
+# Utilize o VSCode com a esxtensão "REST Client"
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@hostname = localhost
+@port = 4000
+@host = http://{{hostname}}:{{port}}
+@contentType = application/json
+
+### Raiz da API
+GET {{host}}/api
+
+### Erro por não existe
+GET {{host}}/app
+
+##################################################################
+# Produtos
+##################################################################
+### Buscar todos os produtos
+GET {{host}}/products
+
+### Buscar um produto pelo ID
+GET {{host}}/products/10
+
+### Buscar um produto pelo ID (tem que dar erro)
+GET {{host}}/products/0
+
+### Enviar os dados de um novo produto
+POST {{host}}/products
+Content-Type: {{contentType}}
+
+{
+    "name": "Produto Teste",
+    "price": 10.00
+}
+
+### Deletar um produto pelo ID
+DELETE {{host}}/products/10
+
+##################################################################
+# Ordem de compra
+##################################################################
+### Buscar todas as ordens de compra
+GET {{host}}/orders
+
+### Enviar os dados de uma nova ordem de compra
+POST {{host}}/orders
+Content-Type: {{contentType}}
+
+{
+    "productId": 10,
+    "quantity": 2
+}
