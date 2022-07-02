@@ -4,12 +4,12 @@
 
 ### Aula 01
 
-- [**exemplo-aula**](./Aula-01/exemplo-aula/)
+- [**atividades**](./Aula-01/atividades/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
 ### Aula 02
 
-- [**exemplo-aula**](./Aula-02/exemplo-aula/)
+- [**atividades**](./Aula-02/atividades/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
 ### Aula 03
@@ -37,6 +37,7 @@ A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/doc
 
 - Foi adicionado o fork do projeto do professor com o comando abaixo.  
     ```
+    git submodule add https://github.com/pos-unipar/aula-node-posunipar.git 08-Nodejs-Marlon/Aula-03/exemplo-aula/aula-node-posunipar
     ```
 
 - Baixar arquivos do submódulo(fork)

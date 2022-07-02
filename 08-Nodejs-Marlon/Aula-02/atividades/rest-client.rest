@@ -1,0 +1,67 @@
+# Utilize o VSCode com a esxtensão "REST Client"
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@hostname = localhost
+@port = 4000
+@host = http://{{hostname}}:{{port}}
+@contentType = application/json
+
+### Raiz da API
+GET {{host}}/api
+
+### Erro por não existe
+GET {{host}}/app
+
+##################################################################
+# Produtos
+##################################################################
+### Buscar todos os produtos
+GET {{host}}/products
+
+### Buscar um produto pelo ID
+GET {{host}}/products/62b703b4be04b592210d1a56
+
+### Buscar um produto pelo ID (tem que dar erro)
+GET {{host}}/products/0
+
+### Enviar os dados de um novo produto
+POST {{host}}/products
+Content-Type: {{contentType}}
+
+{
+    "name": "Teste Teste",
+    "price": 20.00
+}
+
+### Enviar os dados de uma nova ordem de compra (imagem)
+POST {{host}}/products
+Content-Disposition: form-data; name="productImage"; filename="imagem.jpg"
+Content-Type: image/jpeg
+
+
+### Enviar os dados para atualizar o produto
+PATCH {{host}}/products/62b703b4be04b592210d1a56
+Content-Type: {{contentType}}
+
+{
+    "name": "Produto 2",
+    "price": 12.00
+}
+
+### Deletar um produto pelo ID
+DELETE {{host}}/products/62b703b4be04b592210d1a56
+
+##################################################################
+# Ordem de compra
+##################################################################
+### Buscar todas as ordens de compra
+GET {{host}}/orders
+
+### Enviar os dados de uma nova ordem de compra
+POST {{host}}/orders
+Content-Type: {{contentType}}
+
+{
+    "product": "62b70464c454823fbe58ff66",
+    "quantity": 2
+}
