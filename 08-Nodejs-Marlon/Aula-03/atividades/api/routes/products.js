@@ -1,117 +1,153 @@
-const express = require('express')
-const { default: mongoose } = require('mongoose')
-const router = express.Router()
-const multer = require('multer')
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const multer = require('multer');
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, './uploads');
     },
     filename: function (req, file, cb) {
-        cb(null, new Date().getMilliseconds() + file.originalname)
+        cb(null, new Date().toISOString().replace(':','').replace(':','') + file.originalname)
     }
-})
-const upload = multer({ storage: storage })
+}) 
 
-const ProductModel = mongoose.model('Product')
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' ||
+        file.mimetype === 'image/png') {
+        cb(null,true);
+    } else {
+        cb(null,false);
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
+const ProductModel = mongoose.model('Product');
 
 router.get('/', async (req, res, next) => {
     try {
-        const products = await ProductModel.find().select('name price _id')
+        const products = await ProductModel.find()
+        .select("name price image _id");
         res.status(200).json({
-            message: 'Handling GET requests to /products',
             count: products.length,
-            products: products.map(product => {
+            products: products.map(produto => {
                 return {
-                    name: product.name,
-                    price: product.price,
-                    _id: product._id,
+                    name: produto.name,
+                    price: produto.price,
+                    image: produto.image,
+                    _id: produto._id,
                     request: {
-                        type: 'GET',
-                        url: 'http://localhost:3000/products/' + product._id
+                        type: "GET",
+                        url: "http://localhost:3000/products/"
+                         + produto._id
                     }
                 }
             })
         })
-    } catch (error) {
-        next(error)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
 
 router.post('/', upload.single('productImage'), async (req, res, next) => {
-    try {
+    console.log(req.file);
+    try{
         const product = new ProductModel({
             name: req.body.name,
             price: req.body.price,
             image: req.file.path
-        })
-        await product.save()
+        });
+        await product.save();
         res.status(201).json({
-            message: 'Handling POST requests to /products',
-            product: product
-        })
+            message: 'Produto criado com sucesso!',
+            createdProduct: {
+                name: product.name,
+                price: product.price,
+                _id: product._id,
+                request: {
+                    type: "GET",
+                    url: "http://localhost:3000/products/"
+                        + product._id
+                }
+            }
+        })  
     } catch (err) {
-        console.log(err)
-        res.status(500).json(err)
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
 
 router.get('/:productId', async (req, res, next) => {
+    const id = req.params.productId;
+
     try {
-        const id = req.params.productId
-        const product = await ProductModel.findOne({ _id: id }).select('name price _id')
+        const product = await ProductModel.findOne({_id: id});
         if (product) {
             res.status(200).json({
-                message: 'Handling GET requests to /products/' + id,
-                count: 1,
-                id: id,
-                product: product
-            })
+                product: product,
+                request: {
+                  type: "GET",
+                  url: "http://localhost:3000/products"
+                }
+              });
         } else {
-            res.status(404).json({
-                message: 'Product not found'
-            })
+            res.status(404).json("Produto não existe!");
         }
-    } catch (error) {
-        res.status(500).json(error)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
 
 router.patch('/:productId', async (req, res, next) => {
-    const id = req.params.productId
-
-    const updateCampos = {}
-    Object.entries(req.body).forEach(([key, value]) => {
-        updateCampos[key] = value
+    const id = req.params.productId;
+    const updateCampos = {};
+    Object.entries(req.body).map (item => {
+        console.log(item);
+        updateCampos[item[0]] = item[1];
     })
-
     try {
-        let status = await ProductModel.updateOne(
-            { _id: id },
-            { $set: updateCampos }
-        )
+        let status = await ProductModel.updateOne({_id: id}, 
+            { $set: updateCampos});
 
         res.status(200).json({
-            message: 'Handling PATCH requests to /products/' + id,
-            id: id,
-            status: status
+            message: 'Update products',
+            status: status,
+            request: {
+              type: "GET",
+              url: "http://localhost:3000/products/" + id
+            }
         })
-    } catch (error) {
-        res.status(500).json(error)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
+
 })
+
 
 router.delete('/:productId', async (req, res, next) => {
-    const id = req.params.productId
+    const id = req.params.productId;
+
     try {
-        const status = await ProductModel.deleteOne({ _id: id })
-        res.status(200).json({
-            message: 'Handling DELETE requests to /products/' + id,
-            id: id,
-            status: status
-        })
-    } catch (error) {
-        res.status(500).json(error)
-    }
+        let status = await ProductModel.deleteOne({_id: id});
+        
+            res.status(200).json({
+                message: 'Produto deletado products',
+                status: status
+            })
+        } catch (err) {
+            console.log(err);
+            res.status(500).json(err);
+        }
 })
 
-module.exports = router
+module.exports = router;

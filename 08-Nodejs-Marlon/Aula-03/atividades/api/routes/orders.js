@@ -1,15 +1,15 @@
-const express = require('express')
-const { default: mongoose } = require('mongoose')
-const router = express.Router()
+const express = require('express');
+const mongoose = require('mongoose');
+const router = express.Router();
 
-const OrderModel = mongoose.model('Order')
-const ProductModel = mongoose.model('Product')
+const OrderModel = mongoose.model('Order');
+const ProductModel = mongoose.model('Product');
 
 router.get('/', async (req, res, next) => {
     try {
-        const orders = await OrderModel.find()
+        const orders = await OrderModel.find({}).populate('product', 'name');
+
         res.status(200).json({
-            message: 'Handling GET requests to /orders',
             count: orders.length,
             orders: orders.map(order => {
                 return {
@@ -17,96 +17,101 @@ router.get('/', async (req, res, next) => {
                     quantity: order.quantity,
                     _id: order._id,
                     request: {
-                        type: 'GET',
-                        url: 'http://localhost:' + process.env.PORT + '/orders/' + order._id
+                        type: "GET",
+                        url: "http://localhost:3000/orders/" + order._id
                     }
                 }
-            }),
+            })
         })
-    } catch (error) {
-        res.status(500).json(error)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
 
 router.post('/', async (req, res, next) => {
     try {
+        if (!req.body.productId) {
+            res.status(404)
+            .json({message: "Produto não existe"});
+            return;
+        }
+
         let product = null;
         try {
-            product = await ProductModel.findById(req.body.product)
+            product = await ProductModel
+            .findOne({_id: req.body.productId});
             if (!product) {
-                res.status(404).json({
-                    message: 'Product not found'
-                })
+                res.status(404)
+                .json({message: "Produto não existe"});
                 return;
             }
-        } catch (error) {
-            res.status(500).json(error)
+        } catch (err) {
+            console.log(err);
+            res.status(500).json(err);
         }
 
-        let order = new OrderModel({
-            product: product._id,
-            quantity: req.body.quantity
-        })
-
-        order = await order.save()
-
-        console.log(order)
-        res.status(201).json({
-            message: 'Handling POST requests to /orders',
-            order: order
-        })
-    } catch (error) {
-        res.status(500).json(error)
+        if (product) {
+            let order = new OrderModel ({
+                product: req.body.productId,
+                quantity: req.body.quantity
+            });
+            order = await order.save();
+            res.status(201).json({
+                message: 'Ordem criada com sucesso!',
+                createdOrder: {
+                    product: order.product,
+                    quantity: order.quantity,
+                    _id: order._id,
+                    request: {
+                        type: "GET",
+                        url: "http://localhost:3000/orders/" + order._id
+                    }
+                }
+            })
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
+
 
 router.get('/:orderId', async (req, res, next) => {
-    const id = req.params.orderId
-    let order = null
+    const id = req.params.orderId;
     try {
-        console.log("teste")
-        order = await OrderModel.find({ _id: id }).populate('product', '_id name price')
+        const order = await OrderModel.findOne({_id: id})
+        .populate('product');
         if (order) {
             res.status(200).json({
-                message: 'Handling GET requests to /orders/:orderId',
-                order: order
+                order: order,
+                request: {
+                    type: "GET",
+                    url: "http://localhost:3000/orders"
+                }
             })
         } else {
-            res.status(404).json({
-                message: 'Order not found'
-            })
+            res.status(404).json("Ordem náo existe!");
         }
-    } catch (error) {
-        res.status(500).json(error)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
 
-router.patch('/:orderId', (req, res, next) => {
-    const id = req.params.orderId
-    if (id > 0) {
-        res.status(200).json({
-            message: 'Handling PATCH requests to /orders/' + id,
-            id: id
-        })
-    } else {
-        res.status(404).json({
-            message: 'Order not found'
-        })
-    }
-})
 
 router.delete('/:orderId', async (req, res, next) => {
-    const id = req.params.orderId
+    const id = req.params.orderId;
     try {
-        const status = await OrderModel.deleteOne({ _id: id })
+        const status = await OrderModel.deleteOne({_id: id});
         res.status(200).json({
-            message: 'Handling DELETE requests to /products/' + id,
-            id: id,
+            message: 'Delete order',
             status: status
         })
-    } catch (error) {
-        res.status(500).json(error)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
 
-module.exports = router
+module.exports = router;
