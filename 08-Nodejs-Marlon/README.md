@@ -4,9 +4,6 @@
 
 ### Aula 01
 
-- [**atividades**](./Aula-01/atividades/)
-    Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
-
 - [**exemplo-aula**](./Aula-01/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
