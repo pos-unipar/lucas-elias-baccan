@@ -45,7 +45,7 @@ router.get('/', async (req, res, next) => {
                     _id: produto._id,
                     request: {
                         type: "GET",
-                        url: "http://localhost:3000/products/"
+                        url: "http://localhost:" + process.env.PORT + "/products/"
                          + produto._id
                     }
                 }
@@ -74,7 +74,7 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
                 _id: product._id,
                 request: {
                     type: "GET",
-                    url: "http://localhost:3000/products/"
+                    url: "http://localhost:" + process.env.PORT + "/products/"
                         + product._id
                 }
             }
@@ -85,7 +85,7 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
     }
 });
 
-router.get('/:productId', async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
     const id = req.params.productId;
 
     try {
@@ -95,7 +95,7 @@ router.get('/:productId', async (req, res, next) => {
                 product: product,
                 request: {
                   type: "GET",
-                  url: "http://localhost:3000/products"
+                  url: "http://localhost:" + process.env.PORT + "/products"
                 }
               });
         } else {
@@ -107,7 +107,7 @@ router.get('/:productId', async (req, res, next) => {
     }
 });
 
-router.patch('/:productId', async (req, res, next) => {
+router.patch('/:userId', async (req, res, next) => {
     const id = req.params.productId;
     const updateCampos = {};
     Object.entries(req.body).map (item => {
@@ -123,7 +123,7 @@ router.patch('/:productId', async (req, res, next) => {
             status: status,
             request: {
               type: "GET",
-              url: "http://localhost:3000/products/" + id
+              url: "http://localhost:" + process.env.PORT + "/products/" + id
             }
         })
     } catch (err) {
@@ -134,7 +134,7 @@ router.patch('/:productId', async (req, res, next) => {
 })
 
 
-router.delete('/:productId', async (req, res, next) => {
+router.delete('/:userId', async (req, res, next) => {
     const id = req.params.productId;
 
     try {

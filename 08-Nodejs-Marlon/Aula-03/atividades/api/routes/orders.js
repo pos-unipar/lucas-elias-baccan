@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
                     _id: order._id,
                     request: {
                         type: "GET",
-                        url: "http://localhost:3000/orders/" + order._id
+                        url: "http://localhost:" + process.env.PORT + "/orders/" + order._id
                     }
                 }
             })
@@ -65,7 +65,7 @@ router.post('/', async (req, res, next) => {
                     _id: order._id,
                     request: {
                         type: "GET",
-                        url: "http://localhost:3000/orders/" + order._id
+                        url: "http://localhost:" + process.env.PORT + "/orders/" + order._id
                     }
                 }
             })
@@ -87,7 +87,7 @@ router.get('/:orderId', async (req, res, next) => {
                 order: order,
                 request: {
                     type: "GET",
-                    url: "http://localhost:3000/orders"
+                    url: "http://localhost:" + process.env.PORT + "/orders"
                 }
             })
         } else {

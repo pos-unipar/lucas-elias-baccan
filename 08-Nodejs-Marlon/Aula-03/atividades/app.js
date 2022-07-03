@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const swaggerUi = require('swagger-ui-express');
 
 mongoose.connect(process.env.MONGODB_URI,
     {
@@ -12,20 +13,26 @@ mongoose.connect(process.env.MONGODB_URI,
         console.log('Connected to MongoDB!!!')
     });
 
-    
 require('./api/models/product');
 require('./api/models/order');
+require('./api/models/user');
 
 
 const app = express();
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/users');
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+const passport = require('passport');
+
+require('./api/config/passport')(passport);
+app.use(passport.initialize());
 
 const cors = (req, res, next) => {
     const whitelist = [
@@ -43,7 +50,10 @@ app.use(cors);
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/users', userRoutes);
 
+let swaggerSpec = require('./api/config/swagger');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api', (req, res, next) => {
     res.status(200).json({

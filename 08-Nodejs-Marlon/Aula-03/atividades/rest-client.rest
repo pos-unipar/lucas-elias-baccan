@@ -65,3 +65,57 @@ Content-Type: {{contentType}}
     "product": "62b70464c454823fbe58ff66",
     "quantity": 2
 }
+
+##################################################################
+# Usuarios
+##################################################################
+
+### Buscar todos os usuários
+GET {{host}}/users
+Content-Type: {{contentType}}
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmMwNTVhNjFlNGZkZDBkZmMxYWQyOGUiLCJ1c2VybmFtZSI6InVzZXJ0ZXN0ZTIiLCJleHAiOjE2NjE5NjczOTcsImlhdCI6MTY1Njc4MzM5N30.OCxfr-REeDKdURtHQF2pF4PF4LdqIf10Oqpb8YTJXZ4
+
+
+### Criar um novo usuário
+POST {{host}}/users/signup
+Content-Type: {{contentType}}
+
+{
+    "name": "User 2",
+    "username": "userTeste2",
+    "password": "123456",
+    "acesso": "admin"
+}
+
+### Buscar um usuário pelo ID'
+GET {{host}}/users/62c03750182919b345c92a36
+
+### Atualizar a senha de um usuário
+PATCH {{host}}/users/62c03750182919b345c92a36
+Content-Type: {{contentType}}
+
+{
+    "password": "654321",
+    "acesso": "user"
+}
+
+### Login nao encontrado
+POST {{host}}/users/login
+
+### Login senha errada
+POST {{host}}/users/login
+Content-Type: {{contentType}}
+
+{
+    "username": "userteste2",
+    "password": "12345"
+}
+
+### Login senhacerta
+POST {{host}}/users/login
+Content-Type: {{contentType}}
+
+{
+    "username": "userteste2",
+    "password": "123456"
+}

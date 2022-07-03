@@ -1,0 +1,129 @@
+paths:
+  /products:
+    get:
+      summary: Get all products
+      description: Get all products
+      operationId: getProducts
+      tags:
+        - Products
+      responses:
+        '200':
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/Product'
+        '400':
+          description: Invalid page or limit
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Error'
+    post:
+      summary: Create a product
+      description: Create a product
+      operationId: createProduct
+      tags:
+        - Products
+      parameters:
+        - name: body
+          in: body
+          description: Product object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        '201':
+          description: Successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Product'
+        '400':
+          description: Invalid product
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Error'
+  /products/{id}:
+    get:
+      summary: Get a product by id
+      description: Get a product by id
+      operationId: getProductById
+      tags:
+        - Products
+      parameters:
+        - name: productId
+          in: path
+          description: Product id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: A product
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Product'
+        '400':
+          description: Invalid id
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Error'
+        '404':
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Error'
+definitions:
+  Product:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+        format: double
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+      status:
+        type: integer
+        format: int32
+      errors:
+        type: string
