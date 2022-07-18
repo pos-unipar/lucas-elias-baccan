@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "generator-express-easy-api": "^2.4.1",
+    "generator-ts-api": "^1.2.0"
+  }
+}

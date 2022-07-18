@@ -22,9 +22,6 @@ Atividades que foram solicitadas para serem feitas e entregues, geralmente valem
 
 ### Aula 04
 
-- [**atividades**](./Aula-04/atividades/)
-Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
-
 - [**exemplo-aula**](./Aula-04/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
@@ -38,6 +35,7 @@ A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/doc
 - Foi adicionado o fork do projeto do professor com o comando abaixo.  
     ```
     git submodule add https://github.com/pos-unipar/aula-node-posunipar.git 08-Nodejs-Marlon/Aula-03/exemplo-aula/aula-node-posunipar
+    git submodule add https://github.com/pos-unipar/aula-node-posunipar.git 08-Nodejs-Marlon/Aula-04/exemplo-aula/aula-node-posunipar
     ```
 
 - Baixar arquivos do submódulo(fork)

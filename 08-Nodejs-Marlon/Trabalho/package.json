@@ -1,0 +1,20 @@
+{
+  "name": "trabalho-node-js",
+  "version": "1.0.0",
+  "description": "Trabalho de NodeJS da pós de 2022 da Unipar",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
+  },
+  "author": "Lucas Elias Baccan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "generator-express-easy-api": "^2.4.1",
+    "mongoose": "^6.4.4",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
+  }
+}
