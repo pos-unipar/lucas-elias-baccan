@@ -28,3 +28,5 @@ git clone --recursive https://github.com/pos-unipar/lucas-elias-baccan.git
 |05-Android-Paulo|[Link](./05-Android-Paulo/)
 |06-Flutter-Marcos|[Link](./06-Flutter-Marcos/)
 |07-Python-Everton|[Link](./07-Python-Everton/)
+|08-Nodejs-Marlon|[Link](./08-Nodejs-Marlon/)
+|09-DevOps-Jemerson|[Link](./09-DevOps-Jemerson/)
