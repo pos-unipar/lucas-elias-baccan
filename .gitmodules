@@ -43,6 +43,9 @@
 [submodule "08-Nodejs-Marlon/Aula-03/exemplo-aula/aula-node-posunipar"]
 	path = 08-Nodejs-Marlon/Aula-03/exemplo-aula/aula-node-posunipar
 	url = https://github.com/pos-unipar/aula-node-posunipar.git
+[submodule "08-Nodejs-Marlon/Aula-04/exemplo-aula/aula-node-posunipar"]
+	path = 08-Nodejs-Marlon/Aula-04/exemplo-aula/aula-node-posunipar
+	url = https://github.com/pos-unipar/aula-node-posunipar.git
 [submodule "09-DevOps-Jemerson/Aula-01/exemplo-aula/unipar-devops"]
 	path = 09-DevOps-Jemerson/Aula-01/exemplo-aula/unipar-devops
 	url = https://github.com/pos-unipar/unipar-devops.git
