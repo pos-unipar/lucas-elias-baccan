@@ -1,12 +1,14 @@
 # Trabalho
 
-## Como executar o trabalho
+Trabalho Lucas Elias Baccan - RA: 133493
+
+## Como executar o trabalho 
 
 ```bash
     npm start
 ```
 
-# Comndos utilizados
+## Comndos utilizados
 ```
     npm init
     npm i nodemon --save
