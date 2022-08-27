@@ -7,24 +7,37 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: demo-garage-lol
-      MYSQL_PASSWORD: root
-      MYSQL_USER: user
+      MYSQL_DATABASE: db_mhs
+      MYSQL_PASSWORD: db_mhs
+      MYSQL_USER: db_mhs
     ports:
       - "3306:3306"
     networks:
-      - garage
+      - react_crud
     volumes:
       - mysql:/var/lib/mysql
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
 
-  php:
-    build: .
+  server:
+    build: 
+      dockerfile: Dockerfile.server
     depends_on:
       - mysql
     ports:
-      - 8080:80
+      - 5500:5500
     networks:
-      - garage
+      - react_crud
+  
+  frontend:
+    build: 
+      dockerfile: Dockerfile.frontend
+    depends_on:
+      - mysql
+      - server
+    ports:
+      - 3001:3000
+    networks:
+      - react_crud
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -32,15 +45,17 @@ services:
     restart: always
     environment:
       PMA_HOST: mysql
-      PMA_USER: user
-      PMA_PASSWORD: root
+      PMA_USER: db_mhs
+      PMA_PASSWORD: db_mhs
+    depends_on:
+      - mysql
     ports:
-      - 8081:80
+      - 8080:80
     networks:
-      - garage
+      - react_crud
 
 networks:
-  garage:
+  react_crud:
 
 volumes:
   mysql:

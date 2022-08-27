@@ -49,3 +49,6 @@
 [submodule "09-DevOps-Jemerson/Aula-01/exemplo-aula/unipar-devops"]
 	path = 09-DevOps-Jemerson/Aula-01/exemplo-aula/unipar-devops
 	url = https://github.com/pos-unipar/unipar-devops.git
+[submodule "09-DevOps-Jemerson/Aula-02/exemplo-aula/unipar-devops"]
+	path = 09-DevOps-Jemerson/Aula-02/exemplo-aula/unipar-devops
+	url = https://github.com/pos-unipar/unipar-devops.git

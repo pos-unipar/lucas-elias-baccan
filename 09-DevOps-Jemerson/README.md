@@ -35,6 +35,7 @@ A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/doc
 - Foi adicionado o fork do projeto do professor com o comando abaixo.  
     ```
     git submodule add https://github.com/pos-unipar/unipar-devops.git 09-DevOps-Jemerson/Aula-01/exemplo-aula/unipar-devops
+    git submodule add https://github.com/pos-unipar/unipar-devops.git 09-DevOps-Jemerson/Aula-02/exemplo-aula/unipar-devops
     ```
 - Baixar arquivos do submódulo(fork)
     ```
