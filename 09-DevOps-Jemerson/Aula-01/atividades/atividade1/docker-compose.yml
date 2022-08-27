@@ -1,0 +1,46 @@
+services:
+
+  mysql:
+    build: 
+      dockerfile: Dockerfile.mysql
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo-garage-lol
+      MYSQL_PASSWORD: root
+      MYSQL_USER: user
+    ports:
+      - "3306:3306"
+    networks:
+      - garage
+    volumes:
+      - mysql:/var/lib/mysql
+
+  php:
+    build: .
+    depends_on:
+      - mysql
+    ports:
+      - 8080:80
+    networks:
+      - garage
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: user
+      PMA_PASSWORD: root
+    ports:
+      - 8081:80
+    networks:
+      - garage
+
+networks:
+  garage:
+
+volumes:
+  mysql:

@@ -1,0 +1,6 @@
+FROM mysql:5.7
+
+# create database
+# RUN echo "CREATE DATABASE demo-garage-lol;" | mysql -u root -proot
+# # create garage table with id, nom, marque
+# RUN echo "CREATE TABLE garage (id INT NOT NULL AUTO_INCREMENT, nom VARCHAR(255) NOT NULL, marque VARCHAR(255) NOT NULL, PRIMARY KEY (id));" | mysql -u root -proot demo-garage-lol
