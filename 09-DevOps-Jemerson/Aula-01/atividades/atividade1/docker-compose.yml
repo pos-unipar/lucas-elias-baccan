@@ -17,6 +17,10 @@ services:
     volumes:
       - mysql:/var/lib/mysql
       - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
   server:
     build: 
@@ -35,7 +39,7 @@ services:
       - mysql
       - server
     ports:
-      - 3001:3000
+      - 3000:3000
     networks:
       - react_crud
 
