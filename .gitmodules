@@ -52,3 +52,9 @@
 [submodule "09-DevOps-Jemerson/Aula-02/exemplo-aula/unipar-devops"]
 	path = 09-DevOps-Jemerson/Aula-02/exemplo-aula/unipar-devops
 	url = https://github.com/pos-unipar/unipar-devops.git
+[submodule "09-DevOps-Jemerson/Aula-03/exemplo-aula/my-grails-app"]
+	path = 09-DevOps-Jemerson/Aula-03/exemplo-aula/my-grails-app
+	url = https://github.com/pos-unipar/my-grails-app.git
+[submodule "09-DevOps-Jemerson/Aula-03/exemplo-aula/unipar-devops"]
+	path = 09-DevOps-Jemerson/Aula-03/exemplo-aula/unipar-devops
+	url = https://github.com/pos-unipar/unipar-devops.git

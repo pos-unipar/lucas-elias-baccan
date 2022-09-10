@@ -36,6 +36,8 @@ A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/doc
     ```
     git submodule add https://github.com/pos-unipar/unipar-devops.git 09-DevOps-Jemerson/Aula-01/exemplo-aula/unipar-devops
     git submodule add https://github.com/pos-unipar/unipar-devops.git 09-DevOps-Jemerson/Aula-02/exemplo-aula/unipar-devops
+    git submodule add https://github.com/pos-unipar/unipar-devops.git 09-DevOps-Jemerson/Aula-03/exemplo-aula/unipar-devops
+    git submodule add https://github.com/pos-unipar/my-grails-app.git 09-DevOps-Jemerson/Aula-03/exemplo-aula/my-grails-app
     ```
 - Baixar arquivos do submódulo(fork)
     ```
