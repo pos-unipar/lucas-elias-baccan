@@ -1,0 +1,69 @@
+{{#if hasPages}}
+	{{#each pages key="id" as |item|}}
+		<Ui::UiSpacer @size="100" id={{concat "page-spacer-" item.page.id}} />
+		{{document/document-page
+			expandState=expandState
+			roles=roles
+			pages=pages
+			folder=folder
+			folders=folders
+			toEdit=toEdit
+			blocks=blocks
+			page=item.page
+			meta=item.meta
+			document=document
+			pending=item.pending
+			permissions=permissions
+			attachments=attachments
+			currentPageId=currentPageId
+			refresh=(action refresh)
+			onExpand=(action onExpand)
+			onAttachmentUpload=(action onAttachmentUpload)
+			onAttachmentDelete=(action onAttachmentDelete)
+			onSavePage=(action "onSavePage")
+			onCopyPage=(action "onCopyPage")
+			onMovePage=(action "onMovePage")
+			onDeletePage=(action "onDeletePage")
+			onSavePageAsBlock=(action "onSavePageAsBlock")
+			onPageLevelChange=(action onPageLevelChange)
+			onPageSequenceChange=(action onPageSequenceChange)
+			onShowSectionWizard=(action "onShowSectionWizard")}}
+	{{/each}}
+{{/if}}
+
+{{#if canEdit}}
+	<div class="start-section">
+		<i class="dicon {{constants.Icon.Plus}}" {{action "onShowSectionWizard"}} title={{localize 'section_insert_here'}} role="button" tabindex="0" />
+	</div>
+{{/if}}
+
+{{#if showLikes}}
+	<div class="vote-box no-print">
+		{{#if voteThanks}}
+			<div class="thanks">{{localize 'feedback_thanks'}}</div>
+		{{else}}
+			<div class="prompt">{{folder.likes}}</div>
+			<Ui::UiSpacer @size="200" />
+			<div class="buttons">
+				{{ui/ui-button color=constants.Color.Yellow light=true label=(localize 'feedback_help_yes') onClick=(action "onVote" 1)}}
+				{{ui/ui-button-gap}}
+				{{ui/ui-button color=constants.Color.Yellow light=true label=(localize 'feedback_help_no') onClick=(action "onVote" 2)}}
+			</div>
+		{{/if}}
+	</div>
+{{/if}}
+
+{{#if canEdit}}
+	{{document/add-section
+		pages=pages
+		blocks=blocks
+		folder=folder
+		toEdit=toEdit
+		folders=folders
+		sections=sections
+		document=document
+		permissions=permissions
+		show=showInsertSectionModal
+		beforePage=newSectionLocation
+		onInsertSection=(action onInsertSection)}}
+{{/if}}

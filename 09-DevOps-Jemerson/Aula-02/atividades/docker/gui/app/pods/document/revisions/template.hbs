@@ -1,0 +1,46 @@
+<Layout::MasterNavigation />
+<Layout::MasterToolbar>
+	<div class="zone-1">
+		{{#ui/ui-toolbar dark=false light=false raised=false large=false bordered=false}}
+			{{ui/ui-toolbar-button themed=true uppercase=false icon=constants.Icon.ArrowLeft label=document.name onClick=(action "onBack")}}
+		{{/ui/ui-toolbar}}
+	</div>
+	<div class="zone-2" />
+	<div class="zone-3" />
+</Layout::MasterToolbar>
+
+<Layout::Grid::Container>
+	<Layout::Grid::Sidebar>
+		<div class="sidebar-content">
+			<div class="section">
+				<div class="title">{{localize 'revisions'}}</div>
+				<div class="list">
+					{{#each revisions as |revision|}}
+						<div class="item {{if (eq selectedRevision revision) "selected"}}" {{action "onRevision" revision}}>
+							<i class={{concat "dicon " constants.Icon.TriangleSmallRight}} />
+							<div class="name">{{formatted-date revision.created}}</div>
+						</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</Layout::Grid::Sidebar>
+
+	<Layout::Grid::Content>
+		{{layout/logo-heading
+			title=(localize 'content_revisions')
+			desc=(localize 'content_revisions_explain')
+			icon=constants.Icon.TimeBack}}
+
+		{{document/view-revision
+			pages=pages
+			folder=folder
+			document=document
+			permissions=permissions
+			revisions=revisions
+			revision=selectedRevision
+			onRollback=(action "onRollback")}}
+	</Layout::Grid::Content>
+</Layout::Grid::Container>
+
+

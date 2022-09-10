@@ -1,0 +1,12 @@
+{{layout/logo-heading
+	title=(localize 'authentication')
+	desc=(localize 'admin_auth_explain')
+	icon=constants.Icon.Locked}}
+
+{{customize/auth-settings
+	authProvider=model.authProvider
+	authConfig=model.authConfig
+    onSave=(action "onSave")
+	onSyncLDAP=(action "onSyncLDAP")
+	onSyncKeycloak=(action "onSyncKeycloak")
+	onChange=(action "onChange")}}

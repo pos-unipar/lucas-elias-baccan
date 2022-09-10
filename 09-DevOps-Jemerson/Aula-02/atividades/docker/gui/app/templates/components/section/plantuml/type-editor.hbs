@@ -1,0 +1,42 @@
+{{layout/logo-heading
+	title=(localize 'section_plantuml')
+	desc=(localize 'section_plantuml_explain')
+	icon=constants.Icon.Integrations}}
+
+{{#section/base-editor document=document folder=folder page=page busy=waiting
+	isDirty=(action "isDirty") onCancel=(action "onCancel") onAction=(action "onAction")}}
+
+	<div class="section-plantuml-diagram">
+		<div class="form-group">
+			<label><a href="http://plantuml.com/" target="_blank">PlantUML Diagram</a></label>
+			<Ui::UiSpacer @size="200" />
+			{{focus-textarea value=diagramText rows=30 id=editorId class="diagram-editor form-control mousetrap"}}
+			{{#if emptyDiagram}}
+				<div>
+					<Ui::UiSpacer @size="100" />
+					<p>{{localize 'insert'}}</p>
+					<p>
+						{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'section_plantuml_type_sequence') onClick=(action "onInsertSequence")}}
+						{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'section_plantuml_type_usecase') onClick=(action "onInsertUseCase")}}
+						{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'section_plantuml_type_class') onClick=(action "onInsertClass")}}
+						{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'section_plantuml_type_activity') onClick=(action "onInsertActivity")}}
+						{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'section_plantuml_type_activity2') onClick=(action "onInsertActivityNew")}}
+						{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'section_plantuml_type_component') onClick=(action "onInsertComponent")}}
+						{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'section_plantuml_type_state') onClick=(action "onInsertState")}}
+					</p>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+
+	{{ui/ui-button color=constants.Color.Yellow light=true label=previewButtonCaption onClick=(action "onPreview")}}
+
+	<Ui::UiSpacer @size="200" />
+
+	<div id={{previewId}} class="text-center">
+		<img src={{diagramPreview}}>
+	</div>
+
+	<Ui::UiSpacer @size="200" />
+
+{{/section/base-editor}}

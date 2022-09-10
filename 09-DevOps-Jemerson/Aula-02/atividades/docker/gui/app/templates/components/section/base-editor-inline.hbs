@@ -1,0 +1,60 @@
+<div id="section-editor-{{pageId}}">
+	<div class="grid-container-8-2">
+		<div class="grid-cell-1 grid-cell-width-100">
+			<div class="section-editor">
+				<form>
+					{{#if blockMode}}
+						<div class="form-group">
+							{{focus-input id="page-id-{{pageId}}" value=pageTitle placeholder=(localize 'name')
+								class=(if hasNameError "form-control mousetrap form-control-lg is-invalid" "form-control form-control-lg mousetrap")}}
+						</div>
+						<div class="form-group">
+							{{textarea id="page-excerpt-{{pageId}}" value=page.excerpt rows="2" class=(if hasDescError "form-control mousetrap form-control-lg is-invalid" "form-control form-control-lg mousetrap") placeholder=(localize 'description')}}
+						</div>
+					{{else}}
+						<div class="form-group">
+							{{focus-input type="text" id=pageId value=pageTitle class=(if hasNameError "form-control mousetrap form-control-lg is-invalid" "form-control form-control-lg mousetrap") placeholder=(localize 'name')}}
+						</div>
+					{{/if}}
+				</form>
+			</div>
+		</div>
+		<div class="grid-cell-2 grid-cell-right">
+			{{#if busy}}
+				<img src="/assets/img/busy-gray.gif" class="busy-indicator">
+			{{/if}}
+			{{#ui/ui-toolbar dark=false light=true raised=true large=true bordered=true}}
+				{{#if contentLinkerButton}}
+					{{ui/ui-toolbar-icon icon=constants.Icon.Link color=constants.Color.Gray tooltip=(localize 'link_insert') onClick=(action "onShowLinkModal")}}
+				{{/if}}
+				{{#if previewButton}}
+					{{ui/ui-toolbar-icon icon=previewIcon color=constants.Color.Gray tooltip=previewText onClick=(action "onPreview")}}
+				{{/if}}
+				{{ui/ui-toolbar-icon icon=constants.Icon.Tick color=constants.Color.Green tooltip=(localize 'save') onClick=(action "onAction")}}
+				{{ui/ui-toolbar-icon icon=constants.Icon.Cross color=constants.Color.Red tooltip=(localize 'cancel') onClick=(action "onCancel")}}
+			{{/ui/ui-toolbar}}
+		</div>
+	</div>
+	<div class="section-editor">
+		<div class="canvas">
+			{{yield}}
+		</div>
+	</div>
+</div>
+
+<div id={{concat "discard-modal-" page.id}} class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{localize 'discard_changes'}}</div>
+			<div class="modal-body">
+				<p>{{localize 'discard_confirm'}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'continue') dismiss=true}}
+				{{ui/ui-button color=constants.Color.Red light=true label=(localize 'discard') onClick=(action "onDiscard")}}
+			</div>
+		</div>
+	</div>
+</div>
+
+{{document/content-linker document=document folder=folder page=page showModal=showLinkModal onInsertLink=(action "onInsertLink")}}

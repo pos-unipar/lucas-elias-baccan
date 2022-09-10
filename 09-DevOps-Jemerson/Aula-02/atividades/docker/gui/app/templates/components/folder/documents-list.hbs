@@ -1,0 +1,146 @@
+<div class="view-space">
+
+	<div class="text-right">
+		{{#ui/ui-toolbar dark=false light=false raised=false large=false bordered=false}}
+			{{ui/ui-toolbar-icon icon=constants.Icon.Blocks color=constants.Color.Gray tooltip=(localize 'space_density_complete')
+				selected=(eq viewDensity "1") onClick=(action "onSwitchView" "1")}}
+
+			{{ui/ui-toolbar-icon icon=constants.Icon.All color=constants.Color.Gray tooltip=(localize 'space_density_comfort')
+				selected=(eq viewDensity "2") onClick=(action "onSwitchView" "2")}}
+
+			{{ui/ui-toolbar-label label="—" color=constants.Color.Gray tooltip=(localize 'space_density_compact')
+				selected=(eq viewDensity "3") onClick=(action "onSwitchView" "3")}}
+
+			{{#ui/ui-toolbar-icon icon=constants.Icon.Sort color=constants.Color.Gray tooltip=(localize 'sort')}}
+				{{#attach-popover class="ember-attacher-popper" hideOn="click" showOn="click" isShown=false placement="bottom-end" as |attacher|}}
+					<i class="dicon {{constants.Icon.Cross}} closer" {{action attacher.hide}}  role="button" tabindex="0" aria-label="Close" />
+					<div class="container">
+						<Ui::UiSpacer @size="100" />
+
+						<div class="text-center">
+							<ul class="ui-option-picker ui-option-picker-horiz">
+								<li class="option {{if sortBy.name "selected"}}" {{action "onSetSort" "name"}} role="button" tabindex="0" aria-label="Sort by name">
+									<div class="text">{{localize 'sort_by_name'}}</div>
+								</li>
+								<li class="option {{if sortBy.created "selected"}}" {{action "onSetSort" "created"}} role="button" tabindex="0" aria-label="Sort by created">
+									<div class="text">{{localize 'sort_by_created'}}</div>
+								</li>
+								<li class="option {{if sortBy.updated "selected"}}" {{action "onSetSort" "updated"}} role="button" tabindex="0" aria-label="Sort by revised">
+									<div class="text">{{localize 'sort_by_revised'}}</div>
+								</li>
+							</ul>
+						</div>
+
+						<Ui::UiSpacer @size="100" />
+
+						<div class="text-center">
+							<ul class="ui-option-picker ui-option-picker-horiz">
+								<li class="option {{if sortBy.asc "selected"}}" {{action "onSetSort" "asc"}} role="button" tabindex="0" aria-label="Sort ascending">
+									<div class="text">{{localize 'sort_ascending'}}</div>
+								</li>
+								<li class="option {{if sortBy.desc "selected"}}" {{action "onSetSort" "desc"}} role="button" tabindex="0" aria-label="Sort descending">
+									<div class="text">{{localize 'sort_descending'}}</div>
+								</li>
+							</ul>
+						</div>
+
+						<Ui::UiSpacer @size="300" />
+
+						{{ui/ui-button
+							light=true
+							color=constants.Color.Yellow
+							label=(localize 'sort')
+							onClick=(action "onSortBy" attacher)}}
+					</div>
+				{{/attach-popover}}
+			{{/ui/ui-toolbar-icon}}
+		{{/ui/ui-toolbar}}
+	</div>
+
+	<Ui::UiSpacer @size="200" />
+
+	<ul class="documents">
+		{{#each documents key="id" as |document|}}
+			<li class="document {{if document.selected "selected"}}" id="document-{{document.id}}">
+				{{#link-to "document.index" space.id space.slug document.id document.slug class="info"}}
+					<div class="name">
+                        {{ document.name }}
+                        {{#if document.isSequenced}}
+                            <div class="pinned">
+                                <i class="dicon {{constants.Icon.TickDouble}}" title={{localize 'pinned'}} />
+                            </div>
+                        {{/if}}
+                    </div>
+					{{#if (not-eq viewDensity "3")}}
+						<div class="desc">{{ document.excerpt }}</div>
+					{{/if}}
+					{{#if (eq viewDensity "1")}}
+						<div class="meta">
+                            <div class="lifecycle">
+								<div class="{{if (eq document.lifecycle constants.Lifecycle.Draft) "draft"}}
+								{{if (eq document.lifecycle constants.Lifecycle.Live) "live"}}
+								{{if (eq document.lifecycle constants.Lifecycle.Archived) "archived"}}">
+									{{document.lifecycleLabel}}
+								</div>
+							</div>
+							{{folder/document-categories categories=document.category}}
+							{{folder/document-tags documentTags=document.tags}}
+						</div>
+					{{/if}}
+				{{/link-to}}
+
+				{{#if hasDocumentActions}}
+					<div class="sequence">
+						{{#if document.isSequenced}}
+                            {{#if showingAllDocs}}
+                                <i class="dicon {{constants.Icon.ArrowSmallUp}}" {{action "onPinSequence" document.id "u"}} title={{localize 'move_up'}} role="button" tabindex="0"/>
+                                <i class="dicon {{constants.Icon.ArrowSmallDown}}" {{action "onPinSequence" document.id "d"}} title={{localize 'move_down'}} role="button" tabindex="0" />
+                            {{/if}}
+							<i class="dicon {{constants.Icon.Cross}}" {{action "onUnpin" document.id}} title={{localize 'unpin'}} role="button" tabindex="0" />
+						{{else}}
+							<i class="dicon {{constants.Icon.ArrowSmallUp}}" {{action "onPin" document.id}} title={{localize 'pin'}} role="button" tabindex="0" />
+						{{/if}}
+					</div>
+					<div class="checkbox" {{action "selectDocument" document.id}} role="checkbox" tabindex="0">
+						{{#if document.selected}}
+							<i class="dicon {{constants.Icon.CheckboxChecked}}"/>
+						{{else}}
+							<i class="dicon {{constants.Icon.Checkbox}}"/>
+						{{/if}}
+					</div>
+					{{#if document.selected}}
+						<div class="actions">
+							{{#ui/ui-toolbar dark=false light=true raised=true large=false bordered=true}}
+								{{ui/ui-toolbar-icon icon=constants.Icon.Export color=constants.Color.Gray tooltip=(localize 'export') onClick=(action "onExport")}}
+								{{#if permissions.documentMove}}
+									{{ui/ui-toolbar-icon icon=constants.Icon.Export2 color=constants.Color.Gray tooltip=(localize 'space_change') onClick=(action "onShowMoveDocuments")}}
+								{{/if}}
+								{{#if permissions.documentDelete}}
+									{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red tooltip="Delete" onClick=(action "onShowDeleteDocuments")}}
+								{{/if}}
+							{{/ui/ui-toolbar}}
+						</div>
+					{{/if}}
+				{{/if}}
+
+			</li>
+		{{/each}}
+	</ul>
+</div>
+
+{{#ui/ui-dialog title=(localize 'delete_documents') confirmCaption=(localize 'delete') buttonColor=constants.Color.Red show=showDeleteDialog onAction=(action "onDeleteDocuments")}}
+	<p>{{localize 'delete_confirm'}} ({{selectedDocuments.length}} {{selectedCaption}})</p>
+{{/ui/ui-dialog}}
+
+{{#ui/ui-dialog title=(localize 'move_documents') confirmCaption=(localize 'move') buttonColor=constants.Color.Green show=showMoveDialog onAction=(action "onMoveDocuments")}}
+	<p>{{localize 'space_change_prompt'}} ({{selectedDocuments.length}} {{selectedCaption}})</p>
+	{{ui/ui-list-picker items=moveOptions nameField="name" singleSelect=true}}
+{{/ui/ui-dialog}}
+
+{{#if showAdd}}
+	{{ui/empty-state icon=constants.Icon.ArrowUp message=(localize 'space_empty_state')}}
+{{/if}}
+
+{{#if showLockout}}
+	{{ui/empty-state icon=constants.Icon.Preview message=(localize 'space_lockout')}}
+{{/if}}

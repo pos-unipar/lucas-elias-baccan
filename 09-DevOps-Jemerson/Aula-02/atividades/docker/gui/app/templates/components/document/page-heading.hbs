@@ -1,0 +1,172 @@
+<div class="grid-container-8-2">
+	<div class="grid-cell-1 grid-cell-middle">
+		<div class="section-heading">
+			<div class="page-header">
+				<span class="page-number">{{page.numbering}}</span>
+				<span class="page-title">{{page.title}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="grid-cell-2 grid-cell-right grid-cell-middle">
+		<div class="section-heading no-print" id="page-toolbar-{{ page.id }}">
+			<div class="section-toolbar">
+				{{#if canEdit}}
+					<i class="add-section dicon {{constants.Icon.Plus}}" {{action "onShowSectionWizard" page}} title={{localize 'section_insert'}} tabindex="0" role="button" />
+					<div class="gap"/>
+					<i class="dicon {{constants.Icon.Edit}}" {{action "onEdit"}} title={{localize 'edit'}} tabindex="0" role="button" />
+					<div class="gap"/>
+				{{/if}}
+				<i class="dicon {{constants.Icon.Settings}}" title={{localize 'actions'}} aria-haspopup="menu" aria-label="Dropdown menu for section">
+					{{#attach-popover class="ember-attacher-popper" hideOn="clickout click" showOn="click" isShown=false}}
+						<div class="menu" >
+							<a class="item" href="#" id="page-copy-link-{{page.id}}" {{action "onCopyLink"}} tabindex="0" role="button">{{localize 'copy_link'}}</a>
+							{{#if (or canEdit permissions.documentCopy permissions.documentMove permissions.documentTemplate)}}
+								<div class="divider"></div>
+							{{/if}}
+							{{#if canEdit}}
+								<a class="item" href="#" id={{concat "edit-page-button-" page.id}} {{action "onEdit"}} tabindex="0" role="button">{{localize 'edit'}}</a>
+							{{/if}}
+							{{#if permissions.documentCopy}}
+								<a class="item" href="#" id={{concat "copy-page-button-" page.id}} {{action "onShowCopyModal"}} tabindex="0" role="button">{{localize 'copy'}}</a>
+							{{/if}}
+							{{#if permissions.documentMove}}
+								<a class="item" href="#" id={{concat "move-page-button-" page.id}} {{action "onShowMoveModal"}} tabindex="0" role="button">{{localize 'move'}}</a>
+							{{/if}}
+							{{#if permissions.documentTemplate}}
+								<a class="item" href="#" id={{concat "publish-page-button-" page.id}} {{action "onShowPublishModal"}} tabindex="0" role="button">{{localize 'publish'}}</a>
+							{{/if}}
+							{{#if permissions.documentDelete}}
+								<div class="divider"></div>
+								<a class="item red" href="#" id={{concat "delete-page-button-" page.id}} data-toggle="modal" data-target={{concat "#delete-page-modal-" page.id}} data-backdrop="static">{{localize 'delete'}}</a>
+							{{/if}}
+							{{#if (and canEdit state.actionablePage)}}
+								<div class="divider"></div>
+								{{#unless state.indentDisabled}}
+									<a class="item" href="#" id={{concat "toc-indent-button-" page.id}} {{action "pageIndent"}}>{{localize 'indent'}}</a>
+								{{/unless}}
+								{{#unless state.outdentDisabled}}
+									<a class="item" href="#" id={{concat "toc-outdent-button-" page.id}} {{action "pageOutdent"}}>{{localize 'outdent'}}</a>
+								{{/unless}}
+								{{#unless state.upDisabled}}
+									<a class="item" href="#" id={{concat "toc-up-button-" page.id}} {{action "pageUp"}}>{{localize 'move_up'}}</a>
+								{{/unless}}
+								{{#unless state.downDisabled}}
+									<a class="item" href="#" id={{concat "toc-down-button-" page.id}} {{action "pageDown"}}>{{localize 'move_down'}}</a>
+								{{/unless}}
+							{{/if}}
+						</div>
+					{{/attach-popover}}
+				</i>
+				<div class="gap"/>
+				<i class="dicon {{constants.Icon.Expand}} {{unless expanded "expand"}}" {{action "onExpand"}} title={{localize 'show_hide'}} />
+			</div>
+		</div>
+	</div>
+</div>
+
+{{#if permissions.documentCopy}}
+	<div id={{concat "copy-page-modal-" page.id}} class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-50" role="document">
+			<div class="modal-content">
+				<div class="modal-header">{{localize 'copy'}}</div>
+				<div class="modal-body">
+					<p>{{localize 'section_copy_explain'}}</p>
+					<Ui::UiSpacer @size="100" />
+					<div class="form-group">
+						<label>{{localize 'space'}}</label>
+						{{ui/ui-select content=folders optionValuePath="id" optionLabelPath="name" selection=targetSpace action=(action "onSelectSpace")}}
+					</div>
+					<div class="form-group">
+						<label>{{localize 'document'}}</label>
+						{{ui/ui-select content=targetDocs optionValuePath="id" optionLabelPath="name" selection=targetDoc action=(action "onSelectDoc")}}
+					</div>
+				</div>
+				<div class="modal-footer">
+					{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+					{{ui/ui-button-gap}}
+					{{ui/ui-button color=constants.Color.Green light=true label=(localize 'copy') onClick=(action "onCopyPage")}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{#if permissions.documentMove}}
+	<div id={{concat "move-page-modal-" page.id}} class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-50" role="document">
+			<div class="modal-content">
+				<div class="modal-header">{{localize 'move'}}</div>
+				<div class="modal-body">
+					<p>{{localize 'section_move_explain'}}</p>
+					<Ui::UiSpacer @size="100" />
+					<div class="form-group">
+						<label>Space</label>
+						{{ui/ui-select content=folders optionValuePath="id" optionLabelPath="name" selection=targetSpace action=(action "onSelectSpace")}}
+					</div>
+					<div class="form-group">
+						<label>Document</label>
+						{{ui/ui-select content=targetDocs optionValuePath="id" optionLabelPath="name" selection=targetDoc action=(action "onSelectDoc")}}
+					</div>
+				</div>
+				<div class="modal-footer">
+					{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+					{{ui/ui-button-gap}}
+					{{ui/ui-button color=constants.Color.Green light=true label=(localize 'move') onClick=(action "onMovePage")}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{#if permissions.documentDelete}}
+	<div id= {{concat "delete-page-modal-" page.id}} class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">{{localize 'delete'}}</div>
+				<div class="modal-body">
+					<p></p>
+					<div class="form-group">
+						<div class="form-check">
+							{{input type="checkbox" class="form-check-input" checked=deleteChildren  id=(concat "delete-page-check-" page.id)}}
+							<label class="form-check-label" for= {{concat "delete-page-check-" page.id}}>
+								{{localize 'section_delete_children'}}
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+					{{ui/ui-button-gap}}
+					{{ui/ui-button color=constants.Color.Red light=true label=(localize 'delete') onClick=(action "onDeletePage")}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{#if permissions.documentTemplate}}
+	<div id={{concat "publish-page-modal-" page.id}} class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">{{localize 'section_publish'}}</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="block-title-{{page.id}}">{{localize 'name'}}</label>
+						{{input id=(concat "block-title-" page.id) type="text" class="form-control mousetrap" placeholder="" value=blockTitle}}
+						<small class="form-text text-muted">{{localize 'section_publish_name_explain'}}</small>
+					</div>
+					<div class="form-group">
+						<label for="block-desc-{{page.id}}">{{localize 'description'}}</label>
+						{{textarea id=(concat "block-desc-" page.id) rows="3" class="form-control mousetrap" placeholder="" value=blockExcerpt}}
+						<small class="form-text text-muted">{{localize 'section_publish_desc_explain'}}</small>
+					</div>
+				</div>
+				<div class="modal-footer">
+					{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+					{{ui/ui-button-gap}}
+					{{ui/ui-button color=constants.Color.Green light=true label=(localize 'publish') onClick=(action "onSavePageAsBlock")}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{/if}}

@@ -1,0 +1,6 @@
+{{layout/logo-heading
+	title=(localize 'search')
+	desc=(localize 'admin_search_explain')
+	icon=constants.Icon.Search}}
+
+{{customize/search-index searchStatus=model reindex=(action "reindex")}}

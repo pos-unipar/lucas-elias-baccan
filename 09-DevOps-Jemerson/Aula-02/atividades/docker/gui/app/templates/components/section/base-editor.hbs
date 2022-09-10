@@ -1,0 +1,43 @@
+<div class="grid-container-6-4">
+	<div class="grid-cell-1 grid-cell-width-100">
+		<div class="section-editor">
+			<div class="form-group">
+				{{focus-input type="text" id="page-title" value=page.title class=(if hasNameError "form-control mousetrap form-control-lg is-invalid" "form-control form-control-lg mousetrap") placeholder=(localize 'name')}}
+			</div>
+            {{#if hasExcerpt}}
+                <div class="form-group">
+                    {{textarea id="page-excerpt" value=page.excerpt rows="2" class=(if hasDescError "form-control mousetrap form-control-lg is-invalid" "form-control form-control-lg mousetrap") placeholder=(localize 'description')}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+	<div class="grid-cell-2 grid-cell-right">
+		{{#if busy}}
+			<img src="/assets/img/busy-gray.gif" class="busy-indicator">
+		{{/if}}
+		{{ui/ui-button color=constants.Color.Gray light=true label=cancelLabel onClick=(action "onCancel")}}
+		{{ui/ui-button-gap}}
+		{{ui/ui-button color=constants.Color.Green light=true label=actionLabel onClick=(action "onAction")}}
+	</div>
+</div>
+
+<div class="section-editor">
+	<div class="canvas">
+		{{yield}}
+	</div>
+</div>
+
+<div id={{concat "discard-modal"}} class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{localize 'discard_changes'}}</div>
+			<div class="modal-body">
+				<p>{{localize 'discard_confirm'}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'continue') dismiss=true}}
+				{{ui/ui-button color=constants.Color.Red light=true label=(localize 'discard') onClick=(action "onDiscard")}}
+			</div>
+		</div>
+	</div>
+</div>

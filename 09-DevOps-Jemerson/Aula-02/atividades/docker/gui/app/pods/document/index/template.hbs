@@ -1,0 +1,104 @@
+<Layout::MasterNavigation />
+<Layout::MasterToolbar>
+	<div class="zone-1">
+		<Document::DocumentsList @space={{folder}} @docId={{document.id}} />
+	</div>
+	<div class="zone-2" />
+	<div class="zone-3">
+		{{document/document-toolbar
+			tab=tab
+			roles=roles
+			pages=pages
+			space=folder
+			spaces=folders
+			document=document
+			versions=versions
+			permissions=permissions
+			refresh=(action "refresh")
+			onSaveTemplate=(action "onSaveTemplate")
+			onSaveDocument=(action "onSaveDocument")
+			onDuplicate=(action "onDuplicate")
+			onDocumentDelete=(action "onDocumentDelete")}}
+	</div>
+</Layout::MasterToolbar>
+
+<Layout::Grid::Container>
+	<Layout::Grid::Sidebar>
+		<div class="sidebar-content">
+			<Layout::Grid::SidebarGoTop />
+			<Layout::Grid::SidebarCustomAction>
+				<i class="dicon {{constants.Icon.Expand}} {{if (gt expandState.length 0) "color-green-500"}}" {{action "onExpandAll"}} title={{localize 'expand_collapse'}} />
+			</Layout::Grid::SidebarCustomAction>
+
+			<Ui::UiSpacer @size="200" />
+
+				{{document/sidebar-toc
+					page=page
+					roles=roles
+					pages=pages
+					folder=folder
+					document=document
+					permissions=permissions
+					currentPageId=currentPageId
+					onShowPage=(action "onShowPage")
+					onPageLevelChange=(action "onPageLevelChange")
+					onPageSequenceChange=(action "onPageSequenceChange")}}
+		</div>
+	</Layout::Grid::Sidebar>
+
+	<Layout::Grid::Content>
+		<div class="document-meta">
+			<div class="document-heading">
+				<h1 class="name">{{document.name}}</h1>
+				<h2 class="desc">{{document.excerpt}}</h2>
+				<div class="dates">
+					{{formatted-date document.created}}
+					{{#if (not-eq document.created document.revised)}}
+						&mdash; revised {{formatted-date document.revised}}
+					{{/if}}
+				</div>
+			</div>
+		</div>
+
+		{{document/document-meta
+			tab=tab
+			roles=roles
+			pages=pages
+			space=folder
+			spaces=folders
+			document=document
+			versions=versions
+			attachments=attachments
+			permissions=permissions
+			contributionStatus=contributionStatus
+			approvalStatus=approvalStatus}}
+
+		<Ui::UiSpacer @size="300" />
+
+		{{document/view-content
+			expandState=expandState
+			roles=roles
+			links=links
+			pages=pages
+			blocks=blocks
+			folder=folder
+			folders=folders
+			sections=sections
+			document=document
+			permissions=permissions
+			attachments=attachments
+			currentPageId=currentPageId
+			refresh=(action "refresh")
+			onExpand=(action "onExpand")
+			onSavePage=(action "onSavePage")
+			onCopyPage=(action "onCopyPage")
+			onMovePage=(action "onMovePage")
+			onDeletePage=(action "onPageDeleted")
+			onInsertSection=(action "onInsertSection")
+			onSavePageAsBlock=(action "onSavePageAsBlock")
+			onPageLevelChange=(action "onPageLevelChange")
+			onPageSequenceChange=(action "onPageSequenceChange")
+			onAttachmentUpload=(action "onAttachmentUpload")
+			onAttachmentDelete=(action "onAttachmentDelete")}}
+	</Layout::Grid::Content>
+</Layout::Grid::Container>

@@ -1,0 +1,52 @@
+{{#section/base-editor-inline
+	document=document
+	folder=folder
+	page=page
+	blockMode=blockMode
+	contentLinkerButton=true
+	onInsertLink=(action "onInsertLink")
+	isDirty=(action "isDirty")
+	onCancel=(action "onCancel")
+	onAction=(action "onAction")}}
+
+	<div class="text-right">
+		{{ui/ui-button
+			color=constants.Color.Yellow
+			light=true
+			label=(localize 'section_tabular_import_csv')
+			onClick=(action "onShowImportModal")}}
+	</div>
+
+	<Ui::UiSpacer @size="300" />
+
+	<div id={{editorId}} class="mousetrap wysiwyg wysiwyg-editor">
+		{{{pageBody}}}
+	</div>
+
+	<div id={{modalId}} class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">{{localize 'section_tabular_csv'}}</div>
+				<div class="modal-body">
+					<p class="color-yellow-700">{{localize 'section_tabular_warn'}}</p>
+					<div class="form-group">
+						<label for="csv-data">{{localize 'section_tabular_paste'}}</label>
+						{{textarea id="csv-data" value=importData class="form-control" rows="10"}}
+						<small class="form-text text-muted">{{localize 'section_tabaular_format'}}</small>
+					</div>
+					<div class="form-group">
+						<label>{{localize 'section_tabular_first_row'}}</label>
+						{{x-toggle value=importOption.headers size="medium" theme="light" onToggle=(action (mut importOption.headers))}}
+						<small class="form-text text-muted">{{localize 'section_tabular_first_row_explain'}}</small>
+					</div>
+				</div>
+				<div class="modal-footer">
+					{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+					{{ui/ui-button-gap}}
+					{{ui/ui-button color=constants.Color.Green light=true label=(localize 'import') onClick=(action "onImport")}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{{/section/base-editor-inline}}

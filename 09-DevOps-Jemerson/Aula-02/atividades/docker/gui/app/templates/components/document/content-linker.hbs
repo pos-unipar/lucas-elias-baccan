@@ -1,0 +1,110 @@
+<div id={{concat "content-linker-modal-" page.id}} class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{localize 'link_insert'}}</div>
+			<div class="modal-body">
+				<ul class="tabnav-control text-center">
+					{{#if hasSections}}
+						<li class="tab {{if tab1Selected "selected"}}" {{action "onTabSelect" 1}} role="button" tabindex="0">{{localize 'link_type_section'}}</li>
+					{{/if}}
+					{{#if hasAttachments}}
+						<li class="tab {{if tab2Selected "selected"}}" {{action "onTabSelect" 2}} role="button" tabindex="0">{{localize 'link_type_attachment'}}</li>
+					{{/if}}
+					<li class="tab {{if tab3Selected "selected"}}" {{action "onTabSelect" 3}} role="button" tabindex="0">{{localize 'link_type_search'}}</li>
+					<li class="tab {{if tab4Selected "selected"}}" {{action "onTabSelect" 4}} role="button" tabindex="0">{{localize 'link_type_network'}}</li>
+				</ul>
+
+				{{#if showSections}}
+					<div class="content-linker-modal-container">
+						<p>{{localize 'link_type_section_explain'}}</p>
+						{{ui/ui-list-picker items=candidates.pages nameField="title" singleSelect=true onSelect=(action "setSelection")}}
+					</div>
+				{{/if}}
+
+				{{#if showAttachments}}
+					<div class="content-linker-modal-container">
+						<p>{{localize 'link_type_attachment_explain'}}</p>
+						<div class="widget-list-picker">
+							<ul class="options">
+								{{#each candidates.attachments as |item|}}
+									<li class="option {{if item.selected "selected"}}" {{action "setSelection" item}} role="button" tabindex="0">
+										<div class="text text-truncate">
+											<img class="icon" src="/assets/img/attachments/{{document/file-icon item.context}}">
+											{{item.title}}
+										</div>
+										{{#if item.selected}}
+											<i class="dicon {{constants.Icon.Tick}}" aria-selected="true" />
+										{{/if}}
+									</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				{{/if}}
+
+				{{#if showSearch}}
+					<div class="content-linker-modal-container">
+						<div class="form-group">
+							<label>{{localize 'search'}}</label>
+							{{focus-input id="content-linker-search" type="input" class="form-control" value=keywords placeholder="" autocomplete="off" key-up=(action "onSearch")}}
+							<small class="form-text text-muted">{{localize 'link_type_search_explain'}}</small>
+						</div>
+						{{#unless hasMatches}}
+							<p class="nothing">{{localize 'nothing_found'}}</p>
+						{{/unless}}
+						<div class="widget-list-picker">
+							<ul class="options">
+								{{#each matches.documents as |item|}}
+									<li class="option {{if item.selected "selected"}}" {{action "setSelection" item}} role="button" tabindex="0">
+										<div class="text text-truncate">
+											{{item.title}}<br>{{item.context}}
+										</div>
+										{{#if item.selected}}
+											<i class="dicon {{constants.Icon.Tick}}" aria-selected="true" />
+										{{/if}}
+									</li>
+								{{/each}}
+								{{#each matches.pages as |item|}}
+									<li class="option {{if item.selected "selected"}}" {{action "setSelection" item}} role="button" tabindex="0">
+										<div class="text text-truncate">
+											{{item.title}}<br>{{item.context}}
+										</div>
+										{{#if item.selected}}
+											<i class="dicon {{constants.Icon.Tick}}" aria-selected="true" />
+										{{/if}}
+									</li>
+								{{/each}}
+								{{#each matches.attachments as |item|}}
+									<li class="option {{if item.selected "selected"}}" {{action "setSelection" item}} role="button" tabindex="0">
+										<div class="text text-truncate">
+											<img class="icon" src="/assets/img/attachments/{{document/file-icon item.context}}">
+											{{item.title}}
+										</div>
+										{{#if item.selected}}
+											<i class="dicon {{constants.Icon.Tick}}" aria-selected="true" />
+										{{/if}}
+									</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				{{/if}}
+
+				{{#if showNetwork}}
+					<div class="content-linker-modal-container">
+						<p>{{localize 'link_type_network_explain'}}</p>
+						<div class="form-group">
+							{{focus-input id="content-linker-networklocation" type="input" class="form-control" value=networkLocation placeholder=(localize 'link_type_network_example') autocomplete="off"}}
+							<small class="form-text text-muted"></small>
+						</div>
+					</div>
+				{{/if}}
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'close') dismiss=true}}
+				{{ui/ui-button-gap}}
+				{{ui/ui-button color=constants.Color.Green light=true label=(localize 'insert') onClick=(action "onInsertLink")}}
+			</div>
+		</div>
+	</div>
+</div>

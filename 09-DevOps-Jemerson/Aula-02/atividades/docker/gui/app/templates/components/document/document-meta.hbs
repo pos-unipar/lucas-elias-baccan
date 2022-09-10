@@ -1,0 +1,69 @@
+<div class="document-meta non-printable">
+	<div class="title">{{localize 'status'}}</div>
+	<div class="{{if (eq document.lifecycle constants.Lifecycle.Draft) "label-draft"}}
+		{{if (eq document.lifecycle constants.Lifecycle.Live) "label-live"}}
+		{{if (eq document.lifecycle constants.Lifecycle.Archived) "label-archived"}}">
+		{{document.lifecycleLabel}}
+	</div>
+
+	{{#if (eq document.protection constants.ProtectionType.None)}}
+		<div class="label-open">
+			{{localize 'protection_type_open'}}
+		</div>
+	{{/if}}
+	{{#if (eq document.protection constants.ProtectionType.Review)}}
+		<div class="label-protected">
+			{{localize 'protection_type_protected'}}
+		</div>
+	{{/if}}
+	{{#if (eq document.protection constants.ProtectionType.Lock)}}
+		<div class="label-locked">
+			{{localize 'protection_type_locked'}}
+		</div>
+	{{/if}}
+
+	{{#if contributionStatus}}
+		<div class="label-workflow-status">
+			{{contributionStatus}}
+		</div>
+	{{else}}
+		{{#if approvalStatus}}
+			<div class="label-workflow-status">
+				{{approvalStatus}}
+			</div>
+		{{/if}}
+	{{/if}}
+
+	{{#if document.template}}
+		<div class="label-template non-printable">
+			{{localize 'template'}}
+		</div>
+	{{/if}}
+
+	<Ui::UiSpacer @size="200" />
+
+	<div class="title">{{localize 'category'}} / {{localize 'tag'}}</div>
+	{{#each selectedCategories as |cat|}}
+		<div class="meta-label">
+			<i class="dicon {{constants.Icon.Category}}" title={{localize 'category'}} />
+			{{cat.category}}
+		</div>
+	{{/each}}
+	{{#each tagz as |t|}}
+		<div class="meta-label">
+			<i class="dicon {{constants.Icon.Tag}}" title={{localize 'tag'}} />
+			{{t}}
+		</div>
+	{{/each}}
+	{{#if unassigned}}
+		{{#if permissions.spaceManage}}
+			<div class="empty cursor-pointer" {{action "onEditCategory"}}>{{localize 'unassigned'}}</div>
+		{{else}}
+			<div class="empty">{{localize 'unassigned'}}</div>
+		{{/if}}
+	{{/if}}
+</div>
+
+{{document/sidebar-attachment document=document permissions=permissions}}
+
+<Ui::UiSpacer @size="200" />

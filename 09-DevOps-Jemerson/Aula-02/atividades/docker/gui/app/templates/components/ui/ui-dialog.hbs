@@ -1,0 +1,17 @@
+<div id={{contentId}} class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog {{size}}" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{title}}</div>
+			<div class="modal-body">
+				<form onsubmit={{action "onAction"}} role="form">
+					 {{yield}}
+				</form>
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=cancelCaption dismiss=true onClick=(action "onCancel")}}
+				{{ui/ui-button-gap}}
+				{{ui/ui-button color=buttonColor light=true label=confirmCaption onClick=(action "onAction")}}
+			</div>
+		</div>
+	</div>
+</div>

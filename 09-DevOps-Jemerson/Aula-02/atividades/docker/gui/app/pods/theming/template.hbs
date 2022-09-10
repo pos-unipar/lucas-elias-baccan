@@ -1,0 +1,127 @@
+{{#layout/master-sidebar}}
+	one<br>
+	two<br>
+	three
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+{{/layout/master-sidebar}}
+{{#layout/master-content}}
+	{{ui/ui-button themed=true label=(localize 'save') onClick=(action "onButtonClick" 1)}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button themed=true light=true label=(localize 'update') onClick=(action "onButtonClick" 2)}}
+	{{ui/ui-button-gap}}
+	<br>
+	<br>
+	{{ui/ui-button color=constants.Color.Green label=(localize 'save') onClick=(action "onSuccess")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Yellow label=(localize 'update') onClick=(action "onInfo")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Gray label=(localize 'cancel') onClick=(action "onWarn")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Red label=(localize 'delete') onClick=(action "onError")}}
+	{{ui/ui-button-gap}}
+	<br>
+	<br>
+	{{ui/ui-button color=constants.Color.Green light=true label=(localize 'save') onClick=(action "onSuccess")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Yellow light=true label=(localize 'update') onClick=(action "onInfo")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') onClick=(action "onWarn")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Red light=true label=(localize 'delete') onClick=(action "onError")}}
+	{{ui/ui-button-gap}}
+	<br>
+	<br>
+	{{ui/ui-button color=constants.Color.Green light=true icon=constants.Icon.Plus label=(localize 'save') onClick=(action "onSuccess")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Yellow light=true icon=constants.Icon.Settings label=(localize 'update') onClick=(action "onInfo")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Gray light=true icon=constants.Icon.Print label=(localize 'cancel') onClick=(action "onWarn")}}
+	{{ui/ui-button-gap}}
+	{{ui/ui-button color=constants.Color.Red light=true icon=constants.Icon.Delete label=(localize 'delete') onClick=(action "onError")}}
+	{{ui/ui-button-gap}}
+	<br>
+	<br>
+	{{#ui/ui-toolbar dark=false light=false raised=false large=false bordered=false}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red onClick=(action "onToolbarClick" 1)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Yellow onClick=(action "onToolbarClick" 2)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Settings onClick=(action "onToolbarClick" 3)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Green onClick=(action "onToolbarClick" 4)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Person onClick=(action "onToolbarClick" 5)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Plus color=constants.Color.Green onClick=(action "onToolbarClick" 5)}}
+	{{/ui/ui-toolbar}}
+	<br>
+	<br>
+	{{#ui/ui-toolbar dark=false light=true raised=true large=false bordered=true}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red onClick=(action "onToolbarClick" 1)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Yellow onClick=(action "onToolbarClick" 2)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Settings onClick=(action "onToolbarClick" 3)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Green onClick=(action "onToolbarClick" 4)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Person onClick=(action "onToolbarClick" 5)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Plus color=constants.Color.Green onClick=(action "onToolbarClick" 5)}}
+	{{/ui/ui-toolbar}}
+	<br>
+	<br>
+	{{#ui/ui-toolbar dark=true light=false raised=true large=false bordered=true}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red onClick=(action "onToolbarClick" 1)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Yellow onClick=(action "onToolbarClick" 2)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Settings onClick=(action "onToolbarClick" 3)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Green onClick=(action "onToolbarClick" 4)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Person onClick=(action "onToolbarClick" 5)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Plus color=constants.Color.Green onClick=(action "onToolbarClick" 5)}}
+	{{/ui/ui-toolbar}}
+	<br>
+	<br>
+	{{#ui/ui-toolbar dark=false light=false raised=false large=true bordered=false}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red onClick=(action "onToolbarClick" 1)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Yellow onClick=(action "onToolbarClick" 2)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Settings onClick=(action "onToolbarClick" 3)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Green onClick=(action "onToolbarClick" 4)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Person onClick=(action "onToolbarClick" 5)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Plus color=constants.Color.Green onClick=(action "onToolbarClick" 5)}}
+	{{/ui/ui-toolbar}}
+	<br>
+	<br>
+	{{#ui/ui-toolbar dark=false light=true raised=true large=true bordered=true}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red onClick=(action "onToolbarClick" 1)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Yellow onClick=(action "onToolbarClick" 2)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Settings onClick=(action "onToolbarClick" 3)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Green onClick=(action "onToolbarClick" 4)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Person onClick=(action "onToolbarClick" 5)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Plus color=constants.Color.Green onClick=(action "onToolbarClick" 5)}}
+	{{/ui/ui-toolbar}}
+	<br>
+	<br>
+	{{#ui/ui-toolbar dark=true light=false raised=true large=true bordered=true}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red onClick=(action "onToolbarClick" 1)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Yellow onClick=(action "onToolbarClick" 2)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Settings onClick=(action "onToolbarClick" 3)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Print color=constants.Color.Green onClick=(action "onToolbarClick" 4)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Person onClick=(action "onToolbarClick" 5)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Plus color=constants.Color.Green tooltip="New space" onClick=(action "onToolbarClick" 5)}}
+	{{/ui/ui-toolbar}}
+	<br>
+	<br>
+	{{#ui/ui-toolbar dark=false light=true raised=true large=true bordered=true}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Plus color=constants.Color.Green onClick=(action "onToolbarClick" 5)}}
+		{{ui/ui-toolbar-icon icon=constants.Icon.Settings onClick=(action "onToolbarClick" 3)}}
+	{{/ui/ui-toolbar}}
+	<br>
+	<br>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+	<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+{{/layout/master-content}}

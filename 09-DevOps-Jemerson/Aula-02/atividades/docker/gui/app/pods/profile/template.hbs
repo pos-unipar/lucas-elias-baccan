@@ -1,0 +1,24 @@
+<Layout::MasterNavigation />
+<Layout::MasterToolbar />
+
+<Layout::Grid::Container>
+	<Layout::Grid::Sidebar>
+		<div class="sidebar-content">
+			<div class="section">
+				<div class="title">{{localize 'profile'}}</div>
+				<div class="text">{{localize 'profile_explain'}}</div>
+				<div class="text">
+					{{localize 'product_feedback'}} <a href="mailto:support@documize.com">{{localize 'get_in_touch'}}</a>
+				</div>
+			</div>
+		</div>
+	</Layout::Grid::Sidebar>
+	<Layout::Grid::Content>
+		{{layout/logo-heading
+			title=session.user.fullname
+			desc=(localize 'profile_explain')
+			icon=constants.Icon.Person}}
+
+		{{user/user-profile model=model save=(action "save")}}
+	</Layout::Grid::Content>
+</Layout::Grid::Container>

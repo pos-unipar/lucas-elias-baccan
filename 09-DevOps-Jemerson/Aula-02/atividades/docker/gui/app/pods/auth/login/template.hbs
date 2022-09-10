@@ -1,0 +1,38 @@
+<div class="auth-center">
+	{{#if model.showLogin}}
+		<div class="auth-box">
+			<div class="logo">
+				<img src="{{appMeta.endpoint}}/public/logo?cb={{random-id}}" title="{{appMeta.title}}" alt="{{appMeta.title}}" class="img-fluid">
+				<div class="url">{{appMeta.title}} ({{appMeta.appHost}})</div>
+			</div>
+			<form {{action "login" on="submit"}}>
+				<div class="form-group">
+					{{#if isAuthProviderDocumize}}
+						<label for="authEmail">{{localize 'email'}}</label>
+						{{focus-input type="email" value=email id="authEmail" class="form-control mousetrap" placeholder="" autocomplete="username email"}}
+					{{/if}}
+					{{#if isAuthProviderLDAP}}
+						<label for="authUsername">{{localize 'username'}}</label>
+						{{focus-input type="text" value=username id="authUsername" class="form-control mousetrap" placeholder="" autocomplete="username"}}
+					{{/if}}
+				</div>
+				<div class="form-group">
+					{{#if isAuthProviderDocumize}}
+						<label for="authPassword">{{localize 'password'}}</label>
+						{{input type="password" value=password id="authPassword" class="form-control" autocomplete="current-password"}}
+					{{/if}}
+					{{#if isAuthProviderLDAP}}
+						<label for="authPassword">{{localize 'password'}}</label>
+						{{input type="password" value=password id="authPassword" class="form-control" autocomplete="current-password"}}
+					{{/if}}
+				</div>
+                {{ui/ui-button color=constants.Color.Green light=true label=(localize 'signin') onClick=(action "login")}}
+
+				<div class="{{unless invalidCredentials "invisible"}} color-red-600 mt-3"></div>
+				{{#if isAuthProviderDocumize}}
+					{{#link-to "auth.forgot"}}{{localize 'forgot_password'}}{{/link-to}}
+				{{/if}}
+			</form>
+		</div>
+	{{/if}}
+</div>

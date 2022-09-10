@@ -1,0 +1,25 @@
+<Layout::MasterNavigation @hideNavigation={{true}} />
+<Layout::MasterToolbar />
+
+<Layout::Grid::Container>
+	<Layout::Grid::Sidebar>
+		<div class="sidebar-content">
+			<div class="section">
+				<div class="title">{{localize 'welcome'}}</div>
+				<p>{{localize 'welcome_explain'}}</p>
+			</div>
+		</div>
+	</Layout::Grid::Sidebar>
+
+	<Layout::Grid::Content>
+		{{layout/logo-heading
+			title=appMeta.title
+			desc=appMeta.message
+			logo=true}}
+
+		{{onboard/share-folder
+			serial=serial
+			folderId=folderId
+			slug=slug}}
+	</Layout::Grid::Content>
+</Layout::Grid::Container>

@@ -1,0 +1,108 @@
+{{layout/logo-heading
+	title=(localize 'categories')
+	desc=(localize 'category_explain')
+	icon=constants.Icon.Category}}
+
+<div class="space-admin">
+	<div class="categories">
+		<form class="form" onsubmit={{action "onAdd"}} role="form">
+			<div class="form-group">
+				{{focus-input id="new-category-name" type="text" class="form-control mousetrap" placeholder=(localize 'category') value=newCategory}}
+			</div>
+			{{ui/ui-button color=constants.Color.Green light=true
+				label=(localize 'add') icon=constants.Icon.Category
+				onClick=(action "onAdd")}}
+		</form>
+	</div>
+</div>
+
+<Ui::UiSpacer @size="400" />
+
+<div class="space-admin">
+	<div class="categories">
+		{{#each category as |cat|}}
+			<div class="category">
+				<div class="info">
+					<div class="name">{{cat.category}}</div>
+					<div class="desc">
+						{{localize 'category_assignment_summary' cat.documents cat.users}}
+					</div>
+					{{#unless cat.access}}
+						<p class="color-red-600 bold-500">{{localize 'category_no_access'}}</p>
+					{{/unless}}
+					{{#if cat.isDefault}}
+						<p class="color-yellow-600 bold-500">{{localize 'category_default'}}</p>
+					{{/if}}
+				</div>
+				<div class="actions">
+					{{#ui/ui-toolbar dark=false light=true raised=true large=false bordered=true}}
+						{{ui/ui-toolbar-icon icon=constants.Icon.Locked color=constants.Color.Gray
+							tooltip=(localize 'permissions') onClick=(action "onShowAccessPicker" cat.id)}}
+						{{ui/ui-toolbar-icon icon=constants.Icon.Edit color=constants.Color.Gray
+							tooltip=(localize 'edit') onClick=(action "onShowEdit" cat.id)}}
+						{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red
+							tooltip=(localize 'delete') onClick=(action "onShowDelete" cat.id)}}
+					{{/ui/ui-toolbar}}
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</div>
+
+<div id="category-edit-modal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{localize 'edit'}}</div>
+			<div class="modal-body">
+				<div class="form-group">
+					{{focus-input id="edit-category-name" type="text" class="form-control mousetrap" placeholder=(localize 'name') value=editName}}
+				</div>
+				<div class="form-group">
+					<label>{{localize 'default'}}</label>
+					{{x-toggle value=editDefault size="medium" theme="light" onToggle=(action (mut editDefault))}}
+					<small class="form-text text-muted">{{localize 'category_default_explain'}}</small>
+				</div>
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'close') dismiss=true}}
+				{{ui/ui-button-gap}}
+				{{ui/ui-button color=constants.Color.Green light=true label=(localize 'save') onClick=(action "onSave")}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="category-delete-modal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{localize 'delete'}}</div>
+			<div class="modal-body">
+				<p>{{localize 'category_delete_confirm'}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'close') dismiss=true}}
+				{{ui/ui-button-gap}}
+				{{ui/ui-button color=constants.Color.Red light=true label=(localize 'delete') onClick=(action "onDelete")}}
+			</div>
+		</div>
+	</div>
+</div>
+
+{{#ui/ui-dialog title=(localize 'category_permissions') confirmCaption=(localize 'save') buttonColor=constants.Color.Green show=showCategoryAccess onAction=(action "onGrantAccess")}}
+	<p>{{localize 'category_permissions_explain'}}</p>
+	<div class="widget-list-picker">
+		<ul class="options">
+			{{#each categoryPermissions as |permission|}}
+				<li class="option {{if permission.selected "selected"}}" {{action "onToggle" permission}}>
+					{{permission.name}}
+					{{#if (eq permission.whoId session.user.id)}}
+						<small class="form-text text-muted d-inline-block">(you)</small>
+					{{/if}}
+					{{#if permission.selected}}
+						<i class="dicon {{constants.Icon.Tick}}"/>
+					{{/if}}
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+{{/ui/ui-dialog}}

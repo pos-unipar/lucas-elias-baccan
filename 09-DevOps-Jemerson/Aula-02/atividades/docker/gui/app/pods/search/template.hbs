@@ -1,0 +1,93 @@
+<Layout::MasterNavigation @selectedItem="search" />
+<Layout::MasterToolbar />
+
+<Layout::Grid::Container>
+	<Layout::Grid::Sidebar>
+		<div class="sidebar-content">
+			<div class="section">
+				<div class="title">{{localize 'filter'}}</div>
+				<div class="list">
+					<div class="item">
+						{{input id="search-1" type="checkbox" checked=matchFilter.matchDoc}}
+						<label for="search-1" class="name">{{localize 'search_doc_name'}}</label>
+					</div>
+					<div class="item">
+						{{input id="search-2" type="checkbox" checked=matchFilter.matchContent}}
+						<label for="search-2" class="name">{{localize 'search_doc_content'}}</label>
+					</div>
+					<div class="item">
+						{{input id="search-3" type="checkbox" checked=matchFilter.matchTag}}
+						<label for="search-3" class="name">{{localize 'search_tag_name'}}</label>
+					</div>
+					<div class="item">
+						{{input id="search-4" type="checkbox" checked=matchFilter.matchFile}}
+						<label for="search-4" class="name">{{localize 'search_attachment_name'}}</label>
+					</div>
+				</div>
+			</div>
+			<Ui::UiSpacer @size="200" />
+			<div class="section">
+				<div class="title">{{localize 'search_example_title'}}</div>
+				<div class="view-search">
+					{{#if (eq appMeta.storageProvider constants.StoreProvider.MySQL)}}
+						<div class="syntax">
+							<div class="example">apple banana</div>
+							<div class="explain">{{localize 'search_example1'}}</div>
+							<div class="example">+apple +banana</div>
+							<div class="explain">{{localize 'search_example2'}}</div>
+							<div class="example">+apple macintosh</div>
+							<div class="explain">{{localize 'search_example3'}}</div>
+							<div class="example">+apple -macintosh</div>
+							<div class="explain">{{localize 'search_example4'}}</div>
+							<div class="example">+apple +(&gt;turnover &lt;strudel)</div>
+							<div class="explain">{{localize 'search_example5'}}</div>
+							<div class="example">apple*</div>
+							<div class="explain">{{localize 'search_example6'}}</div>
+							<div class="example">"some words"</div>
+							<div class="explain">{{localize 'search_example7'}}</div>
+						</div>
+					{{/if}}
+					{{#if (eq appMeta.storageProvider constants.StoreProvider.PostgreSQL)}}
+						<div class="syntax">
+							<div class="example">apple | banana</div>
+							<div class="explain">{{localize 'search_example8'}}</div>
+							<div class="example">apple & banana</div>
+							<div class="explain">{{localize 'search_example2'}}</div>
+							<div class="example">apple !macintosh</div>
+							<div class="explain">{{localize 'search_example4'}}</div>
+							<div class="example">google & (apple | microsoft) & !ibm</div>
+							<div class="explain">{{localize 'search_example9'}}</div>
+							<div class="example">apple:*</div>
+							<div class="explain">{{localize 'search_example10'}}</div>
+						</div>
+					{{/if}}
+					{{#if (eq appMeta.storageProvider constants.StoreProvider.SQLServer)}}
+						<div class="syntax">
+							<div class="example">apple OR banana</div>
+							<div class="explain">{{localize 'search_example8'}}</div>
+							<div class="example">apple AND banana</div>
+							<div class="explain">{{localize 'search_example2'}}</div>
+							<div class="example">apple AND NOT macintosh</div>
+							<div class="explain">{{localize 'search_example4'}}</div>
+							<div class="example">"apple*"</div>
+							<div class="explain">{{localize 'search_example6'}}</div>
+							<div class="example">"some words"</div>
+							<div class="explain">{{localize 'search_example7'}}</div>
+						</div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</Layout::Grid::Sidebar>
+
+	<Layout::Grid::Content>
+		{{layout/logo-heading
+			title=(localize 'search')
+			desc=(localize 'search_explain')
+			icon=constants.Icon.Search}}
+
+		{{search/search-view
+			filter=filter
+			matchFilter=matchFilter}}
+	</Layout::Grid::Content>
+</Layout::Grid::Container>

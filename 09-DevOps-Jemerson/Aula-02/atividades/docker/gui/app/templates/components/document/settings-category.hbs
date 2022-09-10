@@ -1,0 +1,19 @@
+{{layout/logo-heading
+	title=(localize 'categories')
+	desc=(localize 'doc_category_explain')
+	icon=constants.Icon.Category}}
+
+{{#if categories}}
+	{{ui/ui-list-picker items=categories nameField="category" singleSelect=false}}
+
+	<Ui::UiSpacer @size="300" />
+
+	{{ui/ui-button
+		color=constants.Color.Green
+		icon=constants.Icon.Category
+		label=(localize 'save')
+		light=true
+		onClick=(action "onSave")}}
+{{else}}
+	<p class="color-green-700">{{localize 'category_none'}}</p>
+{{/if}}

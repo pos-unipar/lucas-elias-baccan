@@ -1,0 +1,8 @@
+{{layout/logo-heading
+	title=(localize 'admin_general')
+	desc=(localize 'admin_general_explain')
+	icon=constants.Icon.Settings}}
+
+{{customize/general-settings model=model
+	onUpdate=(action "onUpdate")
+	onDefaultLogo=(action "onDefaultLogo")}}

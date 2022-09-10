@@ -1,0 +1,29 @@
+<Layout::MasterNavigation />
+<Layout::MasterToolbar>
+	<div class="zone-1">
+		{{#ui/ui-toolbar dark=false light=false raised=false large=false bordered=false}}
+			{{ui/ui-toolbar-button themed=true uppercase=false icon=constants.Icon.ArrowLeft label=model.space.name onClick=(action "onBack")}}
+		{{/ui/ui-toolbar}}
+	</div>
+</Layout::MasterToolbar>
+
+<Layout::Grid::Container>
+	<Layout::Grid::Sidebar>
+		<div class="sidebar-content">
+			<div class="section">
+				<div class="title">{{localize 'about'}}</div>
+				<div class="text">{{localize 'block_explain'}}</div>
+			</div>
+		</div>
+	</Layout::Grid::Sidebar>
+
+	<Layout::Grid::Content>
+		{{layout/logo-heading
+			title=(localize 'blocks')
+			desc=(localize 'block_explain')
+			icon=constants.Icon.Integrations}}
+
+		{{document/block-editor document=model.document folder=model.space block=model.block
+			onCancel=(action "onCancel") onAction=(action "onAction")}}
+	</Layout::Grid::Content>
+</Layout::Grid::Container>

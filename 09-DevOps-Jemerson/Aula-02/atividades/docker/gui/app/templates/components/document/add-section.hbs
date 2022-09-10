@@ -1,0 +1,42 @@
+<div id="add-section-modal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-60" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{localize 'section_insert'}}</div>
+			<div class="modal-body">
+				<div id="new-section-wizard" class="new-section-wizard">
+					<div class="form-group">
+						{{focus-input type="text" id="new-section-name" value=newSectionName
+							class=(if newSectionNameMissing "mousetrap form-control form-control-lg	is-invalid" "mousetrap form-control form-control-lg")
+							placeholder=(localize 'name') autocomplete="off"}}
+					</div>
+
+					<ul class="options">
+						{{#each sections as |section|}}
+							{{#unless section.retired}}
+								<li class="preset-option" {{action "onInsertSection" section}} role="button" tabindex="0">
+									<div class="icon">
+										<img class="img" src="/sections/{{section.contentType}}.png" srcset="/sections/{{section.contentType}}@2x.png">
+									</div>
+									<div class="name">{{section.title}}</div>
+								</li>
+							{{/unless}}
+						{{/each}}
+						{{#if hasBlocks}}
+							<br>
+							<br>
+						{{/if}}
+						{{#each blocks as |block|}}
+							<li class="block-option" {{action "onInsertBlock" block}} role="button" tabindex="0">
+								<div class="name">{{block.title}}</div>
+								<div class="desc">{{block.excerpt}}</div>
+							</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+			</div>
+		</div>
+	</div>
+</div>

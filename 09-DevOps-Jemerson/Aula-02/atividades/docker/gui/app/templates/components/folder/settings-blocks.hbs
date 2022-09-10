@@ -1,0 +1,25 @@
+{{layout/logo-heading
+	title=(localize 'blocks')
+	desc=(localize 'blocks_explain')
+	icon=constants.Icon.Blocks}}
+
+<div class="space-admin">
+	<div class="blocks">
+		{{#each blocks as |block|}}
+			<div class="block">
+				<div class="name">{{block.title}}</div>
+				<div class="desc">{{block.excerpt}}</div>
+				{{#ui/ui-toolbar dark=false light=true raised=true large=false bordered=true}}
+					{{ui/ui-toolbar-icon icon=constants.Icon.Edit color=constants.Color.Gray tooltip=(localize 'edit') onClick=(action "onEdit" block.id)}}
+					{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red tooltip=(localize 'delete') onClick=(action "onShowDeleteDialog" block.id)}}
+				{{/ui/ui-toolbar}}
+			</div>
+		{{/each}}
+	</div>
+</div>
+
+{{#if isSpaceAdmin}}
+	{{#ui/ui-dialog title="Delete Content Block" confirmCaption=(localize 'delete') buttonColor=constants.Color.Red show=showDeleteDialog onAction=(action "onDeleteBlock")}}
+		<p>{{localize 'block_delete_confirm'}}</p>
+	{{/ui/ui-dialog}}
+{{/if}}

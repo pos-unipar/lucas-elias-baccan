@@ -1,0 +1,62 @@
+{{#if spaces}}
+	{{ui/ui-button color=constants.Color.Yellow light=true icon=constants.Icon.Export label=(localize 'space_admin_export') onClick=(action "onExport")}}
+	<Ui::UiSpacer @size="300" />
+
+	<div class="view-customize">
+		<ul class="space-list">
+			{{#each spaces as |space|}}
+				<li class="space">
+					<div class="info">
+						{{#link-to "folder.index" space.id space.slug}}
+							<div class="name">
+								{{#if (eq space.spaceType constants.SpaceType.Public)}}
+									<i class={{concat "dicon " constants.Icon.World}} title={{localize 'public'}} />
+								{{/if}}
+								{{#if (eq space.spaceType constants.SpaceType.Protected)}}
+									<i class={{concat "dicon " constants.Icon.People}} title={{localize 'protected'}} />
+								{{/if}}
+								{{#if (eq space.spaceType constants.SpaceType.Private)}}
+									<i class={{concat "dicon " constants.Icon.Person}} title={{localize 'personal'}} />
+								{{/if}}
+								{{space.name}}
+							</div>
+							<div class="desc">{{space.desc}}</div>
+						{{/link-to}}
+						<Ui::UiSpacer @size="200" />
+						{{#ui/ui-toolbar dark=false light=true raised=true large=false bordered=true}}
+							{{ui/ui-toolbar-icon icon=constants.Icon.AddUser color=constants.Color.Green tooltip=(localize 'space_admin_make_owner') onClick=(action "onOwner" space.id)}}
+							{{ui/ui-toolbar-icon icon=constants.Icon.Delete color=constants.Color.Red tooltip=(localize 'space_delete') onClick=(action "onShow" space.id)}}
+						{{/ui/ui-toolbar}}
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<div id="space-delete-modal" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">{{localize 'space_admin_delete_title'}}</div>
+				<div class="modal-body">
+					<form onsubmit={{action "onDelete"}}>
+						<p>{{localize 'space_admin_delete_check'}}</p>
+						<div class="form-group">
+							<label for="delete-space-name">{{localize 'space_admin_confirm'}}</label>
+							{{input type="text" id="delete-space-name" class="form-control mousetrap" placeholder="" value=deleteSpace.name}}
+							<small class="form-text text-muted">{{localize 'space_admin_confirm_explain'}}</small>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+					{{ui/ui-button-gap}}
+					{{ui/ui-button color=constants.Color.Red light=true label=(localize 'delete') onClick=(action "onDelete")}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{else}}
+	<p>{{localize 'space_admin_empty'}}</p>
+{{/if}}
+
+

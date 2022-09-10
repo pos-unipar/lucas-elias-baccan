@@ -1,0 +1,84 @@
+<Layout::MasterNavigation />
+<Layout::MasterToolbar>
+	<div class="zone-1">
+		{{#ui/ui-toolbar dark=false light=false raised=false large=false bordered=false}}
+			{{ui/ui-toolbar-button themed=true uppercase=true icon=constants.Icon.ArrowLeft label=(localize 'spaces') onClick=(action "onBack")}}
+		{{/ui/ui-toolbar}}
+	</div>
+	<div class="zone-2" />
+	<div class="zone-3">
+		{{folder/space-toolbar
+			spaces=model.folders
+			space=model.folder
+			permissions=model.permissions
+			templates=model.templates
+			category=category
+			categories=model.categories
+			documents=filteredDocs
+			onRefresh=(action "onRefresh")}}
+	</div>
+</Layout::MasterToolbar>
+
+<Layout::Grid::Container>
+	{{folder/space-sidebar
+		spaces=model.folders
+		space=model.folder
+		labels=model.labels
+		templates=model.templates
+		permissions=model.permissions
+		documents=model.documents
+		documentsDraft=model.documentsDraft
+		documentsLive=model.documentsLive
+		recentAdd=model.recentAdd
+		recentUpdate=model.recentUpdate
+		categories=model.categories
+		categorySummary=model.categorySummary
+		categoryMembers=model.categoryMembers
+		rootDocCount=model.rootDocCount
+		categoryFilter=category
+		onFiltered=(action "onFiltered")
+		onRefresh=(action "onRefresh")}}
+
+	<Layout::Grid::Content>
+		{{#if (eq model.folder.labelId "")}}
+			<div class="space-label">{{localize 'label_unclassified'}}</div>
+		{{else}}
+			<div class="space-label" style={{{model.label.bgColor}}}>{{model.label.name}}</div>
+			{{#if (gt model.labelSpaces.length 1)}}
+				<i class="space-label-dropdown dicon {{constants.Icon.ArrowSmallDown}}">
+					{{#attach-popover class="ember-attacher-popper" hideOn="click clickout" showOn="click" isShown=false placement="bottom-middle"}}
+						<ul class="menu">
+							{{#each model.labelSpaces as |space|}}
+								{{#if (not-eq space.id model.folder.id)}}
+									{{#link-to "folder.index" space.id space.slug class="item"}}{{space.name}}{{/link-to}}
+								{{/if}}
+							{{/each}}
+						</ul>
+					{{/attach-popover}}
+				</i>
+			{{/if}}
+		{{/if}}
+
+		{{layout/logo-heading
+			title=model.folder.name
+			desc=model.folder.desc
+			meta=model.folder.icon}}
+
+		{{folder/documents-list
+            numDocuments=model.documents.length
+			documents=filteredDocs
+			spaces=model.folders
+			space=model.folder
+			templates=model.templates
+			permissions=model.permissions
+			categoryFilter=category
+			sortBy=sortBy
+			onPin=(action "onPin")
+			onUnpin=(action "onUnpin")
+            onPinSequence=(action "onPinSequence")
+			onFiltered=(action "onFiltered")
+			onExportDocument=(action "onExportDocument")
+			onDeleteDocument=(action "onDeleteDocument")
+			onMoveDocument=(action "onMoveDocument")}}
+	</Layout::Grid::Content>
+</Layout::Grid::Container>

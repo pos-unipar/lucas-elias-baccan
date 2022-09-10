@@ -1,0 +1,52 @@
+<div class="view-customize">
+	<form>
+		<div class="form-group">
+			<label for="smtp-host">{{localize 'smtp_host'}}</label>
+			{{focus-input id="smtp-host" type="text" value=model.smtp.host class=(if SMTPHostEmptyError "form-control is-invalid" "form-control")}}
+			<small class="form-text">{{localize 'smtp_host_explain'}}</small>
+		</div>
+		<div class="form-group">
+			<label for="smtp-port">{{localize 'smtp_port'}}</label>
+			{{input id="smtp-port" type="text" value=model.smtp.port class=(if SMTPPortEmptyError "form-control is-invalid" "form-control")}}
+			<small class="form-text text-muted">{{localize 'smtp_port_explain'}}</small>
+		</div>
+		<div class="form-group">
+			<label for="smtp-userid">{{localize 'smtp_username'}}</label>
+			{{input id="smtp-userid" type="text" value=model.smtp.userid class="form-control"}}
+			<small class="form-text text-muted">{{localize 'smtp_username_explain'}}</small>
+		</div>
+		<div class="form-group">
+			<label for="smtp-password">{{localize 'smtp_password'}}</label>
+			{{input id="smtp-password" type="password" value=model.smtp.password class="form-control"}}
+			<small class="form-text text-muted">{{localize 'smtp_password_explain'}}</small>
+		</div>
+		<div class="form-group">
+			<label for="smtp-sender">{{localize 'smtp_sender_email'}}</label>
+			{{input id="smtp-sender" type="email" value=model.smtp.sender class=(if SMTPSenderEmptyError "form-control is-invalid" "form-control")}}
+			<small class="form-text text-muted">{{localize 'smtp_sender_email_explain'}}</small>
+		</div>
+		<div class="form-group">
+			<label for="smtp-senderName">{{localize 'smtp_sender_name'}}</label>
+			{{input id="smtp-senderName" type="text" value=model.smtp.senderName class=(if senderNameError "form-control is-invalid" "form-control")}}
+			<small class="form-text text-muted">{{localize 'smtp_sender_name_explain'}}</small>
+		</div>
+		<div class="form-group">
+			<label for="smtp-fqdn">{{localize 'smtp_fqdn'}}</label>
+			{{input id="smtp-fqdn" type="text" value=model.smtp.fqdn class="form-control"}}
+			<small class="form-text text-muted">{{localize 'smtp_fqdn_explain'}}</small>
+		</div>
+		<div class="form-group">
+			<label>{{localize 'smtp_anon_auth'}}</label>
+			{{x-toggle value=model.smtp.anonymous size="medium" theme="light" onToggle=(action (mut model.smtp.anonymous))}}
+		</div>
+		<div class="form-group">
+			<label>{{localize 'smtp_base64'}}</label>
+			{{x-toggle value=model.smtp.base64creds size="medium" theme="light" onToggle=(action (mut model.smtp.base64creds))}}
+		</div>
+		<div class="form-group">
+			<label>{{localize 'smtp_ssl'}}</label>
+			{{x-toggle value=model.smtp.usessl size="medium" theme="light" onToggle=(action (mut model.smtp.usessl))}}
+		</div>
+		{{ui/ui-button color=constants.Color.Green light=true icon=constants.Icon.Send label=buttonText onClick=(action "saveSMTP")}}
+	</form>
+</div>

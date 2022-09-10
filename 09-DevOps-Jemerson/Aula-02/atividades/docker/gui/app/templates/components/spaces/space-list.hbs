@@ -1,0 +1,59 @@
+<div class="view-spaces">
+	<div class="text-right">
+		{{#ui/ui-toolbar dark=false light=false raised=false large=false bordered=false}}
+			{{ui/ui-toolbar-icon icon=constants.Icon.Blocks color=constants.Color.Gray tooltip=(localize 'space_density_complete')
+				selected=(eq viewDensity "1") onClick=(action "onSwitchView" "1")}}
+			{{ui/ui-toolbar-icon icon=constants.Icon.All color=constants.Color.Gray tooltip=(localize 'space_density_comfort')
+				selected=(eq viewDensity "2") onClick=(action "onSwitchView" "2")}}
+			{{ui/ui-toolbar-label label="—" color=constants.Color.Gray tooltip=(localize 'space_density_compact')
+				selected=(eq viewDensity "3") onClick=(action "onSwitchView" "3")}}
+		{{/ui/ui-toolbar}}
+	</div>
+
+	<Ui::UiSpacer @size="200" />
+
+	<ul class="list">
+		{{#each spaces as |space|}}
+            <li class="item">
+                <div class="info">
+                    {{#link-to "folder.index" space.id space.slug}}
+                        <div class="name">
+                            {{#if space.icon}}
+                                <div class="icon">
+                                    {{ui/ui-icon-meta icon=space.icon}}
+                                </div>
+                            {{/if}}
+                                {{space.name}}
+                        </div>
+                    {{/link-to}}
+                    {{#if (not-eq viewDensity "3")}}
+                        <div class="desc">{{{space.desc}}}</div>
+                    {{/if}}
+                    {{#if (eq viewDensity "1")}}
+                        {{#link-to "folder.index" space.id space.slug}}
+                            <div class="meta">
+                                {{#if space.labelId}}
+                                    {{spaces/space-label labels=labels labelId=space.labelId}}
+                                {{/if}}
+                            </div>
+                        {{/link-to}}
+                    {{/if}}
+                </div>
+                {{#if (eq viewDensity "1")}}
+                    {{#link-to "folder.index" space.id space.slug}}
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="number">{{space.countContent}}</div>
+                                <div class="label">items</div>
+                            </div>
+                            <div class="stat">
+                                <div class="number">{{space.countCategory}}</div>
+                                <div class="label">categories</div>
+                            </div>
+                        </div>
+                    {{/link-to}}
+                {{/if}}
+            </li>
+		{{/each}}
+	</ul>
+</div>

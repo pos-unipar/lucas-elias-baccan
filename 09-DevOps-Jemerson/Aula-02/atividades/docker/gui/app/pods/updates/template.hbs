@@ -1,0 +1,37 @@
+<Layout::MasterNavigation />
+<Layout::MasterToolbar>
+	<div class="zone-1" />
+	<div class="zone-2">
+		<div class="label color-gray-700">
+			Documize {{appMeta.edition}} {{appMeta.version}} ({{appMeta.revision}})
+		</div>
+	</div>
+	<div class="zone-3" />
+</Layout::MasterToolbar>
+
+<Layout::Grid::Container>
+	<Layout::Grid::Sidebar>
+		<div class="sidebar-content">
+			<div class="section">
+				<div class="title">{{localize 'about'}}</div>
+				<div class="text"></div>
+				<div class="text">
+					{{localize 'product_feedback'}} <a href="mailto:support@documize.com">{{localize 'get_in_touch'}}</a>
+				</div>
+			</div>
+		</div>
+	</Layout::Grid::Sidebar>
+	<Layout::Grid::Content>
+		{{layout/logo-heading
+			title=(localize 'product_news')
+			desc=(localize 'product_news_explain')
+			icon=constants.Icon.Announce}}
+
+		<div class="product-news">
+			{{{newsContent}}}
+			<div class="action">
+				{{localize 'product_feedback'}} <a href="mailto:support@documize.com">{{localize 'get_in_touch'}}</a>
+			</div>
+		</div>
+	</Layout::Grid::Content>
+</Layout::Grid::Container>

@@ -1,0 +1,84 @@
+<div class="view-customize">
+	<div class="backup-restore">
+		<div class="backup-zone">
+			{{#if session.isGlobalAdmin}}
+				<p>{{localize 'backup_explain1'}}</p>
+			{{else}}
+				<p>{{localize 'backup_explain2'}}</p>
+			{{/if}}
+			<p>{{localize 'backup_explain3'}}</p>
+
+			<div class="margin-top-30 margin-bottom-20">
+				{{#ui/ui-checkbox selected=backupSpec.retain}}
+					{{localize 'backup_retain'}}
+				{{/ui/ui-checkbox}}
+			</div>
+
+			{{#if backupRunning}}
+				<h3 class="text-success">{{localize 'backup_running'}}</h3>
+			{{else}}
+				{{ui/ui-button color=constants.Color.Yellow light=true icon=constants.Icon.Database label=(concat (localize 'backup_tenant') " " appMeta.appHost) onClick=(action "onBackup")}}
+				{{#if session.isGlobalAdmin}}
+					{{ui/ui-button-gap}}
+					{{ui/ui-button color=constants.Color.Yellow light=true icon=constants.Icon.Database label=(localize 'backup_system') onClick=(action "onSystemBackup")}}
+				{{/if}}
+			{{/if}}
+			{{#if backupFailed}}
+				<div class="backup-fail">{{localize 'backup_failed'}}</div>
+			{{/if}}
+			{{#if backupSuccess}}
+				<div class="backup-success">{{localize 'backup_success'}} ({{backupFilename}})</div>
+			{{/if}}
+		</div>
+	</div>
+
+	<div class="backup-restore">
+		<div class="restore-zone">
+			{{#if session.isGlobalAdmin}}
+				<p>{{localize 'restore_explain1'}}</p>
+			{{/if}}
+			<p>{{localize 'restore_explain2'}}</p>
+			<p>{{localize 'restore_explain3'}}</p>
+
+			<div class="margin-top-30 margin-bottom-20">
+				<div class="custom-file">
+					<input type="file" class="custom-file-input" id="restore-file" accept="application/zip" multiple="false" onchange={{action "upload"}}>
+					<label class="custom-file-label" for="restore-file">{{localize 'restore_select_file'}}</label>
+				</div>
+				<div class="margin-top-20"></div>
+			</div>
+
+			{{#if restoreFailed}}
+				<div class="restore-fail">{{localize 'restore_failed'}}</div>
+			{{else if restoreSuccess}}
+				<div class="restore-success">{{localize 'restore_success'}}</div>
+			{{else}}
+				{{#if restoreUploadReady}}
+					{{ui/ui-button color=constants.Color.Red light=false icon=constants.Icon.Database label=restoreButtonLabel onClick=(action "onShowRestoreModal")}}
+				{{/if}}
+			{{/if}}
+		</div>
+	</div>
+</div>
+
+<div id="confirm-restore-modal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">{{localize 'restore_confirm'}}</div>
+			<div class="modal-body">
+				<form onsubmit={{action "onRestore"}}>
+					<div class="form-group">
+						<label for="delete-space-name">{{localize 'restore_confirm'}}</label>
+						{{input type="text" id="confirm-restore" class="form-control mousetrap" placeholder="RESTORE" value=confirmRestore}}
+						<small class="form-text text-muted">{{localize 'restore_warn'}}</small>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				{{ui/ui-button color=constants.Color.Gray light=true label=(localize 'cancel') dismiss=true}}
+				{{ui/ui-button-gap}}
+				{{ui/ui-button color=constants.Color.Red light=true label=(localize 'restore') onClick=(action "onRestore")}}
+			</div>
+		</div>
+	</div>
+</div>
