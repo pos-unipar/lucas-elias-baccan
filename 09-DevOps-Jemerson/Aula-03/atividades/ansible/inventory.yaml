@@ -1,0 +1,5 @@
+monitoring:
+  hosts:
+    ec2-44-204-47-28.compute-1.amazonaws.com
+  vars:
+    ansible_user: ubuntu

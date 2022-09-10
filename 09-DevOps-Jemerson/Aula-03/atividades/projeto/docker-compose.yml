@@ -1,0 +1,74 @@
+# Precisa ter o postgres
+# Precisa ter o pgadmin
+# Precisa ter o grafana
+# Precisa ter o prometheus
+# Precisa ter o node_exporter (pegar as informacoes do sistema)
+# Precisa ter o postgres_exporter (pegar as informacoes do banco de dados)
+# Precisa ter o alertmanager
+
+version: "3.9"
+
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  pg_admin:
+    image: dpage/pgadmin4:6.13
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    ports:
+      - 8080:80
+
+  grafana:
+    image: grafana/grafana:main
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - 3000:3000
+
+  prometheus:
+    image: prom/prometheus:main
+    volumes:
+      - prometheus-data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - 9090:9090
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - 9100:9100
+
+  postgres_exporter:
+    image: prometheuscommunity/postgres-exporter
+    ports:
+      - 9187:9187
+    environment:
+      DATA_SOURCE_NAME: "postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable"
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    ports:
+      - 9093:9093
+
+volumes:
+  postgres_data:
+    name: postgres_data
+  pgadmin_data:
+    name: pgadmin_data
+  grafana-data:
+    name: grafana-data
+  prometheus-data:
+    name: prometheus-data
