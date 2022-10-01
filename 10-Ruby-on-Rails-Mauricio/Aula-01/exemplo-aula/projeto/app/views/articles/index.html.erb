@@ -1,0 +1,14 @@
+<h2><%= @title %></h2>
+
+<!-- new  -->
+<a href=<%= new_article_path %>>New Article</a>
+
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+            <a href=<%= article_path(article.id) %>>
+                <%= article.title %>
+           </a>
+        </li>
+    <% end %>
+</ul>
