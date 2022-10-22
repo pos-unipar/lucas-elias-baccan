@@ -61,3 +61,6 @@
 [submodule "10-Ruby-on-Rails-Mauricio/Aula-02/exemplo-aula/my-grails-app"]
 	path = 10-Ruby-on-Rails-Mauricio/Aula-02/exemplo-aula/my-grails-app
 	url = https://github.com/pos-unipar/pos-unipar-rails-app.git
+[submodule "10-Ruby-on-Rails-Mauricio/Aula-03/exemplo-aula/my-grails-app"]
+	path = 10-Ruby-on-Rails-Mauricio/Aula-03/exemplo-aula/my-grails-app
+	url = https://github.com/pos-unipar/pos-unipar-rails-app.git

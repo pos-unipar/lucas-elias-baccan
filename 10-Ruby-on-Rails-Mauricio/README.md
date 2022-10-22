@@ -4,30 +4,30 @@
 
 ### Aula 01
 
-- [**atividades**](./Aula-01/atividades/)
-    Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
-
 - [**exemplo-aula**](./Aula-01/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-    - [**exemplo-aula**](./Aula-01/exemplo-aula/main.rb)
+    - [main.rb](./Aula-01/exemplo-aula/main.rb)
         Arquivo com os exemplos desenvolvidos durante a aula
 
-### Aula 02
+    - [Aula-01/exemplo-aula/projeto](./Aula-01/exemplo-aula/projeto)
+        Projeto que o professor desenvolveu durante a aula seguindo tutorial do site ro Rails.
 
-- [**atividades**](./Aula-02/atividades/)
-    Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
+### Aula 02
 
 - [**exemplo-aula**](./Aula-02/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
 
-### Aula 03
+    - [Aula-02/exemplo-aula/my-grails-app](./Aula-01/exemplo-aula/my-grails-app)
+        Projeto que o professor desenvolveu durante a aula seguindo tutorial do site ro Rails.
 
-- [**atividades**](./Aula-03/atividades/)
-Atividades que foram solicitadas para serem feitas e entregues, geralmente valem nota.
+### Aula 03
 
 - [**exemplo-aula**](./Aula-03/exemplo-aula/)
     Atividades desenvolvidas durante a aula para acompanhar o que o professor passa
+
+    - [Aula-03/exemplo-aula/my-grails-app](./Aula-01/exemplo-aula/my-grails-app)
+        Projeto que o professor desenvolveu durante a aula seguindo tutorial do site ro Rails.
 
 ### Aula 04
 
@@ -46,6 +46,7 @@ A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/doc
 - Foi adicionado o fork do projeto do professor com o comando abaixo.  
     ```
     git submodule add https://github.com/pos-unipar/pos-unipar-rails-app.git 10-Ruby-on-Rails-Mauricio/Aula-02/exemplo-aula/my-grails-app
+    git submodule add https://github.com/pos-unipar/pos-unipar-rails-app.git 10-Ruby-on-Rails-Mauricio/Aula-03/exemplo-aula/my-grails-app
     ```
 
 - Baixar arquivos do submódulo(fork)
