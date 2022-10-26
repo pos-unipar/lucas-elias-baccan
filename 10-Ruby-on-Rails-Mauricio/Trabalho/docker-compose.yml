@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  ruby_on_rails_api:
+    build: tasks-api/
+    ports:
+      - 3000:3000
+
+  nextjs_app:
+    build: tasks-web/
+    ports:
+      - 8080:8080
+    depends_on:
+      - ruby_on_rails_api
+    links:
+      - ruby_on_rails_api
