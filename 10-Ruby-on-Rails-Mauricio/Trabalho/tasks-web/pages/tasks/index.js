@@ -118,15 +118,15 @@ function Home() {
           </Table >
         )}
 
-        <Fab color="primary" aria-label="add" sx={{ position: 'absolute', bottom: 25, right: 25 }}>
-          <Link
-            href={{
-              pathname: ROUTES.tasks.new,
-            }}
-          >
+        <Link
+          href={{
+            pathname: ROUTES.tasks.new,
+          }}
+        >
+          <Fab color="primary" aria-label="add" sx={{ position: 'absolute', bottom: 25, right: 25 }}>
             <Add />
-          </Link>
-        </Fab>
+          </Fab>
+        </Link>
 
       </Container >
     </Box >
