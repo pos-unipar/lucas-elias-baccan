@@ -41,6 +41,9 @@ Atividades que foram solicitadas para serem feitas e entregues, geralmente valem
 
 A descrição do trabalho pode ser vista [aqui](https://pos-unipar.github.io/docs/ruby-on-rails/#trabalho-final).
 
+- [**Trabalho**](./Trabalho/)
+    Uma aplicação de lista de tarefas, com backend em Ruby on Rails e frontend em Next.js.
+
 ## Outras configurações
 
 - Foi adicionado o fork do projeto do professor com o comando abaixo.  
